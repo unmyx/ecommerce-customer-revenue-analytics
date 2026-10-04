@@ -1,0 +1,13 @@
+metric,metric_key,kind,definition,raw,analytical,exported,raw_minus_analytical,analytical_minus_exported,tolerance,expectation,passed
+"Revenue, all order statuses",revenue_canonical,money,sum of items_subtotal - discount_amount for every order (refunds and cancellations included),15873819.08,15873819.08,15873819.08,0.0,0.0,0.01,must equal,True
+Recognised revenue,revenue_recognised,money,net revenue of completed orders - the definition used by every KPI and chart,14861510.32,14861510.32,14861510.32,0.0,0.0,0.01,must equal,True
+"Orders, all statuses",orders_all,count,row count of orders,84263.0,84263.0,84263.0,0.0,0.0,0.0,must equal,True
+Recognised orders,orders_recognised,count,count of completed orders,78896.0,78896.0,78896.0,0.0,0.0,0.0,must equal,True
+"Units, all order statuses",units_all,count,sum of order line quantities,267601.0,267601.0,267601.0,0.0,0.0,0.0,must equal,True
+Recognised units,units_recognised,count,units on completed orders,250532.0,250532.0,250532.0,0.0,0.0,0.0,must equal,True
+Registered customers,customers_registered,count,row count of the customer table,15000.0,15000.0,15000.0,0.0,0.0,0.0,must equal,True
+Purchasing customers,customers_purchasing,count,distinct customers with at least one completed order,7622.0,7622.0,7622.0,0.0,0.0,0.0,must equal,True
+Customer revenue total,customer_revenue_total,money,recognised revenue aggregated at customer grain (must equal recognised revenue),14861510.32,14861510.32,14861510.32,0.0,0.0,0.01,must equal,True
+Product revenue total,product_revenue_total,money,recognised revenue aggregated at product grain (must equal recognised revenue),14861510.32,14861510.32,14861510.32,0.0,-0.0,0.01,must equal,True
+Attributed orders,attributed_orders,count,orders carrying a campaign attribution,3430.0,3430.0,3430.0,0.0,0.0,0.0,must equal,True
+Campaign assignments,campaign_assigned_customers,count,campaign x customer assignment rows,44090.0,44090.0,44090.0,0.0,0.0,0.0,must equal,True

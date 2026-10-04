@@ -38,6 +38,8 @@ novacart-build-analytics = "novacart.warehouse:build_main"
 novacart-reconcile = "novacart.warehouse:reconcile_main"
 novacart-analyze = "novacart.analytics.report:main"
 novacart-dashboard = "novacart.dashboard.cli:main"
+novacart-pipeline = "novacart.pipeline:main"
+novacart-portfolio = "novacart.portfolio:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

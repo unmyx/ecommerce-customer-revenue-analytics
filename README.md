@@ -1,336 +1,352 @@
 # E-commerce Customer & Revenue Analytics
 
-A production-shaped analytics project that turns a synthetic e-commerce dataset into revenue,
-customer, retention and marketing insight — built with Python, SQL and PostgreSQL, and
-finished with statistics, business visualisation and a BI dashboard.
+## Overview
 
-> **Portfolio project.** The company ("NovaCart"), its customers and every order are
-> synthetic, generated from documented statistical assumptions with a fixed random seed.
-> Nothing here is client work or real customer data.
+An end-to-end analytics platform for a fictional e-commerce retailer, built the way an analytics
+engineering team would build it: a seeded synthetic data generator, a PostgreSQL warehouse with a
+modelled analytical layer, a tested Python analytics library, statistical campaign evaluation, and
+a dashboard-ready presentation layer with a generated executive summary.
 
-## Business problem
+One command reproduces everything:
 
-An e-commerce retailer knows its revenue is growing but cannot answer basic commercial
-questions with confidence: which categories and customers actually drive revenue, whether
-recent cohorts retain, which campaigns created value rather than noise, and where a retention
-or reactivation effort would pay back.
+```bash
+python scripts/run_pipeline.py
+```
 
-This project builds the data platform and the analysis to answer those questions:
+```
+synthetic source -> PostgreSQL raw schema -> analytical SQL -> Python analytics
+      -> dashboard exports -> Power BI pages + executive summary + portfolio assets
+```
 
-| # | Question | Where it is answered |
-| --- | --- | --- |
-| 1 | How is revenue changing over time? | ✅ Revenue analysis (milestone 3) |
-| 2 | Which products and categories drive revenue? | ✅ Product analysis (milestone 3) |
-| 3 | What is average order value and how does it move? | ✅ Revenue analysis (milestone 3) |
-| 4 | Which customers contribute the most revenue? | ✅ Customer value analysis (milestone 3) |
-| 5 | What is retention by acquisition cohort? | ✅ Cohort retention (milestone 4) |
-| 6 | What RFM segments exist? | ✅ RFM segmentation (milestone 4) |
-| 7 | Which segments generate revenue and retain best? | ✅ Segment value + cohort retention (milestone 4) |
-| 8 | Which campaigns are associated with higher customer value? | ✅ Campaign analysis (milestone 4) |
-| 9 | Are those campaign differences statistically meaningful? | ✅ Statistical testing with FDR control (milestone 4) |
-| 10 | What business actions follow? | ✅ Generated executive summary with measured recommendations (milestone 5) |
+![Architecture](portfolio/screenshots/01_architecture.png)
+
+## Business Problem
+
+A growing retailer can see revenue rising but cannot answer the questions that decide where the next
+euro should go:
+
+1. How is revenue changing over time?
+2. Which products and categories drive revenue?
+3. What is average order value and how does it move?
+4. Which customers contribute the most revenue?
+5. What is retention by acquisition cohort?
+6. What RFM segments exist?
+7. Which segments generate revenue and retain best?
+8. Which campaigns are associated with higher customer value?
+9. Are those campaign differences statistically meaningful?
+10. What business actions follow from the evidence?
+
+## What This Project Demonstrates
+
+| Capability | Where |
+| --- | --- |
+| Deterministic synthetic data generation with documented ground truth | `src/novacart/synthetic/` |
+| Relational modelling with constraints, generated columns and indexes | `sql/01_schemas.sql`, `sql/02_raw_tables.sql` |
+| Layered analytical SQL (staging → facts → marts) with reconciliation | `sql/10..90_*.sql` |
+| Reusable Python analytics with unit-tested maths | `src/novacart/analytics/` |
+| RFM segmentation, cohort retention, campaign experiments | `analytics/rfm.py`, `cohorts.py`, `campaigns.py` |
+| Hypothesis testing with effect sizes and multiple-testing control | `analytics/statistics.py` |
+| Dashboard export layer with declared schemas and reconciled facts | `src/novacart/dashboard/` |
+| Power BI build kit (measures, theme, page specifications) | `powerbi/` |
+| Readable review and bug-finding skills | the test suite (215 tests) |
 
 ## Architecture
 
-```
-synthetic generator → CSV + manifest → PostgreSQL raw layer → analytical SQL
-      → Python analysis → statistics → visualisation → BI dashboard
-```
+| Layer | Technology | Responsibility |
+| --- | --- | --- |
+| 1. Synthetic source | Python, NumPy | seeded generation of customers, catalogue, campaigns, orders, payments; manifest of checksums and ground truth |
+| 2. Raw warehouse | PostgreSQL 16 | source-shaped tables with primary/foreign keys, check constraints and generated money columns |
+| 3. Analytical SQL | SQL views | staging, order/line facts, revenue/customer/product/campaign marts, reconciliation checks |
+| 4. Python analytics | pandas, NumPy, SciPy | KPIs, trends, product and customer analysis, RFM, cohorts, campaign statistics, charts |
+| 5. Dashboard exports | Python | 18 datasets with declared schemas, data dictionary, manifest, plus two sliceable fact tables |
+| 6. Presentation | Power BI, Markdown/HTML/Excel | four dashboard pages, generated executive summary, portfolio assets |
 
-* **Generator** – deterministic, seeded, with a documented ground truth
-  (`src/novacart/synthetic`).
-* **Warehouse** – PostgreSQL 16 with `raw`, `analytics` and `meta` schemas; constraints,
-  generated money columns and indexes defined in `sql/`.
-* **Analytical layer** – reusable SQL views: staging → order/line facts → revenue, customer,
-  product, category and campaign marts, with raw-versus-analytics reconciliation checks
-  (`sql/10..90_*.sql`, built by `novacart.warehouse`).
-* **Analysis** – reusable Python over SQL (`src/novacart/analysis`, milestones 3–6).
-* **Evidence** – pytest for transformations and calculations; SQL checks for the loaded data.
+Full detail: [docs/architecture.md](docs/architecture.md) · [docs/data_model.md](docs/data_model.md)
 
-Full detail: [docs/architecture.md](docs/architecture.md) ·
-[docs/data_model.md](docs/data_model.md) · [docs/data_generation.md](docs/data_generation.md) ·
-[docs/testing.md](docs/testing.md).
+## Data Model
+
+Seven raw tables, one payment per order, and campaign exposure as a first-class table so a holdout
+group always exists:
+
+| Table | Grain | Rows |
+| --- | --- | ---: |
+| `raw.customers` | customer | 15,000 |
+| `raw.products` | product | 1,200 |
+| `raw.marketing_campaigns` | campaign | 20 |
+| `raw.campaign_assignments` | campaign × customer (treatment/holdout) | 44,090 |
+| `raw.orders` | order | 84,263 |
+| `raw.order_items` | order line | 207,374 |
+| `raw.payments` | order (1:1) | 84,263 |
+
+Money columns that matter are generated by the database (`net_revenue`, `order_total`,
+`line_net_amount`), so the definition cannot drift between Python, SQL and BI. Column-level
+documentation is in [docs/data_model.md](docs/data_model.md) and
+`portfolio/sample_outputs/` (data dictionary is generated too).
 
 ## Dataset
 
-24 months of trading (2024-10-01 → 2026-09-30) from a fictional mixed-category European
-retailer. Default run with seed `20261004`:
+Synthetic, 24 months (2024-10-01 → 2026-09-30), seed `20261004`:
 
-| Table | Rows | Grain |
-| --- | ---: | --- |
-| `customers` | 15,000 | customer |
-| `products` | 1,200 | product |
-| `marketing_campaigns` | 20 | campaign (randomised treatment/control holdout) |
-| `campaign_assignments` | 44,090 | customer × campaign |
-| `orders` | 84,263 | order header |
-| `order_items` | 207,374 | order line |
-| `payments` | 84,263 | payment per order |
+**15,000 customers · 1,200 products · 20 campaigns · 44,090 assignments · 84,263 orders ·
+207,374 order lines · 84,263 payments**
 
-Headline characteristics: €15.9m net revenue, €188 average order value, 2.46 items per order,
-52% of registered customers purchase, 57% of them buy again, strong Black Friday/Christmas
-seasonality, and a category mix led by Electronics (31%), Home & Kitchen (23%) and Fashion
-(20%).
+The generator models acquisition channels with retention bias, category price/margin structure,
+product trends, yearly and weekly seasonality with Black Friday peaks, a casual/loyal purchase
+mix, and randomised campaign holdouts with documented true lift for validation.
+See [docs/data_generation.md](docs/data_generation.md).
 
-## Tech stack
+## Analytical Workflow
 
-Python 3.12+ · PostgreSQL 16 · SQL · pandas · NumPy · SciPy/statsmodels · Matplotlib ·
-pytest · Power BI (final dashboard) · docker compose · `pyproject.toml`
+`python scripts/run_pipeline.py` runs twelve steps in order and stops at the first failure:
 
-## Quickstart
+| # | Step | Gate |
+| ---: | --- | --- |
+| 1 | Generate synthetic data | 59 in-memory integrity checks |
+| 2 | Verify generated artefacts | CSV SHA-256 must match the generation manifest |
+| 3 | Ensure PostgreSQL is running | starts docker compose if needed, then waits for readiness |
+| 4 | Create schemas and load raw data | COPY load with row counts recorded in `meta.ingestion_run` |
+| 5 | Run raw data-quality checks | 15 SQL checks |
+| 6 | Build the analytical SQL layer | 18 views rebuilt in dependency order |
+| 7 | Run analytical reconciliation checks | 20 raw-versus-analytics checks |
+| 8 | Run the Python analytics | KPI, trends, products, customers, RFM, cohorts, campaign statistics |
+| 9 | Export dashboard datasets and summary | 18 datasets + executive summary |
+| 10 | Reconcile raw, analytical and exported layers | 12 metrics, zero difference expected |
+| 11 | Build the portfolio assets | 6 images + sample outputs |
+| 12 | Run the test suite (optional, `--with-tests`) | pytest |
 
-```bash
-# 1. configuration
-cp .env.example .env                     # PowerShell: Copy-Item .env.example .env
+## Revenue Definition
 
-# 2. PostgreSQL
-docker compose up -d                     # PostgreSQL on localhost:5433
+**Revenue = recognised net merchandise revenue**: `items_subtotal - discount_amount` for orders with
+status `completed`. Refunded and cancelled orders are excluded, and shipping and VAT are never part
+of revenue. The canonical order amount (`orders.net_revenue`) covers all statuses; every KPI,
+chart, test and dashboard visual uses the recognised figure.
 
-# 3. environment
-python -m venv .venv
-. .venv/Scripts/activate                 # Windows PowerShell
-python -m pip install -e ".[dev]"
+| Metric | Value |
+| --- | ---: |
+| Recognised net revenue | EUR 14,861,510.32 |
+| Revenue including refunded/cancelled orders | EUR 15,873,819.08 |
+| Refunded + cancelled merchandise value | EUR 1,012,308.76 |
 
-# 4. generate the synthetic dataset (deterministic, ~6 seconds)
-python scripts/generate_data.py
+## Customer Analytics
 
-# 5. load it into PostgreSQL (~15 seconds)
-python scripts/load_raw.py
+Customer feature mart plus Python analytics: lifetime revenue, orders, units, average order value,
+recency, lifetime days, repeat flag, country and acquisition channel. Non-purchasers are kept rather
+than dropped, because they are the reactivation universe.
 
-# 6. verify the loaded data
-python scripts/check_raw_data.py
+| Metric | Value |
+| --- | ---: |
+| Purchasing customers (of 15,000 registered) | 7,622 |
+| Repeat customers / one-time customers | 4,331 / 3,291 |
+| Repeat customer rate | 56.8% |
+| Average order value | EUR 188.37 |
+| Revenue per purchasing customer | EUR 1,949.82 |
+| Revenue per registered customer | EUR 990.77 |
+| Concentration | top 10% of buyers hold 53.0% of revenue; the bottom half hold 4.0% |
 
-# 7. build the analytical SQL layer and reconcile it against the raw layer
-python scripts/build_analytics_layer.py
-python scripts/run_reconciliation.py
+## RFM Segmentation
 
-# 8. business + advanced analysis: KPI, product, customer, RFM, cohort and campaign tables and figures
-python scripts/build_business_analysis.py
+Quintile scores over purchasing customers (recency measured against the fixed analysis end date,
+ties broken deterministically by customer id), assigned by documented priority rules: Champions,
+Loyal Customers, Potential Loyalists, New Customers, At Risk, Needs Attention, Dormant, and a
+Never Purchased group kept with null scores.
 
-# 9. notebooks (optional; they re-run the analysis and embed the figures)
-jupyter nbconvert --to notebook --execute --inplace notebooks/0*.ipynb
+| Segment | Customers | Share of customers | Revenue | Share of revenue |
+| --- | ---: | ---: | ---: | ---: |
+| Champions | 2,201 | 14.7% | EUR 12,582,779 | 84.7% |
+| Loyal Customers | 1,317 | 8.8% | EUR 1,273,054 | 8.6% |
+| At Risk | 1,055 | 7.0% | EUR 429,187 | 2.9% |
+| Dormant | 1,994 | 13.3% | EUR 374,730 | 2.5% |
+| Needs Attention | 647 | 4.3% | EUR 121,722 | 0.8% |
+| Potential Loyalists | 201 | 1.3% | EUR 40,680 | 0.3% |
+| New Customers | 207 | 1.4% | EUR 39,357 | 0.3% |
+| Never Purchased | 7,378 | 49.2% | EUR 0 | 0.0% |
 
-# 10. tests
-python -m pytest -q
-```
+## Cohort Analysis
 
-Expected outcome: 15,000 customers / 84,263 orders / 207,374 order lines loaded, 59 in-memory
-validation checks, 15 SQL data-quality checks and 20 analytical reconciliation checks with
-zero failures, 25 analysis tables and 16 figures written to `outputs/`.
+Monthly cohorts by first purchase month; retention is any recognised order in a month offset, so
+month 0 is 100% of the cohort by construction and rates can never exceed 100%. Offsets beyond the
+analysis end date are left blank rather than counted as zero. 24 cohorts, median month-1 activity
+retention **21.3%**.
 
-### Command line entry points
+## Campaign Analysis
 
-```bash
-novacart-generate --customers 2000 --products 300 --campaigns 8 --orders 9000
-novacart-generate --no-write                 # validate in memory only
-novacart-load --data-dir data/raw --keep-existing
-novacart-build-analytics                     # (re)create the analytics views
-novacart-reconcile                            # reconcile analytics against raw
-novacart-analyze                              # KPI tables, product/customer analysis, figures
-```
+Each campaign randomised its audience into treatment and holdout arms; order attribution exists only
+for exposed treatment customers inside the campaign window. The comparison is customer-level
+intention-to-treat, because orders from one customer are not independent observations.
 
-## Business analytics (Milestone 3)
+| Result | Count |
+| --- | ---: |
+| Campaigns evaluated | 20 |
+| Statistically significant at FDR 5% | 8 |
+| Clearing the practical thresholds (≥10% and ≥EUR 5 per assigned customer) | 11 |
+| Both statistical and practical | 8 |
+| Directionally positive but inconclusive | 3 |
+| No detectable difference | 9 |
 
-The Python analytical layer reads the published SQL facts and marts (never the raw tables),
-applies descriptive analysis, and writes business tables and figures. Reusable logic lives in
-`src/novacart/analytics/`; the notebook only presents results.
+## Statistical Methodology
 
-```bash
-python scripts/build_business_analysis.py                 # tables + figures + console KPIs
-jupyter nbconvert --to notebook --execute --inplace notebooks/01_business_analysis.ipynb
-```
+Welch's two-sample t-test on per-customer revenue inside the campaign window, with a 95%
+Welch-Satterthwaite confidence interval, a percentile bootstrap and a Mann-Whitney U check as
+robustness, Hedges' g as the standardised effect size, and Benjamini-Hochberg FDR control at 5%
+across the 20 campaigns. Statistical and practical significance are reported separately. The test,
+alpha, correction and thresholds were fixed in code before results were inspected, and the
+generator's ground truth is never read by the analysis.
 
-Outputs: 15 CSV tables in `outputs/tables/` and 7 figures in `outputs/figures/`
-(monthly revenue, monthly orders, monthly AOV, revenue by category, top 10 products by revenue,
-customer revenue distribution, revenue by country).
+Full methodology: [docs/analytics_methods.md](docs/analytics_methods.md)
 
-| Module | Responsibility |
-| --- | --- |
-| `analytics/common.py` | marts loader, recognition filter, safe division, % change, rolling sums |
-| `analytics/revenue.py` | revenue/order summary, revenue by dimension |
-| `analytics/kpis.py` | the canonical business KPI snapshot |
-| `analytics/trends.py` | daily/weekly/monthly series, rolling windows, month-over-month |
-| `analytics/products.py` | category and product performance, top-N, declining products |
-| `analytics/customers.py` | country, segments, revenue deciles, concentration, top customers |
-| `analytics/plots.py` | reusable business charts with deterministic filenames |
-| `analytics/report.py` | orchestration and the `novacart-analyze` command |
+## Dashboard
 
-### Metric definitions
-
-Every number derives from the analytical SQL layer, so these definitions are the same ones the
-dashboard will use.
-
-| Metric | Definition |
-| --- | --- |
-| Revenue | recognised net merchandise revenue: `items_subtotal - discount_amount` on `completed` orders. Refunds and cancellations excluded; shipping and VAT excluded |
-| Total orders | count of revenue-recognised orders |
-| Units | units on revenue-recognised order lines |
-| Unique customers | customers with at least one recognised order |
-| Average order value (AOV) | revenue / recognised orders |
-| Average units per order | units / recognised orders |
-| Repeat customer | a customer with **two or more** recognised orders |
-| Repeat customer rate | repeat customers / purchasing customers |
-| Revenue per customer | revenue / purchasing customers. `revenue_per_registered_customer` (all 15,000 registered customers) is reported separately rather than blended |
-| Rolling revenue | trailing sum including the current day over a complete daily calendar: `revenue_rolling_7d`, `revenue_rolling_30d` |
-| Month-over-month change | absolute difference and percentage change versus the immediately preceding calendar month, on a gap-free monthly calendar. A zero or missing base month reports `n/a` (NaN) instead of infinite growth |
-| Product ranking | recognised revenue (ties broken by product id). A separate ranking by recognised units is always shown, because the two lists differ |
-| Declining product | prior-window recognised units ≥ 10 **and** unit change ≤ −30% between two adjacent 90-day windows ending on the last order date in the data (never the wall clock) |
-| Customer revenue decile | equal-count deciles over purchasing customers, decile 1 = lowest revenue, decile 10 = highest |
-
-## Advanced analytics (Milestone 4)
-
-RFM segmentation, cohort retention and campaign evaluation with statistical testing. The same
-`novacart-analyze` command produces the tables and figures; three notebooks present the findings.
-
-```bash
-python scripts/build_business_analysis.py                 # 25 tables and 16 figures
-jupyter nbconvert --to notebook --execute --inplace notebooks/02_customer_segmentation.ipynb
-jupyter nbconvert --to notebook --execute --inplace notebooks/03_cohort_analysis.ipynb
-jupyter nbconvert --to notebook --execute --inplace notebooks/04_campaign_analysis.ipynb
-```
-
-| Component | Method | Outputs |
-| --- | --- | --- |
-| RFM | quintile scores (ties broken by customer id) with priority-ordered segment rules | `rfm_customers`, `rfm_segments`, `rfm_segment_scores` + 3 figures |
-| Cohorts | monthly cohorts by first purchase month, retention by month offset, cumulative revenue | `cohort_sizes`, `cohort_retention`, `cohort_retention_matrix`, `cohort_revenue` + 3 figures |
-| Campaigns | customer-level intention-to-treat comparison, Welch t-test, 95% CI, bootstrap and rank checks, Hedges' g, Benjamini-Hochberg FDR | `campaign_comparison`, `campaign_statistics`, `campaign_significance_overview` + 3 figures |
-
-Full method detail, including the segment rules, the statistical test rationale and the known
-limitations: [docs/analytics_methods.md](docs/analytics_methods.md).
-
-> **Real-world limitation.** The dataset simulates randomised campaign assignment, while real
-> client data often contains confounding, selection bias, targeting effects, and non-random
-> exposure. The campaign effect estimates demonstrate the method and are not a transferable
-> client result.
-
-### Headline results (default dataset)
-
-| Finding | Value |
-| --- | --- |
-| Champions segment | 2,201 customers (14.7% of customers) generating 84.7% of revenue |
-| Segments with no repeat buyers yet | Potential Loyalists, New Customers, Needs Attention, Dormant, Never Purchased |
-| Cohort retention | 24 monthly cohorts; median month-1 activity retention 21.3%. The 2024-10 cohort (73%) is left-censored - customers already active before the window - and should be excluded from benchmarks |
-| Campaigns tested | 20, of which 8 are statistically significant at FDR 5% and 11 clear the practical thresholds |
-| Largest measured lift | +51.7% revenue per assigned customer (CMP-005, FDR-adjusted p < 0.001) |
-| Directionally positive but inconclusive | 3 campaigns have practical-sized point estimates with intervals crossing zero |
-| Post-hoc generator check | 8 of 11 genuinely-lifted campaigns detected, 0 of 9 placebo campaigns flagged |
-
-## Repository layout
-
-## Dashboard and executive summary (Milestone 5)
-
-The presentation layer turns the canonical analytical outputs into dashboard-ready files. Power BI
-loads those files; **no value is typed into the dashboard by hand**, and no metric is redefined
-inside it.
-
-```
-raw schema -> analytical SQL -> Python analytics -> dashboard exports (CSV) -> Power BI
-```
-
-```bash
-python scripts/build_dashboard.py        # exports + executive summary + page previews
-```
-
-| Output | Location |
-| --- | --- |
-| 18 dashboard datasets (16 aggregates + 2 sliceable facts) | `outputs/dashboard/csv/` |
-| Data dictionary and export manifest (row counts, columns, checksums) | `outputs/dashboard/csv/` |
-| Executive summary (Markdown, HTML, Excel) | `outputs/dashboard/summary/` |
-| Static page previews | `powerbi/screenshots/` |
-| Power BI build kit (measures, theme, page specs) | `powerbi/` |
-
-### Dashboard pages
+Four Power BI pages, built from the exported datasets (no values typed by hand, no competing metric
+definitions in DAX):
 
 | Page | Content |
 | --- | --- |
-| 1 - Executive overview | Net revenue, orders, customers, AOV, repeat rate and revenue per customer; monthly revenue and order trends; revenue by category, segment, country and campaign lift |
-| 2 - Customer analytics | RFM segment distribution and revenue, customer value deciles, cohort retention heatmap, cohort sizes |
-| 3 - Product analytics | Category revenue and units, top products, declining products, category detail table |
-| 4 - Campaign analytics | Treatment vs holdout comparison, lift and confidence intervals, significance indicators, full results table |
+| 1. Executive overview | six KPI cards, monthly revenue and order trends, category/segment/country revenue, campaign lift |
+| 2. Customer analytics | RFM distribution and revenue, customer value deciles, cohort retention heatmap, cohort sizes |
+| 3. Product analytics | category revenue and units, top products, declining products |
+| 4. Campaign analytics | treatment vs holdout, lift with confidence intervals, significance indicators, results table |
 
-### Executive overview preview
+![Executive dashboard](portfolio/screenshots/02_executive_dashboard.png)
 
-![Executive overview](powerbi/screenshots/page1_executive_overview.png)
+Build kit: [powerbi/README.md](powerbi/README.md) · page specification:
+[powerbi/page_specs.md](powerbi/page_specs.md) · measures: `powerbi/measures.dax`.
 
-Additional previews: [customer analytics](powerbi/screenshots/page2_customer_analytics.png),
-[product analytics](powerbi/screenshots/page3_product_analytics.png),
-[campaign analytics](powerbi/screenshots/page4_campaign_analytics.png). These are static renders of
-the page designs produced from the exported datasets, not Power BI screenshots.
+## Key Findings
 
-### Data lineage and KPI definitions
+* Revenue is strongly seasonal and concentrated: the November peak reached EUR 1.06m in a month,
+  and Electronics alone accounts for 30.6% of revenue.
+* A small loyal core carries the business: 14.7% of customers (Champions) generate 84.7% of revenue,
+  and the top 10% of buyers hold 53.0%.
+* 1,055 At Risk customers represent EUR 429k of historical revenue - the clearest reactivation
+  target, since they have already proven they will buy.
+* Nine of twenty campaigns show no detectable difference, while eight are statistically and
+  practically significant; the largest, CMP-005, lifted revenue per assigned customer by EUR 110.86
+  (+51.7%, 95% CI EUR 75.16-146.55).
+* 162 products met the documented decline rule (prior units ≥ 10 and a unit change ≤ −30%).
 
-* Every dataset is a copy, join or label of a canonical column: aggregates come from
-  `novacart.analytics`, and the two sliceable fact tables come from `analytics.fct_orders` and
-  `analytics.fct_order_lines` (plus the customer country and RFM segment for slicers).
-* The revenue definition, KPI definitions, rolling windows, repeat-customer rule and product
-  ranking method are documented above and in
-  [docs/analytics_methods.md](docs/analytics_methods.md). Dashboards use the same definition.
-* `tests/test_dashboard_exports.py` proves that the fact tables reconcile exactly with every
-  aggregate (total, monthly, country, segment, category and product level).
+Recommended actions derived from these results are generated in
+`outputs/dashboard/summary/executive_summary.md` (`portfolio/sample_outputs/executive_summary.md`).
 
-Manual steps that cannot be automated: connecting the CSV folder, creating the model relationships
-and placing the visuals. The build guide and the page-by-page specification are in
-[powerbi/README.md](powerbi/README.md) and [powerbi/page_specs.md](powerbi/page_specs.md).
+## Data Quality & Validation
+
+| Gate | Checks | Result |
+| --- | ---: | --- |
+| Generator (in memory) | 59 | pass, refuses to write invalid data |
+| Raw layer (SQL) | 15 | 0 failing |
+| Analytical layer (SQL) | 20 | 0 failing |
+| End-to-end (raw → analytical → exported) | 12 metrics | 0.00 difference |
+
+The end-to-end report compares revenue (canonical and recognised), orders, units, customers,
+customer revenue totals, product revenue totals, campaign attributions and assignments across all
+three layers, with a documented 0.01 EUR rounding tolerance and exact count matching.
+
+## Testing
+
+**215 tests**: 179 unit tests that run without a database and 36 database-backed integration tests
+(opt-in), plus a full-scale generation test marked `slow`.
+
+```bash
+python -m pytest                       # unit suite
+python -m pytest -m slow               # full-scale generation
+NOVACART_RUN_DB_TESTS=1 python -m pytest   # everything, including PostgreSQL
+python -m compileall -q src scripts    # compile check
+python -m ruff check src tests scripts
+```
+
+Coverage highlights: generator determinism and integrity, schema constraints, SQL reconciliation,
+metric maths on hand-built frames, RFM rules (all 125 score combinations), cohort invariants,
+statistical correctness against hand-computed values, export schemas and fact↔aggregate
+reconciliation, summary content, and pipeline fail-fast behaviour.
+
+## Project Structure
 
 ```
 ├── docker-compose.yml          PostgreSQL 16 for local development
 ├── pyproject.toml              dependencies, console scripts, pytest/ruff config
-├── data/
-│   ├── raw/                    generated CSVs (git-ignored, rebuildable)
-│   └── generation_metadata/    manifest: seed, checksums, validation, ground truth
-├── docs/                       architecture, data model, generation, testing, methods
-├── notebooks/
-│   ├── 01_business_analysis.ipynb     KPIs, trends, products, customers
-│   ├── 02_customer_segmentation.ipynb RFM scoring, segments, figures
-│   ├── 03_cohort_analysis.ipynb       retention matrix, heatmap, cohort revenue
-│   └── 04_campaign_analysis.ipynb     campaign comparison and statistics
-├── outputs/                    generated analysis artefacts (git-ignored)
-│   ├── figures/                16 business charts
-│   ├── tables/                 25 CSV result tables
-│   └── dashboard/              dashboard datasets, data dictionary, manifest, executive summary
+├── data/                       generated CSVs and generation manifest (git-ignored)
+├── docs/                       architecture, data model, generation, methods, testing
+├── notebooks/                  01 business analysis, 02 segmentation, 03 cohorts, 04 campaigns
+├── outputs/                    generated tables, figures, dashboard exports, summary (git-ignored)
+├── portfolio/                  curated screenshots, sample outputs and the case study
 ├── powerbi/                    dashboard build kit (measures, theme, page specs, previews)
-├── scripts/                    thin CLI wrappers (generate, load, checks, build analytics)
-├── sql/
-│   ├── 01_schemas.sql           raw / analytics / meta schemas
-│   ├── 02_raw_tables.sql        tables, constraints, generated columns, indexes
-│   ├── 10_staging_views.sql     cleaned staging views, calendar, analysis window
-│   ├── 20_revenue_marts.sql     order/line facts, daily and monthly revenue marts
-│   ├── 21_customer_marts.sql    customer features (one row per customer)
-│   ├── 22_product_marts.sql     product and category performance
-│   ├── 23_campaign_marts.sql    treatment/holdout campaign preparation
-│   ├── 90_reconciliation_checks.sql  raw-versus-analytics reconciliations
-│   └── checks/verify_raw.sql    cross-table data-quality checks
-├── src/novacart/
-│   ├── settings.py, db.py, logging_config.py
-│   ├── synthetic/               generator (reference, entities, order simulation, writer)
-│   ├── ingestion/               DDL application and COPY loading
-│   ├── warehouse.py             builds the analytical SQL layer, reads reconciliation
-│   └── analytics/               revenue, KPIs, trends, products, customers, RFM,
-│                                cohorts, campaigns, statistics, plots, report
-└── tests/                       unit, rule-injection and integration tests
+├── scripts/                    thin CLI wrappers for every stage
+├── sql/                        schemas, raw tables, analytical views, reconciliation checks
+├── src/novacart/               synthetic, ingestion, warehouse, analytics, dashboard, pipeline
+└── tests/                      unit, rule-injection and database integration tests
 ```
 
-## Reproducibility
+## Setup
 
-* One seed drives every random draw through independent `SeedSequence` streams.
-* `data/generation_metadata/generation_manifest.json` records the resolved configuration,
-  row counts, SHA-256 checksums for every CSV, the validation report, library versions and the
-  **campaign ground truth** (used by tests, never loaded into the warehouse).
-* `meta.ingestion_run` records every load with row counts and checksums.
-* Rebuilding from a fresh clone reproduces the same dataset and the same file hashes.
+Requirements: Python 3.12+, Docker (for PostgreSQL), and optionally Power BI Desktop.
 
-## Project status
+```bash
+cp .env.example .env                  # PowerShell: Copy-Item .env.example .env
+docker compose up -d                  # PostgreSQL on localhost:5433
+python -m venv .venv
+. .venv/Scripts/activate              # Windows; use source .venv/bin/activate elsewhere
+python -m pip install -e ".[dev]"
+```
 
-| Milestone | Status |
-| --- | --- |
-| 1. Architecture, schema, project structure, synthetic data engine | ✅ complete |
-| 2. Analytical SQL layer (staging views, facts, revenue/customer/product/campaign marts, reconciliation) | ✅ complete |
-| 3. Business analytics in Python (revenue, trends, products, customers, KPIs, figures, notebook) | ✅ complete |
-| 4. RFM segmentation, cohort retention, campaign evaluation, statistical testing | ✅ complete |
-| 5. Dashboard exports, Power BI build kit, page previews and executive summary | ✅ complete |
-| 6. Final polish: README findings review and publish-ready walkthrough | ⏳ next |
+## Reproduction
 
-## Licence and data notice
+From a fresh clone:
 
-Code is provided for portfolio and educational use. All data is synthetic and any resemblance
-to real customers, orders or companies is coincidental.
+```bash
+python scripts/run_pipeline.py             # everything, ~2 minutes, stops on the first failure
+python scripts/run_pipeline.py --list      # show the twelve steps
+python scripts/run_pipeline.py --with-tests
+
+# or step by step
+python scripts/generate_data.py
+python scripts/load_raw.py
+python scripts/check_raw_data.py
+python scripts/build_analytics_layer.py
+python scripts/run_reconciliation.py
+python scripts/build_business_analysis.py
+python scripts/build_dashboard.py
+python scripts/build_portfolio.py
+```
+
+Console equivalents: `novacart-generate`, `novacart-load`, `novacart-build-analytics`,
+`novacart-reconcile`, `novacart-analyze`, `novacart-dashboard`, `novacart-portfolio`,
+`novacart-pipeline`.
+
+The same seed always produces the same dataset: the generation manifest records SHA-256 checksums
+for every CSV, and the export manifest does the same for the dashboard datasets.
+
+## Limitations
+
+* **Synthetic data.** Every customer, order and campaign is generated; results demonstrate method
+  and engineering, not a real commercial outcome.
+* **Simulated randomisation.** Real client data often contains confounding, selection bias,
+  targeting effects and non-random exposure, so campaign effects are not automatically
+  transferable.
+* **Intention-to-treat dilution.** The campaign estimate includes treatment-arm members who were
+  never exposed and therefore understates the effect on the exposed population.
+* **Flat retention by design.** The generator has no churn-decay process, so cohort retention is
+  flatter than a real retail cohort, and the first cohort is left-censored (73% month-1 retention
+  versus ~21% for later cohorts).
+* **Heavy-tailed revenue.** The top decile holds 53% of revenue; mean-based tests are complemented
+  by bootstrap and rank-based checks, not replaced by them.
+* **Small standardised effects.** Significant campaigns show Hedges' g of 0.11-0.24 - large
+  percentage lifts on small bases still produce modest effect sizes.
+* **Power BI is specified, not shipped.** The `.pbix` cannot be generated headlessly in this
+  environment; the datasets, measures, theme and page specification reproduce it exactly.
+
+## Portfolio Note
+
+* **NovaCart is a fictional company.** It does not exist and is not based on any real retailer.
+* **All data is synthetic**, generated by the seeded generator in this repository. No real customer,
+  order or payment data is used anywhere.
+* This is a **personal portfolio project**. It is **not presented as client work**, professional
+  consulting, or a production system.
+* Every figure, table and finding is **generated by the reproducible system** in this repository -
+  nothing is hand-written or hard-coded into the results.
+* **No real business impact is claimed.** The project demonstrates analytical and data-engineering
+  method; the synthetic results are not evidence about any real market, product or campaign.
+
+## Licence and Data Notice
+
+Code is provided for portfolio and educational use. All data is synthetic and any resemblance to
+real customers, orders or companies is coincidental.
 

@@ -1,0 +1,9 @@
+rfm_segment,customers,customer_share_pct,revenue,revenue_share_pct,average_customer_revenue,average_orders,average_order_value,average_recency_days,repeat_customers,repeat_customer_rate
+Champions,2201,14.6733,12582779.05,84.6669,5716.85,30.334,188.46,14.0,2201,1.0
+Loyal Customers,1317,8.78,1273054.47,8.5661,966.63,5.128,188.49,67.7,1226,0.9309
+Potential Loyalists,201,1.34,40680.44,0.2737,202.39,1.0,202.39,21.3,0,0.0
+New Customers,207,1.38,39356.64,0.2648,190.13,1.0,190.13,24.1,0,0.0
+At Risk,1055,7.0333,429187.33,2.8879,406.81,2.206,184.44,322.1,904,0.8569
+Needs Attention,647,4.3133,121722.45,0.819,188.13,1.0,188.13,97.1,0,0.0
+Dormant,1994,13.2933,374729.94,2.5215,187.93,1.0,187.93,383.5,0,0.0
+Never Purchased,7378,49.1867,0.0,0.0,0.0,0.0,,,0,0.0

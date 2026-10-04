@@ -12,8 +12,8 @@ The generator has three objectives:
    207,000+ order lines, 20 campaigns);
 2. embed realistic *relationships* — customer loyalty, seasonality, price/cost structure,
    campaign lift, retention decay — rather than independent random columns;
-3. embed a known **analytical ground truth** so that later milestones can verify that the
-   analysis recovers the effects that were designed in.
+3. embed a known **analytical ground truth** so the analysis can be validated against the
+   effects that were designed in (see the post-hoc check in `notebooks/04_campaign_analysis.ipynb`).
 
 ## Determinism
 

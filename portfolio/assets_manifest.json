@@ -1,0 +1,60 @@
+{
+  "images": {
+    "architecture": {
+      "file": "01_architecture.png",
+      "checksum_sha256": "b16bd9168d8c982ca88b957a8b60ff5e4f60c369c292ec3885c8848bcda3e531"
+    },
+    "executive_dashboard": {
+      "file": "02_executive_dashboard.png",
+      "checksum_sha256": "6f418ffa150081513d6e7325d3456c1e741ae7be3641dd654f162f90bcb4723c"
+    },
+    "revenue_analysis": {
+      "file": "03_revenue_analysis.png",
+      "checksum_sha256": "6003c8ea604d3571380e329215d9485124bc5bf92b15a04978d9e0d001b2d780"
+    },
+    "rfm_segmentation": {
+      "file": "04_rfm_segmentation.png",
+      "checksum_sha256": "0a9286dbce3b50966a4762a96a0bef146ec366c6bc2ed00db4c39f05ffabfdf7"
+    },
+    "cohort_heatmap": {
+      "file": "05_cohort_heatmap.png",
+      "checksum_sha256": "c90b85b8e5167b8b77bea793038c57dadcef6d81a092a72e1895746480cc6975"
+    },
+    "campaign_statistics": {
+      "file": "06_campaign_statistics.png",
+      "checksum_sha256": "6ade888973ffcdbd6bf17d0a3639e6f2ae98d44a9a250559ef429feeda7f5067"
+    }
+  },
+  "sample_outputs": {
+    "kpi_summary": {
+      "file": "kpi_summary.csv",
+      "checksum_sha256": "83e8920e5488dbf29f9b24e56a4ebfeb817ea937bad770d99064597439857b17"
+    },
+    "monthly_revenue": {
+      "file": "monthly_revenue.csv",
+      "checksum_sha256": "bb66954a052c7e73fdf80702756e20559dadecf671d4724ef875927b8719b7d6"
+    },
+    "customer_segments": {
+      "file": "rfm_segments.csv",
+      "checksum_sha256": "6d87afba031c178849e1d6007dae46f7ac2b74ca53331db62b0fcd242b3cdc9c"
+    },
+    "campaign_results": {
+      "file": "campaign_results.csv",
+      "checksum_sha256": "8d9604b2fe585ce7ad2990f2574f24773c7c5aaaa1f0fa8469057dbc99b3f9f8"
+    },
+    "declining_products": {
+      "file": "declining_products.csv",
+      "checksum_sha256": "f77bdcfca914725c196b3452bfbf3a9cb28c9bc9c59ab35a49192aa686c3a836"
+    },
+    "executive_summary": {
+      "file": "executive_summary.md",
+      "checksum_sha256": "a6d946a2eb4f12acf1f1f7fde8db23edc15a3bdf96fc1e8b5b22b1ea8c844e35"
+    },
+    "end_to_end_reconciliation": {
+      "file": "end_to_end_reconciliation.csv",
+      "checksum_sha256": "a189a0a24c5667be5a4564d8c1d243d3601f084f87b56a3dc02fb0e349c58ca7"
+    }
+  },
+  "case_study": "case-study.md",
+  "note": "Images are rendered from the canonical analytical results and the exported dashboard datasets; sample outputs are copies of the generated files."
+}

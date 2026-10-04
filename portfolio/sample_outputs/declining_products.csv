@@ -1,0 +1,1119 @@
+product_id,product_name,category,prior_units,recent_units,prior_revenue,recent_revenue,units_change,units_change_pct,revenue_change_pct,is_declining
+PRD-00171,Mirin Nut Mix,Grocery,26,3,369.57,44.75,-23,-0.8846,-0.8789,True
+PRD-00133,Pinewood Fitness Tracker Premium,Electronics,22,6,3214.53,941.96,-16,-0.7273,-0.707,True
+PRD-00081,Wildacre Moisturiser,Beauty & Personal Care,27,8,642.97,200.88,-19,-0.7037,-0.6876,True
+PRD-00659,Nordkap Rain Jacket,Fashion,26,9,1274.67,465.25,-17,-0.6538,-0.635,True
+PRD-00319,Wildacre Building Blocks Set,Toys & Games,20,7,656.73,229.53,-13,-0.65,-0.6505,True
+PRD-01065,Pinewood Protein Bars Premium,Grocery,17,6,164.79,59.47,-11,-0.6471,-0.6391,True
+PRD-00180,Cassia Biography Essential,Books & Media,44,16,1204.77,455.2,-28,-0.6364,-0.6222,True
+PRD-00778,Verity Cookbook Pro,Books & Media,19,7,402.2,145.56,-12,-0.6316,-0.6381,True
+PRD-01132,Nomad Kits Foam Roller Pro,Sports & Outdoors,40,15,3596.54,1400.54,-25,-0.625,-0.6106,True
+PRD-00514,Palladium Wireless Earbuds Studio,Electronics,20,8,2941.46,1145.88,-12,-0.6,-0.6104,True
+PRD-00399,Kestrel Webcam,Electronics,22,9,13657.06,5709.74,-13,-0.5909,-0.5819,True
+PRD-00924,Kestrel Noise-Cancelling Headphones Compact,Electronics,22,9,2495.65,1074.75,-13,-0.5909,-0.5694,True
+PRD-00209,Pinewood Body Lotion Pro,Beauty & Personal Care,24,10,240.41,97.61,-14,-0.5833,-0.594,True
+PRD-00759,Nomad Kits Perfume Plus,Beauty & Personal Care,57,24,859.58,359.65,-33,-0.5789,-0.5816,True
+PRD-00913,Corvus Leather Belt Essential,Fashion,35,15,1079.04,461.11,-20,-0.5714,-0.5727,True
+PRD-01055,Northwind Supply Card Game Classic,Toys & Games,42,18,613.17,278.98,-24,-0.5714,-0.545,True
+PRD-00997,Mirin Dinnerware Set Essential,Home & Kitchen,32,14,1657.17,680.06,-18,-0.5625,-0.5896,True
+PRD-00113,Brickford Face Mask Set Essential,Beauty & Personal Care,25,11,624.97,276.88,-14,-0.56,-0.557,True
+PRD-00265,Mirin Lip Balm Set,Beauty & Personal Care,34,15,988.08,422.56,-19,-0.5588,-0.5723,True
+PRD-00293,Hearthstone Goods Running Shoes Pro,Sports & Outdoors,34,15,2956.19,1251.4,-19,-0.5588,-0.5767,True
+PRD-00535,Wildacre Dark Chocolate Essential,Grocery,20,9,343.81,146.31,-11,-0.55,-0.5744,True
+PRD-01185,Brickford Sneakers,Fashion,31,14,692.89,309.0,-17,-0.5484,-0.554,True
+PRD-00606,Alder & Ash Power Bank Classic,Electronics,35,16,7562.51,3761.62,-19,-0.5429,-0.5026,True
+PRD-00958,Orbit Lab Knit Sweater,Fashion,50,23,1902.77,897.08,-27,-0.54,-0.5285,True
+PRD-00497,Marlow Knit Sweater Premium,Fashion,39,18,705.44,332.35,-21,-0.5385,-0.5289,True
+PRD-01112,Orbit Lab Insulated Bottle Essential,Sports & Outdoors,41,19,924.71,424.35,-22,-0.5366,-0.5411,True
+PRD-00459,Kestrel Running Socks Essential,Fashion,32,15,1744.93,810.69,-17,-0.5312,-0.5354,True
+PRD-00455,Marlow Mechanical Keyboard Studio,Electronics,17,8,1799.56,847.35,-9,-0.5294,-0.5291,True
+PRD-00793,Kestrel Face Mask Set Compact,Beauty & Personal Care,17,8,129.24,64.95,-9,-0.5294,-0.4974,True
+PRD-01002,Cassia Body Lotion Classic,Beauty & Personal Care,36,17,577.92,283.07,-19,-0.5278,-0.5102,True
+PRD-01000,Alder & Ash Tennis Racket Mini,Sports & Outdoors,40,19,1807.93,857.13,-21,-0.525,-0.5259,True
+PRD-00967,Silverleaf Building Blocks Set,Toys & Games,21,10,271.03,143.29,-11,-0.5238,-0.4713,True
+PRD-00041,Nordkap Insulated Bottle Compact,Sports & Outdoors,25,12,1594.82,795.78,-13,-0.52,-0.501,True
+PRD-00007,Northwind Supply Cast Iron Skillet,Home & Kitchen,33,16,1964.59,962.09,-17,-0.5152,-0.5103,True
+PRD-00989,Pinewood Smart Watch Essential,Electronics,47,23,5852.46,2949.53,-24,-0.5106,-0.496,True
+PRD-00017,Nomad Kits Smart Watch Compact,Electronics,10,5,1382.3,582.95,-5,-0.5,-0.5783,True
+PRD-00239,Verity Noise-Cancelling Headphones,Electronics,16,8,1670.77,874.22,-8,-0.5,-0.4768,True
+PRD-00757,Wildacre Mechanical Keyboard Pro,Electronics,36,18,6229.64,3066.84,-18,-0.5,-0.5077,True
+PRD-00977,Corvus RC Car Mini,Toys & Games,18,9,586.44,294.82,-9,-0.5,-0.4973,True
+PRD-01047,Blue Fjord Vacuum Flask,Home & Kitchen,42,21,2928.81,1417.5,-21,-0.5,-0.516,True
+PRD-01056,Pinewood Smart Watch Studio,Electronics,26,13,3262.55,1722.38,-13,-0.5,-0.4721,True
+PRD-01136,Kestrel Denim Jacket,Fashion,66,33,4304.24,2127.65,-33,-0.5,-0.5057,True
+PRD-01009,Fable & Fern Dumbbell Set,Sports & Outdoors,90,46,6209.99,3220.56,-44,-0.4889,-0.4814,True
+PRD-01107,Marlow Foam Roller,Sports & Outdoors,45,23,3058.06,1588.2,-22,-0.4889,-0.4807,True
+PRD-00657,Alder & Ash Toaster Mini,Home & Kitchen,37,19,2327.45,1192.25,-18,-0.4865,-0.4877,True
+PRD-01149,Orbit Lab Trekking Poles,Sports & Outdoors,25,13,2111.71,1173.35,-12,-0.48,-0.4444,True
+PRD-00500,Palladium Puzzle Book Classic,Books & Media,23,12,589.0,297.03,-11,-0.4783,-0.4957,True
+PRD-00889,Pinewood Mechanical Keyboard Mini,Electronics,19,10,2837.26,1530.95,-9,-0.4737,-0.4604,True
+PRD-00481,Alder & Ash Vacuum Flask,Home & Kitchen,28,15,3574.44,1997.63,-13,-0.4643,-0.4411,True
+PRD-00511,Mirin Knife Set Mini,Home & Kitchen,28,15,2129.67,1115.69,-13,-0.4643,-0.4761,True
+PRD-00039,Solstice Paperback Novel Classic,Books & Media,13,7,477.86,285.51,-6,-0.4615,-0.4025,True
+PRD-00906,Verdant Cycling Helmet,Sports & Outdoors,24,13,1919.93,1177.31,-11,-0.4583,-0.3868,True
+PRD-00960,Aurelia Foam Roller,Sports & Outdoors,18,10,1594.08,924.05,-8,-0.4444,-0.4203,True
+PRD-00406,Aurelia Tennis Racket Pro,Sports & Outdoors,25,14,1590.34,861.81,-11,-0.44,-0.4581,True
+PRD-00564,Tessera Cast Iron Skillet,Home & Kitchen,48,27,10536.7,5876.6,-21,-0.4375,-0.4423,True
+PRD-00866,Nordkap Foam Roller Mini,Sports & Outdoors,48,27,3015.09,1796.54,-21,-0.4375,-0.4042,True
+PRD-00706,Aurelia Cotton T-Shirt Studio,Fashion,46,26,1706.4,983.34,-20,-0.4348,-0.4237,True
+PRD-00005,Cassia Insulated Bottle,Sports & Outdoors,35,20,2952.17,1666.77,-15,-0.4286,-0.4354,True
+PRD-00474,Nordkap Espresso Machine,Home & Kitchen,35,20,2006.66,1218.75,-15,-0.4286,-0.3926,True
+PRD-00652,Brickford Dinnerware Set,Home & Kitchen,28,16,1698.18,988.25,-12,-0.4286,-0.4181,True
+PRD-00346,Cassia Perfume,Beauty & Personal Care,40,23,1084.06,638.55,-17,-0.425,-0.411,True
+PRD-00931,Aurelia Electric Toothbrush Premium,Beauty & Personal Care,26,15,439.25,268.3,-11,-0.4231,-0.3892,True
+PRD-00225,Tessera Breakfast Cereals,Grocery,12,7,153.7,94.12,-5,-0.4167,-0.3876,True
+PRD-00011,Pinewood Cast Iron Skillet Essential,Home & Kitchen,29,17,3714.9,2210.55,-12,-0.4138,-0.405,True
+PRD-01070,Verity Sparkling Water,Grocery,29,17,388.68,218.15,-12,-0.4138,-0.4387,True
+PRD-00119,Verity Puzzle 1000 Pieces,Toys & Games,17,10,296.1,169.73,-7,-0.4118,-0.4268,True
+PRD-00957,Fable & Fern Food Storage Set Compact,Home & Kitchen,34,20,1570.09,891.07,-14,-0.4118,-0.4325,True
+PRD-00774,Pinewood Tennis Racket,Sports & Outdoors,39,23,6466.23,3874.92,-16,-0.4103,-0.4007,True
+PRD-00442,Brickford Board Game,Toys & Games,22,13,825.58,456.39,-9,-0.4091,-0.4472,True
+PRD-00975,Alder & Ash Notebook Set,Books & Media,22,13,410.29,249.24,-9,-0.4091,-0.3925,True
+PRD-00962,Marlow Wool Scarf Compact,Fashion,54,32,3494.14,2105.76,-22,-0.4074,-0.3973,True
+PRD-01046,Nordkap Building Blocks Set Compact,Toys & Games,27,16,1212.17,708.08,-11,-0.4074,-0.4159,True
+PRD-00381,Blue Fjord Face Mask Set Pro,Beauty & Personal Care,32,19,408.04,243.28,-13,-0.4062,-0.4038,True
+PRD-00857,Palladium Tablet Stand,Electronics,37,22,7136.22,4451.32,-15,-0.4054,-0.3762,True
+PRD-00619,Mirin Chino Trousers Premium,Fashion,47,28,1686.68,999.37,-19,-0.4043,-0.4075,True
+PRD-00065,Cassia Webcam Essential,Electronics,10,6,454.95,255.29,-4,-0.4,-0.4389,True
+PRD-00175,Kestrel Hair Dryer Essential,Beauty & Personal Care,50,30,1603.53,941.05,-20,-0.4,-0.4131,True
+PRD-00488,Corvus Craft Kit,Toys & Games,15,9,279.83,168.57,-6,-0.4,-0.3976,True
+PRD-00518,Mirin Doll House,Toys & Games,15,9,347.77,203.82,-6,-0.4,-0.4139,True
+PRD-01039,Lumen & Co Electric Toothbrush Premium,Beauty & Personal Care,50,30,684.18,404.46,-20,-0.4,-0.4088,True
+PRD-01175,Tessera Cotton T-Shirt Mini,Fashion,45,27,1244.56,749.48,-18,-0.4,-0.3978,True
+PRD-01129,Mirin Chino Trousers Classic,Fashion,66,40,5203.8,3174.88,-26,-0.3939,-0.3899,True
+PRD-00966,Kestrel Canvas Backpack Premium,Fashion,61,37,3308.25,2043.46,-24,-0.3934,-0.3823,True
+PRD-00013,Cassia Breakfast Cereals Mini,Grocery,23,14,374.3,224.81,-9,-0.3913,-0.3994,True
+PRD-00589,Aurelia Toaster,Home & Kitchen,23,14,1360.76,838.01,-9,-0.3913,-0.3842,True
+PRD-00083,Marlow Insulated Bottle,Sports & Outdoors,41,25,2363.42,1449.49,-16,-0.3902,-0.3867,True
+PRD-00440,Verity Face Mask Set Mini,Beauty & Personal Care,54,33,1660.68,1010.46,-21,-0.3889,-0.3915,True
+PRD-00556,Solstice Honey,Grocery,18,11,167.61,109.17,-7,-0.3889,-0.3487,True
+PRD-00826,Verdant Yoga Mat,Sports & Outdoors,18,11,537.06,340.11,-7,-0.3889,-0.3667,True
+PRD-00304,Hearthstone Goods Food Storage Set,Home & Kitchen,44,27,2818.49,1764.65,-17,-0.3864,-0.3739,True
+PRD-00107,Northwind Supply Puzzle Book,Books & Media,26,16,261.98,154.21,-10,-0.3846,-0.4114,True
+PRD-00868,Brickford Canvas Backpack Compact,Fashion,47,29,2100.72,1248.67,-18,-0.383,-0.4056,True
+PRD-00314,Nordkap Wireless Earbuds Compact,Electronics,21,13,2435.65,1552.76,-8,-0.381,-0.3625,True
+PRD-00432,Nomad Kits Electric Toothbrush Essential,Beauty & Personal Care,21,13,284.57,179.56,-8,-0.381,-0.369,True
+PRD-00934,Mirin Dumbbell Set Mini,Sports & Outdoors,21,13,1260.44,732.43,-8,-0.381,-0.4189,True
+PRD-00970,Nomad Kits Cotton T-Shirt,Fashion,53,33,2648.04,1658.64,-20,-0.3774,-0.3736,True
+PRD-00313,Hearthstone Goods Resistance Bands Mini,Sports & Outdoors,16,10,522.77,317.25,-6,-0.375,-0.3931,True
+PRD-00837,Orbit Lab Sunscreen SPF50 Mini,Beauty & Personal Care,16,10,185.38,126.09,-6,-0.375,-0.3198,True
+PRD-00901,Solstice Sunscreen SPF50 Essential,Beauty & Personal Care,35,22,348.48,226.17,-13,-0.3714,-0.351,True
+PRD-00230,Tessera Sunscreen SPF50 Pro,Beauty & Personal Care,27,17,723.78,464.04,-10,-0.3704,-0.3589,True
+PRD-01137,Solstice Food Storage Set,Home & Kitchen,27,17,1872.28,1199.68,-10,-0.3704,-0.3592,True
+PRD-00732,Solstice Mechanical Keyboard,Electronics,19,12,1357.89,924.78,-7,-0.3684,-0.319,True
+PRD-01150,Mirin Vitamin C Serum Mini,Beauty & Personal Care,19,12,257.22,171.27,-7,-0.3684,-0.3341,True
+PRD-00446,Alder & Ash Moisturiser,Beauty & Personal Care,30,19,812.89,549.14,-11,-0.3667,-0.3245,True
+PRD-00987,Verdant Toaster Plus,Home & Kitchen,30,19,7306.87,4681.68,-11,-0.3667,-0.3593,True
+PRD-00110,Verity Science Kit,Toys & Games,22,14,864.12,541.65,-8,-0.3636,-0.3732,True
+PRD-00176,Verdant Running Shoes,Sports & Outdoors,33,21,1476.11,910.62,-12,-0.3636,-0.3831,True
+PRD-00273,Corvus Yoga Mat Studio,Sports & Outdoors,44,28,1987.15,1243.37,-16,-0.3636,-0.3743,True
+PRD-00661,Pinewood Moisturiser Studio,Beauty & Personal Care,39,25,648.9,428.77,-14,-0.359,-0.3392,True
+PRD-00243,Verdant Canvas Backpack Classic,Fashion,28,18,1279.63,801.69,-10,-0.3571,-0.3735,True
+PRD-00307,Kestrel Sneakers Essential,Fashion,28,18,2260.09,1484.42,-10,-0.3571,-0.3432,True
+PRD-00374,Alder & Ash Card Game Plus,Toys & Games,14,9,918.35,543.99,-5,-0.3571,-0.4076,True
+PRD-01080,Silverleaf Fitness Tracker Premium,Electronics,28,18,3581.17,2274.93,-10,-0.3571,-0.3648,True
+PRD-00468,Nomad Kits Makeup Brush Set,Beauty & Personal Care,31,20,624.76,426.76,-11,-0.3548,-0.3169,True
+PRD-00179,Tessera Resistance Bands Studio,Sports & Outdoors,48,31,6645.24,4561.5,-17,-0.3542,-0.3136,True
+PRD-00025,Aurelia Cycling Helmet Premium,Sports & Outdoors,54,35,2348.48,1516.8,-19,-0.3519,-0.3541,True
+PRD-00042,Mirin Toaster Premium,Home & Kitchen,37,24,2560.59,1677.53,-13,-0.3514,-0.3449,True
+PRD-00750,Verity Sneakers,Fashion,37,24,1765.53,1158.73,-13,-0.3514,-0.3437,True
+PRD-01022,Kestrel Dumbbell Set Compact,Sports & Outdoors,66,43,7789.51,5074.66,-23,-0.3485,-0.3485,True
+PRD-00074,Silverleaf Knit Sweater,Fashion,23,15,706.5,496.72,-8,-0.3478,-0.2969,True
+PRD-00411,Pinewood Webcam,Electronics,23,15,2719.17,1757.47,-8,-0.3478,-0.3537,True
+PRD-00037,Silverleaf Toaster Pro,Home & Kitchen,55,36,12666.72,8672.19,-19,-0.3455,-0.3154,True
+PRD-01095,Mirin Wool Scarf Essential,Fashion,55,36,2078.78,1357.44,-19,-0.3455,-0.347,True
+PRD-00249,Lumen & Co Running Shoes Essential,Sports & Outdoors,29,19,1340.87,862.07,-10,-0.3448,-0.3571,True
+PRD-01138,Wildacre Smart Watch Mini,Electronics,35,23,8353.54,5591.91,-12,-0.3429,-0.3306,True
+PRD-00515,Mirin Resistance Bands Studio,Sports & Outdoors,56,37,5680.41,3447.92,-19,-0.3393,-0.393,True
+PRD-00009,Blue Fjord Wireless Earbuds,Electronics,27,18,4915.48,3438.39,-9,-0.3333,-0.3005,True
+PRD-00120,Tessera Lip Balm Set Compact,Beauty & Personal Care,27,18,1073.14,733.15,-9,-0.3333,-0.3168,True
+PRD-00158,Silverleaf Makeup Brush Set Studio,Beauty & Personal Care,36,24,802.91,566.33,-12,-0.3333,-0.2947,True
+PRD-00343,Alder & Ash Vitamin C Serum,Beauty & Personal Care,42,28,1219.9,842.16,-14,-0.3333,-0.3096,True
+PRD-00418,Alder & Ash Puzzle 1000 Pieces Classic,Toys & Games,15,10,407.21,292.51,-5,-0.3333,-0.2817,True
+PRD-00627,Cassia Pasta,Grocery,27,18,431.01,292.88,-9,-0.3333,-0.3205,True
+PRD-00736,Kestrel Card Game Premium,Toys & Games,15,10,405.54,255.72,-5,-0.3333,-0.3694,True
+PRD-00944,Verity Knife Set Studio,Home & Kitchen,18,12,2863.04,1884.77,-6,-0.3333,-0.3417,True
+PRD-00993,Aurelia Tennis Racket Essential,Sports & Outdoors,18,12,441.85,311.82,-6,-0.3333,-0.2943,True
+PRD-01183,Wildacre Denim Jacket Classic,Fashion,105,70,4591.3,3067.93,-35,-0.3333,-0.3318,True
+PRD-00294,Northwind Supply Knit Sweater,Fashion,40,27,3058.26,2174.06,-13,-0.325,-0.2891,True
+PRD-00570,Aurelia Perfume,Beauty & Personal Care,37,25,474.54,303.07,-12,-0.3243,-0.3613,True
+PRD-01035,Fable & Fern Foam Roller Plus,Sports & Outdoors,31,21,1642.64,1150.22,-10,-0.3226,-0.2998,True
+PRD-00415,Mirin Trekking Poles Essential,Sports & Outdoors,28,19,1503.24,1013.88,-9,-0.3214,-0.3255,True
+PRD-00955,Cassia Body Lotion Essential,Beauty & Personal Care,28,19,1453.29,1062.53,-9,-0.3214,-0.2689,True
+PRD-00543,Nomad Kits Cycling Helmet Premium,Sports & Outdoors,22,15,475.7,319.6,-7,-0.3182,-0.3281,True
+PRD-01134,Alder & Ash Air Fryer,Home & Kitchen,22,15,658.82,407.86,-7,-0.3182,-0.3809,True
+PRD-01099,Fable & Fern Face Mask Set Plus,Beauty & Personal Care,38,26,764.64,533.55,-12,-0.3158,-0.3022,True
+PRD-00545,Northwind Supply Toaster,Home & Kitchen,32,22,1443.78,1002.74,-10,-0.3125,-0.3055,True
+PRD-00655,Pinewood Rain Jacket Premium,Fashion,48,33,3362.57,2316.28,-15,-0.3125,-0.3112,True
+PRD-00740,Corvus Cookbook Pro,Books & Media,16,11,187.01,130.89,-5,-0.3125,-0.3001,True
+PRD-00943,Nomad Kits Moisturiser Mini,Beauty & Personal Care,77,53,2160.91,1450.15,-24,-0.3117,-0.3289,True
+PRD-01145,Mirin Nut Mix Plus,Grocery,29,20,388.03,298.44,-9,-0.3103,-0.2309,True
+PRD-00277,Silverleaf Chino Trousers,Fashion,39,27,3318.49,2341.23,-12,-0.3077,-0.2945,True
+PRD-01105,Nordkap Science Kit,Toys & Games,13,9,788.69,538.13,-4,-0.3077,-0.3177,True
+PRD-01180,Kestrel Body Lotion Compact,Beauty & Personal Care,26,18,1273.39,937.35,-8,-0.3077,-0.2639,True
+PRD-00322,Nomad Kits Denim Jacket,Fashion,46,32,1540.75,1055.63,-14,-0.3043,-0.3149,True
+PRD-00457,Silverleaf Cookbook,Books & Media,23,16,302.68,199.03,-7,-0.3043,-0.3424,True
+PRD-00694,Verdant Puzzle Book,Books & Media,23,16,281.06,186.8,-7,-0.3043,-0.3354,True
+PRD-00935,Corvus Dark Chocolate Mini,Grocery,23,16,242.74,178.34,-7,-0.3043,-0.2653,True
+PRD-01092,Corvus Denim Jacket,Fashion,43,30,1268.1,899.38,-13,-0.3023,-0.2908,True
+PRD-00053,Nordkap Tablet Stand Compact,Electronics,10,7,1329.28,984.42,-3,-0.3,-0.2594,True
+PRD-00445,Verity Wool Scarf Plus,Fashion,30,21,2327.37,1690.44,-9,-0.3,-0.2737,True
+PRD-00961,Blue Fjord Board Game Mini,Toys & Games,10,7,178.54,123.11,-3,-0.3,-0.3105,True
+PRD-01018,Solstice Knit Sweater,Fashion,50,35,2177.39,1577.84,-15,-0.3,-0.2754,True
+PRD-01164,Fable & Fern Swim Goggles Pro,Sports & Outdoors,20,14,1056.88,718.18,-6,-0.3,-0.3205,True
+PRD-00566,Solstice Yoga Mat Essential,Sports & Outdoors,27,19,1310.45,934.08,-8,-0.2963,-0.2872,False
+PRD-01049,Tessera Face Mask Set Pro,Beauty & Personal Care,44,31,1044.12,738.1,-13,-0.2955,-0.2931,False
+PRD-00114,Nomad Kits Cast Iron Skillet Mini,Home & Kitchen,17,12,1767.73,1205.87,-5,-0.2941,-0.3178,False
+PRD-00269,Nordkap Herbal Tea,Grocery,17,12,126.27,89.0,-5,-0.2941,-0.2952,False
+PRD-00312,Lumen & Co USB-C Hub,Electronics,34,24,7210.27,4898.37,-10,-0.2941,-0.3206,False
+PRD-01151,Wildacre Sunscreen SPF50,Beauty & Personal Care,34,24,467.38,329.73,-10,-0.2941,-0.2945,False
+PRD-00991,Brickford Knife Set,Home & Kitchen,126,89,7379.48,5377.11,-37,-0.2937,-0.2713,False
+PRD-00845,Pinewood Fitness Tracker,Electronics,24,17,6567.93,4484.74,-7,-0.2917,-0.3172,False
+PRD-00847,Pinewood Insulated Bottle Plus,Sports & Outdoors,24,17,695.11,501.57,-7,-0.2917,-0.2784,False
+PRD-01016,Nordkap Knife Set,Home & Kitchen,24,17,1612.27,1222.22,-7,-0.2917,-0.2419,False
+PRD-00378,Palladium Insulated Bottle Compact,Sports & Outdoors,31,22,1980.9,1423.64,-9,-0.2903,-0.2813,False
+PRD-00575,Verdant Blender Mini,Home & Kitchen,62,44,1745.91,1276.2,-18,-0.2903,-0.269,False
+PRD-00831,Fable & Fern Moisturiser,Beauty & Personal Care,45,32,1407.62,1039.02,-13,-0.2889,-0.2619,False
+PRD-00073,Nomad Kits Makeup Brush Set Mini,Beauty & Personal Care,28,20,569.72,396.04,-8,-0.2857,-0.3049,False
+PRD-00101,Mirin Smart Watch,Electronics,49,35,11187.44,7825.36,-14,-0.2857,-0.3005,False
+PRD-00197,Palladium Robot Vacuum,Home & Kitchen,21,15,623.73,473.23,-6,-0.2857,-0.2413,False
+PRD-00383,Northwind Supply Noise-Cancelling Headphones Compact,Electronics,21,15,1833.27,1356.24,-6,-0.2857,-0.2602,False
+PRD-00384,Northwind Supply Bluetooth Speaker Studio,Electronics,14,10,1977.42,1457.87,-4,-0.2857,-0.2627,False
+PRD-00559,Lumen & Co USB-C Hub Compact,Electronics,35,25,5517.35,4151.89,-10,-0.2857,-0.2475,False
+PRD-00755,Wildacre Lip Balm Set,Beauty & Personal Care,154,110,4147.35,2957.3,-44,-0.2857,-0.2869,False
+PRD-00670,Silverleaf Makeup Brush Set,Beauty & Personal Care,32,23,1175.97,818.08,-9,-0.2812,-0.3043,False
+PRD-01017,Tessera Knit Sweater Compact,Fashion,50,36,1355.82,1007.14,-14,-0.28,-0.2572,False
+PRD-00228,Pinewood Vitamin C Serum Compact,Beauty & Personal Care,18,13,211.83,147.51,-5,-0.2778,-0.3036,False
+PRD-00362,Cassia Makeup Brush Set,Beauty & Personal Care,18,13,303.1,222.58,-5,-0.2778,-0.2657,False
+PRD-00699,Corvus Body Lotion Mini,Beauty & Personal Care,29,21,439.73,323.4,-8,-0.2759,-0.2645,False
+PRD-00061,Alder & Ash Plush Toy,Toys & Games,22,16,2439.78,1901.4,-6,-0.2727,-0.2207,False
+PRD-00212,Northwind Supply Tablet Stand,Electronics,22,16,2167.2,1652.28,-6,-0.2727,-0.2376,False
+PRD-00220,Nordkap Body Lotion Plus,Beauty & Personal Care,33,24,856.53,652.49,-9,-0.2727,-0.2382,False
+PRD-00236,Fable & Fern Toaster,Home & Kitchen,33,24,1783.23,1223.13,-9,-0.2727,-0.3141,False
+PRD-00513,Nomad Kits Card Game,Toys & Games,22,16,691.8,508.13,-6,-0.2727,-0.2655,False
+PRD-01072,Wildacre Hair Dryer Plus,Beauty & Personal Care,26,19,707.62,522.93,-7,-0.2692,-0.261,False
+PRD-00579,Alder & Ash Cycling Helmet Essential,Sports & Outdoors,183,134,39595.08,28968.94,-49,-0.2678,-0.2684,False
+PRD-00290,Hearthstone Goods Chino Trousers Plus,Fashion,30,22,3419.56,2537.78,-8,-0.2667,-0.2579,False
+PRD-00585,Kestrel Nut Mix Mini,Grocery,15,11,179.47,122.94,-4,-0.2667,-0.315,False
+PRD-00258,Lumen & Co Vitamin C Serum Pro,Beauty & Personal Care,68,50,2581.29,1899.0,-18,-0.2647,-0.2643,False
+PRD-00923,Pinewood Craft Kit,Toys & Games,19,14,815.99,618.71,-5,-0.2632,-0.2418,False
+PRD-00162,Verity Webcam Compact,Electronics,23,17,2205.42,1604.33,-6,-0.2609,-0.2726,False
+PRD-00525,Alder & Ash Notebook Set,Books & Media,23,17,463.96,349.09,-6,-0.2609,-0.2476,False
+PRD-00787,Mirin Cookbook,Books & Media,31,23,360.19,266.86,-8,-0.2581,-0.2591,False
+PRD-00241,Fable & Fern Insulated Bottle,Sports & Outdoors,78,58,8882.19,6552.92,-20,-0.2564,-0.2622,False
+PRD-00820,Lumen & Co Lip Balm Set,Beauty & Personal Care,55,41,1362.73,1001.08,-14,-0.2545,-0.2654,False
+PRD-00020,Kestrel Noise-Cancelling Headphones Plus,Electronics,28,21,3731.74,2785.83,-7,-0.25,-0.2535,False
+PRD-00044,Nordkap Cast Iron Skillet Compact,Home & Kitchen,36,27,1970.78,1404.46,-9,-0.25,-0.2874,False
+PRD-00157,Silverleaf Dinnerware Set,Home & Kitchen,28,21,1693.95,1305.13,-7,-0.25,-0.2295,False
+PRD-00195,Corvus Resistance Bands,Sports & Outdoors,112,84,5589.98,4058.74,-28,-0.25,-0.2739,False
+PRD-00421,Solstice Rain Jacket Plus,Fashion,48,36,1561.03,1169.24,-12,-0.25,-0.251,False
+PRD-00532,Orbit Lab Air Fryer,Home & Kitchen,44,33,4636.77,3409.7,-11,-0.25,-0.2646,False
+PRD-00692,Pinewood Resistance Bands,Sports & Outdoors,36,27,1530.57,1233.09,-9,-0.25,-0.1944,False
+PRD-00729,Brickford Sunscreen SPF50 Compact,Beauty & Personal Care,24,18,294.91,219.95,-6,-0.25,-0.2542,False
+PRD-01014,Verity RC Car,Toys & Games,24,18,537.54,403.25,-6,-0.25,-0.2498,False
+PRD-01015,Fable & Fern Webcam Essential,Electronics,16,12,1833.53,1323.56,-4,-0.25,-0.2781,False
+PRD-01119,Verity Perfume,Beauty & Personal Care,28,21,353.43,273.33,-7,-0.25,-0.2266,False
+PRD-00719,Verdant Sneakers,Fashion,37,28,1131.24,864.61,-9,-0.2432,-0.2357,False
+PRD-00854,Corvus Running Shoes Mini,Sports & Outdoors,37,28,3315.78,2402.89,-9,-0.2432,-0.2753,False
+PRD-00123,Alder & Ash Nut Mix Pro,Grocery,33,25,231.95,169.83,-8,-0.2424,-0.2678,False
+PRD-00216,Orbit Lab Resistance Bands Premium,Sports & Outdoors,46,35,4242.7,3276.18,-11,-0.2391,-0.2278,False
+PRD-00253,Mirin Dumbbell Set,Sports & Outdoors,97,74,3001.02,2357.84,-23,-0.2371,-0.2143,False
+PRD-00791,Aurelia Vacuum Flask,Home & Kitchen,51,39,4961.13,3770.65,-12,-0.2353,-0.24,False
+PRD-00907,Nomad Kits Vitamin C Serum Mini,Beauty & Personal Care,17,13,238.92,175.51,-4,-0.2353,-0.2654,False
+PRD-01125,Northwind Supply Puzzle 1000 Pieces,Toys & Games,17,13,551.73,439.18,-4,-0.2353,-0.204,False
+PRD-01121,Lumen & Co Cast Iron Skillet,Home & Kitchen,77,59,8051.17,6080.1,-18,-0.2338,-0.2448,False
+PRD-00624,Lumen & Co Cotton T-Shirt Pro,Fashion,43,33,1853.06,1437.98,-10,-0.2326,-0.224,False
+PRD-00317,Lumen & Co Knit Sweater,Fashion,39,30,4750.92,3304.78,-9,-0.2308,-0.3044,False
+PRD-00502,Brickford Yoga Mat Plus,Sports & Outdoors,26,20,2732.67,2298.18,-6,-0.2308,-0.159,False
+PRD-00636,Nomad Kits Sparkling Water,Grocery,13,10,240.97,200.38,-3,-0.2308,-0.1684,False
+PRD-00672,Orbit Lab Doll House,Toys & Games,13,10,564.46,448.22,-3,-0.2308,-0.2059,False
+PRD-01012,Verdant Travel Guide Classic,Books & Media,26,20,500.42,378.99,-6,-0.2308,-0.2427,False
+PRD-00299,Blue Fjord Doll House Essential,Toys & Games,113,87,4985.88,3834.66,-26,-0.2301,-0.2309,False
+PRD-00704,Lumen & Co Vitamin C Serum Plus,Beauty & Personal Care,35,27,607.45,482.24,-8,-0.2286,-0.2061,False
+PRD-00372,Mirin Lip Balm Set,Beauty & Personal Care,114,88,2335.67,1851.3,-26,-0.2281,-0.2074,False
+PRD-00533,Mirin Biography Compact,Books & Media,22,17,235.94,168.59,-5,-0.2273,-0.2855,False
+PRD-00675,Silverleaf Card Game,Toys & Games,22,17,1070.5,848.71,-5,-0.2273,-0.2072,False
+PRD-00449,Alder & Ash Leather Belt Mini,Fashion,40,31,985.52,759.36,-9,-0.225,-0.2295,False
+PRD-01109,Tessera Resistance Bands,Sports & Outdoors,67,52,2530.88,1975.62,-15,-0.2239,-0.2194,False
+PRD-00156,Blue Fjord Herbal Tea Classic,Grocery,18,14,253.08,201.91,-4,-0.2222,-0.2022,False
+PRD-00471,Orbit Lab Running Shoes,Sports & Outdoors,27,21,1291.5,1040.47,-6,-0.2222,-0.1944,False
+PRD-00804,Pinewood Moisturiser Pro,Beauty & Personal Care,36,28,1203.0,946.32,-8,-0.2222,-0.2134,False
+PRD-01188,Verity Dumbbell Set,Sports & Outdoors,36,28,3355.08,2817.96,-8,-0.2222,-0.1601,False
+PRD-00036,Corvus Lip Balm Set,Beauty & Personal Care,59,46,1214.94,972.74,-13,-0.2203,-0.1994,False
+PRD-00679,Wildacre Food Storage Set Premium,Home & Kitchen,82,64,6442.49,5209.59,-18,-0.2195,-0.1914,False
+PRD-01075,Silverleaf Running Socks,Fashion,51,40,3096.57,2422.8,-11,-0.2157,-0.2176,False
+PRD-00356,Marlow Cycling Helmet,Sports & Outdoors,135,106,7200.28,5763.25,-29,-0.2148,-0.1996,False
+PRD-00015,Verity Olive Oil Premium,Grocery,14,11,162.28,136.7,-3,-0.2143,-0.1576,False
+PRD-00078,Nomad Kits Plush Toy,Toys & Games,14,11,465.38,381.52,-3,-0.2143,-0.1802,False
+PRD-00478,Blue Fjord Food Storage Set,Home & Kitchen,28,22,972.23,729.39,-6,-0.2143,-0.2498,False
+PRD-00574,Cassia Doll House,Toys & Games,28,22,804.77,658.4,-6,-0.2143,-0.1819,False
+PRD-00691,Kestrel Foam Roller,Sports & Outdoors,98,77,11207.7,8916.53,-21,-0.2143,-0.2044,False
+PRD-01126,Fable & Fern Cotton T-Shirt Studio,Fashion,42,33,2021.48,1613.94,-9,-0.2143,-0.2016,False
+PRD-01032,Tessera Protein Bars,Grocery,19,15,255.16,212.09,-4,-0.2105,-0.1688,False
+PRD-00728,Cassia Smart Watch Plus,Electronics,43,34,5184.49,4241.2,-9,-0.2093,-0.1819,False
+PRD-00238,Kestrel Dumbbell Set,Sports & Outdoors,91,72,5907.18,4611.9,-19,-0.2088,-0.2193,False
+PRD-01028,Solstice Wool Scarf,Fashion,53,42,1108.09,893.09,-11,-0.2075,-0.194,False
+PRD-00033,Brickford Robot Vacuum Pro,Home & Kitchen,29,23,1894.57,1555.16,-6,-0.2069,-0.1791,False
+PRD-00032,Kestrel Wireless Earbuds,Electronics,44,35,7619.37,5789.91,-9,-0.2045,-0.2401,False
+PRD-00002,Kestrel Cotton T-Shirt,Fashion,40,32,4287.68,3231.74,-8,-0.2,-0.2463,False
+PRD-00022,Solstice Bluetooth Speaker Pro,Electronics,25,20,5155.63,4139.79,-5,-0.2,-0.197,False
+PRD-00347,Brickford Running Shoes Compact,Sports & Outdoors,25,20,1253.16,1040.44,-5,-0.2,-0.1697,False
+PRD-00614,Aurelia Makeup Brush Set,Beauty & Personal Care,35,28,748.68,613.42,-7,-0.2,-0.1807,False
+PRD-00872,Brickford Card Game Studio,Toys & Games,15,12,410.61,365.48,-3,-0.2,-0.1099,False
+PRD-00940,Verdant USB-C Hub Plus,Electronics,25,20,4169.37,3459.44,-5,-0.2,-0.1703,False
+PRD-01019,Wildacre Puzzle Book Classic,Books & Media,15,12,217.63,187.93,-3,-0.2,-0.1365,False
+PRD-01041,Solstice Cotton T-Shirt Pro,Fashion,25,20,2595.93,2034.42,-5,-0.2,-0.2163,False
+PRD-01071,Nordkap Trekking Poles Mini,Sports & Outdoors,25,20,2608.02,2187.93,-5,-0.2,-0.1611,False
+PRD-01135,Mirin Dinnerware Set Pro,Home & Kitchen,25,20,423.88,332.74,-5,-0.2,-0.215,False
+PRD-01089,Orbit Lab USB-C Hub Classic,Electronics,56,45,6827.58,5700.33,-11,-0.1964,-0.1651,False
+PRD-00382,Brickford Leather Belt,Fashion,36,29,1630.46,1260.5,-7,-0.1944,-0.2269,False
+PRD-00072,Northwind Supply Yoga Mat Essential,Sports & Outdoors,31,25,723.67,585.25,-6,-0.1935,-0.1913,False
+PRD-00956,Verdant Espresso Machine,Home & Kitchen,31,25,1554.43,1277.0,-6,-0.1935,-0.1785,False
+PRD-00536,Cassia Dinnerware Set Premium,Home & Kitchen,88,71,9971.82,7913.49,-17,-0.1932,-0.2064,False
+PRD-00327,Nomad Kits Cycling Helmet Compact,Sports & Outdoors,130,105,6444.23,5197.59,-25,-0.1923,-0.1935,False
+PRD-00648,Blue Fjord Sneakers Classic,Fashion,26,21,889.0,754.93,-5,-0.1923,-0.1508,False
+PRD-00800,Tessera Sneakers,Fashion,68,55,3323.52,2792.21,-13,-0.1912,-0.1599,False
+PRD-00678,Aurelia Wireless Earbuds,Electronics,21,17,2496.84,1965.69,-4,-0.1905,-0.2127,False
+PRD-00737,Silverleaf Sparkling Water Mini,Grocery,21,17,257.9,190.54,-4,-0.1905,-0.2612,False
+PRD-00884,Solstice Craft Kit Studio,Toys & Games,21,17,935.44,735.38,-4,-0.1905,-0.2139,False
+PRD-00143,Mirin Espresso Machine,Home & Kitchen,317,257,25112.84,20567.86,-60,-0.1893,-0.181,False
+PRD-00751,Northwind Supply Ground Coffee Essential,Grocery,74,60,667.08,533.87,-14,-0.1892,-0.1997,False
+PRD-00096,Pinewood Leather Belt,Fashion,32,26,1547.38,1319.74,-6,-0.1875,-0.1471,False
+PRD-00665,Verity Face Mask Set,Beauty & Personal Care,32,26,426.45,354.86,-6,-0.1875,-0.1679,False
+PRD-00881,Corvus Mechanical Keyboard,Electronics,16,13,1130.33,890.52,-3,-0.1875,-0.2122,False
+PRD-00276,Mirin Knit Sweater Mini,Fashion,27,22,1259.42,1074.28,-5,-0.1852,-0.147,False
+PRD-00139,Marlow Smart Watch Classic,Electronics,38,31,2276.97,1815.26,-7,-0.1842,-0.2028,False
+PRD-00680,Blue Fjord Leather Belt,Fashion,38,31,975.0,825.72,-7,-0.1842,-0.1531,False
+PRD-00208,Alder & Ash Denim Jacket Compact,Fashion,33,27,1160.89,978.75,-6,-0.1818,-0.1569,False
+PRD-00387,Lumen & Co Knife Set Premium,Home & Kitchen,33,27,1473.46,1258.62,-6,-0.1818,-0.1458,False
+PRD-00527,Verity Cotton T-Shirt Mini,Fashion,44,36,1547.01,1348.23,-8,-0.1818,-0.1285,False
+PRD-00980,Aurelia Mechanical Keyboard Compact,Electronics,22,18,5138.64,4161.84,-4,-0.1818,-0.1901,False
+PRD-00040,Verdant Running Shoes Essential,Sports & Outdoors,61,50,2763.78,2224.84,-11,-0.1803,-0.195,False
+PRD-00813,Fable & Fern Resistance Bands Mini,Sports & Outdoors,28,23,3549.12,2871.38,-5,-0.1786,-0.191,False
+PRD-00093,Marlow Bluetooth Speaker Plus,Electronics,79,65,10792.75,9149.81,-14,-0.1772,-0.1522,False
+PRD-00118,Nomad Kits USB-C Hub Plus,Electronics,17,14,880.14,787.89,-3,-0.1765,-0.1048,False
+PRD-00739,Verity Dumbbell Set,Sports & Outdoors,119,98,19333.45,16253.71,-21,-0.1765,-0.1593,False
+PRD-00169,Verdant Canvas Backpack,Fashion,23,19,1172.26,912.16,-4,-0.1739,-0.2219,False
+PRD-00964,Hearthstone Goods Makeup Brush Set Pro,Beauty & Personal Care,23,19,402.52,314.09,-4,-0.1739,-0.2197,False
+PRD-00010,Solstice Foam Roller,Sports & Outdoors,29,24,1976.64,1677.87,-5,-0.1724,-0.1512,False
+PRD-00738,Fable & Fern Board Game,Toys & Games,29,24,746.45,608.56,-5,-0.1724,-0.1847,False
+PRD-00233,Silverleaf Makeup Brush Set Essential,Beauty & Personal Care,47,39,633.89,524.05,-8,-0.1702,-0.1733,False
+PRD-00354,Silverleaf Card Game Plus,Toys & Games,18,15,926.51,750.46,-3,-0.1667,-0.19,False
+PRD-00490,Silverleaf Toaster,Home & Kitchen,24,20,1047.23,885.43,-4,-0.1667,-0.1545,False
+PRD-00709,Corvus Face Mask Set Pro,Beauty & Personal Care,24,20,627.76,513.59,-4,-0.1667,-0.1819,False
+PRD-00747,Corvus Toaster,Home & Kitchen,18,15,1742.58,1441.62,-3,-0.1667,-0.1727,False
+PRD-00783,Wildacre Business Paperback,Books & Media,18,15,297.33,244.62,-3,-0.1667,-0.1773,False
+PRD-00895,Hearthstone Goods Knit Sweater,Fashion,24,20,741.31,618.67,-4,-0.1667,-0.1654,False
+PRD-01006,Orbit Lab Board Game Pro,Toys & Games,48,40,1059.33,924.68,-8,-0.1667,-0.1271,False
+PRD-01196,Fable & Fern Craft Kit,Toys & Games,12,10,411.0,336.52,-2,-0.1667,-0.1812,False
+PRD-00448,Blue Fjord Power Bank Plus,Electronics,74,62,9226.25,7668.26,-12,-0.1622,-0.1689,False
+PRD-01074,Alder & Ash Body Lotion Classic,Beauty & Personal Care,37,31,750.84,652.07,-6,-0.1622,-0.1315,False
+PRD-00443,Kestrel Action Figure Compact,Toys & Games,31,26,1674.37,1412.69,-5,-0.1613,-0.1563,False
+PRD-00721,Solstice Cotton T-Shirt,Fashion,81,68,2376.96,2067.27,-13,-0.1605,-0.1303,False
+PRD-00281,Orbit Lab Knife Set Premium,Home & Kitchen,25,21,3441.65,3058.5,-4,-0.16,-0.1113,False
+PRD-00482,Brickford Vitamin C Serum,Beauty & Personal Care,25,21,291.39,231.21,-4,-0.16,-0.2065,False
+PRD-00607,Blue Fjord Denim Jacket,Fashion,25,21,1665.51,1511.89,-4,-0.16,-0.0922,False
+PRD-00686,Alder & Ash Toaster Essential,Home & Kitchen,25,21,813.34,680.67,-4,-0.16,-0.1631,False
+PRD-00207,Northwind Supply Insulated Bottle,Sports & Outdoors,38,32,2809.65,2307.12,-6,-0.1579,-0.1789,False
+PRD-00770,Silverleaf Electric Toothbrush,Beauty & Personal Care,38,32,664.99,553.67,-6,-0.1579,-0.1674,False
+PRD-00834,Verity Bluetooth Speaker,Electronics,19,16,2837.87,2591.55,-3,-0.1579,-0.0868,False
+PRD-00196,Northwind Supply Foam Roller Plus,Sports & Outdoors,51,43,3305.47,2718.82,-8,-0.1569,-0.1775,False
+PRD-00163,Alder & Ash Electric Toothbrush,Beauty & Personal Care,13,11,362.61,306.28,-2,-0.1538,-0.1553,False
+PRD-00927,Orbit Lab Puzzle 1000 Pieces Studio,Toys & Games,13,11,362.83,289.44,-2,-0.1538,-0.2023,False
+PRD-00048,Nomad Kits Espresso Machine Pro,Home & Kitchen,20,17,946.08,853.05,-3,-0.15,-0.0983,False
+PRD-00266,Wildacre Cotton T-Shirt Classic,Fashion,40,34,2226.66,1893.3,-6,-0.15,-0.1497,False
+PRD-00562,Pinewood Electric Toothbrush Compact,Beauty & Personal Care,27,23,542.04,452.23,-4,-0.1481,-0.1657,False
+PRD-00795,Hearthstone Goods Resistance Bands Compact,Sports & Outdoors,61,52,1978.96,1741.92,-9,-0.1475,-0.1198,False
+PRD-00049,Nordkap Doll House Classic,Toys & Games,14,12,1016.91,876.0,-2,-0.1429,-0.1386,False
+PRD-00278,Corvus Mechanical Keyboard,Electronics,14,12,1776.49,1597.0,-2,-0.1429,-0.101,False
+PRD-00519,Brickford Sparkling Water Premium,Grocery,21,18,209.26,178.18,-3,-0.1429,-0.1485,False
+PRD-00676,Blue Fjord Espresso Machine Essential,Home & Kitchen,35,30,3880.41,3344.78,-5,-0.1429,-0.138,False
+PRD-00784,Fable & Fern Mechanical Keyboard,Electronics,154,132,22058.8,19205.25,-22,-0.1429,-0.1294,False
+PRD-00915,Marlow Colouring Book,Books & Media,14,12,172.62,148.34,-2,-0.1429,-0.1407,False
+PRD-01157,Nordkap Running Shoes Plus,Sports & Outdoors,28,24,1080.83,910.58,-4,-0.1429,-0.1575,False
+PRD-01045,Pinewood Wool Scarf Classic,Fashion,43,37,1933.59,1582.98,-6,-0.1395,-0.1813,False
+PRD-00979,Northwind Supply Lip Balm Set,Beauty & Personal Care,72,62,1137.24,1002.99,-10,-0.1389,-0.118,False
+PRD-00328,Tessera Noise-Cancelling Headphones Pro,Electronics,58,50,6497.31,5712.12,-8,-0.1379,-0.1208,False
+PRD-00390,Corvus Yoga Mat Mini,Sports & Outdoors,51,44,3300.31,2735.04,-7,-0.1373,-0.1713,False
+PRD-00047,Verity Mechanical Keyboard Premium,Electronics,22,19,1835.07,1528.07,-3,-0.1364,-0.1673,False
+PRD-00348,Wildacre Leather Belt,Fashion,44,38,1995.36,1637.42,-6,-0.1364,-0.1794,False
+PRD-00386,Alder & Ash Plush Toy Compact,Toys & Games,15,13,942.44,788.57,-2,-0.1333,-0.1633,False
+PRD-00716,Northwind Supply Puzzle 1000 Pieces,Toys & Games,15,13,522.02,471.1,-2,-0.1333,-0.0975,False
+PRD-00828,Kestrel Craft Kit,Toys & Games,15,13,421.28,387.36,-2,-0.1333,-0.0805,False
+PRD-01193,Palladium Fitness Tracker,Electronics,15,13,2013.09,1683.32,-2,-0.1333,-0.1638,False
+PRD-00029,Orbit Lab Robot Vacuum,Home & Kitchen,23,20,681.97,556.06,-3,-0.1304,-0.1846,False
+PRD-00154,Blue Fjord Noise-Cancelling Headphones Studio,Electronics,23,20,2113.28,1978.0,-3,-0.1304,-0.064,False
+PRD-00746,Wildacre Board Game,Toys & Games,23,20,651.03,581.89,-3,-0.1304,-0.1062,False
+PRD-00397,Hearthstone Goods Moisturiser,Beauty & Personal Care,31,27,510.75,459.24,-4,-0.129,-0.1009,False
+PRD-00218,Silverleaf Perfume Pro,Beauty & Personal Care,24,21,809.76,688.85,-3,-0.125,-0.1493,False
+PRD-00583,Verity Toaster Mini,Home & Kitchen,16,14,3625.02,3419.05,-2,-0.125,-0.0568,False
+PRD-00912,Nomad Kits Board Game Pro,Toys & Games,16,14,370.04,321.57,-2,-0.125,-0.131,False
+PRD-01142,Kestrel Dumbbell Set,Sports & Outdoors,24,21,1192.7,1086.26,-3,-0.125,-0.0892,False
+PRD-00259,Nomad Kits Cast Iron Skillet,Home & Kitchen,65,57,2385.42,2155.25,-8,-0.1231,-0.0965,False
+PRD-00947,Solstice Chino Trousers,Fashion,33,29,920.75,797.08,-4,-0.1212,-0.1343,False
+PRD-00968,Hearthstone Goods Denim Jacket Compact,Fashion,91,80,4768.08,4210.58,-11,-0.1209,-0.1169,False
+PRD-00270,Corvus Building Blocks Set Plus,Toys & Games,17,15,256.03,246.99,-2,-0.1176,-0.0353,False
+PRD-00303,Northwind Supply Sparkling Water Compact,Grocery,34,30,271.07,237.99,-4,-0.1176,-0.122,False
+PRD-00361,Aurelia Foam Roller,Sports & Outdoors,17,15,1716.8,1543.19,-2,-0.1176,-0.1011,False
+PRD-00917,Brickford Plush Toy,Toys & Games,17,15,275.21,268.09,-2,-0.1176,-0.0259,False
+PRD-00932,Verdant RC Car Studio,Toys & Games,26,23,661.96,621.63,-3,-0.1154,-0.0609,False
+PRD-01166,Brickford Insulated Bottle Plus,Sports & Outdoors,26,23,1037.56,888.3,-3,-0.1154,-0.1439,False
+PRD-00781,Lumen & Co Robot Vacuum,Home & Kitchen,88,78,2559.73,2244.69,-10,-0.1136,-0.1231,False
+PRD-00850,Aurelia Espresso Machine,Home & Kitchen,107,95,4797.14,4308.34,-12,-0.1121,-0.1019,False
+PRD-00059,Lumen & Co Nut Mix,Grocery,18,16,342.08,302.37,-2,-0.1111,-0.1161,False
+PRD-00144,Brickford Fitness Tracker,Electronics,18,16,2622.4,2444.82,-2,-0.1111,-0.0677,False
+PRD-00224,Alder & Ash Hair Dryer,Beauty & Personal Care,27,24,724.15,683.78,-3,-0.1111,-0.0557,False
+PRD-01030,Verdant Perfume,Beauty & Personal Care,27,24,809.41,765.23,-3,-0.1111,-0.0546,False
+PRD-01025,Pinewood Vitamin C Serum,Beauty & Personal Care,64,57,1715.0,1543.06,-7,-0.1094,-0.1003,False
+PRD-00605,Tessera Running Socks Mini,Fashion,83,74,2435.0,2255.61,-9,-0.1084,-0.0737,False
+PRD-00221,Alder & Ash Knit Sweater,Fashion,37,33,1393.45,1276.28,-4,-0.1081,-0.0841,False
+PRD-00858,Pinewood Electric Toothbrush,Beauty & Personal Care,28,25,608.98,544.77,-3,-0.1071,-0.1054,False
+PRD-00885,Corvus Denim Jacket Mini,Fashion,151,135,15764.36,13970.73,-16,-0.106,-0.1138,False
+PRD-00090,Fable & Fern Bluetooth Speaker Pro,Electronics,19,17,1864.19,1601.88,-2,-0.1053,-0.1407,False
+PRD-00765,Solstice Cycling Helmet Plus,Sports & Outdoors,19,17,1140.99,1026.49,-2,-0.1053,-0.1004,False
+PRD-00076,Mirin Puzzle 1000 Pieces,Toys & Games,29,26,1076.44,990.25,-3,-0.1034,-0.0801,False
+PRD-00234,Verity Running Socks Plus,Fashion,29,26,1105.15,979.05,-3,-0.1034,-0.1141,False
+PRD-00425,Hearthstone Goods Makeup Brush Set Essential,Beauty & Personal Care,29,26,898.64,800.63,-3,-0.1034,-0.1091,False
+PRD-01098,Blue Fjord Blender,Home & Kitchen,39,35,2086.1,1913.12,-4,-0.1026,-0.0829,False
+PRD-00430,Verdant Makeup Brush Set,Beauty & Personal Care,178,160,4531.86,4170.86,-18,-0.1011,-0.0797,False
+PRD-00499,Northwind Supply Knife Set Studio,Home & Kitchen,89,80,3386.74,3046.01,-9,-0.1011,-0.1006,False
+PRD-00700,Blue Fjord Knife Set,Home & Kitchen,30,27,1178.53,1131.61,-3,-0.1,-0.0398,False
+PRD-00720,Fable & Fern Robot Vacuum,Home & Kitchen,20,18,2195.28,2063.12,-2,-0.1,-0.0602,False
+PRD-00999,Cassia RC Car,Toys & Games,10,9,231.38,224.67,-1,-0.1,-0.029,False
+PRD-01101,Nomad Kits Lip Balm Set Pro,Beauty & Personal Care,20,18,409.34,362.94,-2,-0.1,-0.1134,False
+PRD-00753,Kestrel Knife Set,Home & Kitchen,71,64,3474.46,3136.93,-7,-0.0986,-0.0971,False
+PRD-00019,Silverleaf Lip Balm Set Compact,Beauty & Personal Care,21,19,360.52,322.4,-2,-0.0952,-0.1057,False
+PRD-00392,Mirin Science Kit,Toys & Games,21,19,505.18,438.43,-2,-0.0952,-0.1321,False
+PRD-00204,Palladium Rain Jacket Studio,Fashion,32,29,1016.14,906.48,-3,-0.0938,-0.1079,False
+PRD-01031,Tessera Knit Sweater Plus,Fashion,65,59,3242.34,2910.18,-6,-0.0923,-0.1024,False
+PRD-00124,Tessera Doll House Plus,Toys & Games,11,10,328.08,310.54,-1,-0.0909,-0.0535,False
+PRD-00427,Aurelia Noise-Cancelling Headphones,Electronics,77,70,7587.93,7010.11,-7,-0.0909,-0.0761,False
+PRD-00677,Palladium Insulated Bottle Studio,Sports & Outdoors,22,20,579.63,550.57,-2,-0.0909,-0.0501,False
+PRD-00985,Blue Fjord Dumbbell Set,Sports & Outdoors,44,40,1212.06,1079.94,-4,-0.0909,-0.109,False
+PRD-01118,Fable & Fern Perfume Classic,Beauty & Personal Care,22,20,641.58,590.79,-2,-0.0909,-0.0792,False
+PRD-01195,Blue Fjord Cotton T-Shirt,Fashion,22,20,1100.27,1023.09,-2,-0.0909,-0.0701,False
+PRD-00827,Nomad Kits Perfume Premium,Beauty & Personal Care,45,41,747.87,683.87,-4,-0.0889,-0.0856,False
+PRD-00855,Silverleaf Espresso Machine,Home & Kitchen,45,41,4532.58,4046.43,-4,-0.0889,-0.1073,False
+PRD-00631,Marlow Air Fryer,Home & Kitchen,194,177,11337.06,10473.73,-17,-0.0876,-0.0762,False
+PRD-00402,Brickford Science Kit Essential,Toys & Games,23,21,595.36,545.7,-2,-0.087,-0.0834,False
+PRD-00703,Orbit Lab Craft Kit Mini,Toys & Games,23,21,366.0,335.28,-2,-0.087,-0.0839,False
+PRD-00982,Nordkap Running Shoes,Sports & Outdoors,35,32,1690.85,1575.93,-3,-0.0857,-0.068,False
+PRD-00645,Nomad Kits Electric Toothbrush,Beauty & Personal Care,24,22,788.19,721.13,-2,-0.0833,-0.0851,False
+PRD-00922,Nordkap Protein Bars,Grocery,36,33,365.0,314.94,-3,-0.0833,-0.1372,False
+PRD-01043,Palladium Moisturiser Classic,Beauty & Personal Care,60,55,1340.54,1287.44,-5,-0.0833,-0.0396,False
+PRD-01066,Nomad Kits Toaster,Home & Kitchen,168,154,10934.25,10043.99,-14,-0.0833,-0.0814,False
+PRD-01081,Verdant Trekking Poles,Sports & Outdoors,36,33,3162.38,2863.34,-3,-0.0833,-0.0946,False
+PRD-00092,Fable & Fern Knit Sweater Compact,Fashion,25,23,1536.65,1389.37,-2,-0.08,-0.0958,False
+PRD-00552,Marlow Body Lotion Pro,Beauty & Personal Care,50,46,585.03,531.4,-4,-0.08,-0.0917,False
+PRD-00816,Kestrel Cotton T-Shirt,Fashion,63,58,2037.1,1854.18,-5,-0.0794,-0.0898,False
+PRD-00021,Wildacre Wireless Earbuds Premium,Electronics,26,24,1412.73,1465.15,-2,-0.0769,0.0371,False
+PRD-00146,Fable & Fern Power Bank Studio,Electronics,26,24,1547.33,1375.72,-2,-0.0769,-0.1109,False
+PRD-00391,Silverleaf Breakfast Cereals Studio,Grocery,13,12,115.78,104.39,-1,-0.0769,-0.0984,False
+PRD-00620,Verity Tennis Racket,Sports & Outdoors,39,36,2482.36,2403.89,-3,-0.0769,-0.0316,False
+PRD-00595,Corvus Cast Iron Skillet,Home & Kitchen,40,37,2805.21,2548.95,-3,-0.075,-0.0914,False
+PRD-00438,Orbit Lab Herbal Tea,Grocery,27,25,182.3,174.3,-2,-0.0741,-0.0439,False
+PRD-00187,Nordkap Knife Set Compact,Home & Kitchen,68,63,8447.29,7817.06,-5,-0.0735,-0.0746,False
+PRD-00331,Northwind Supply Foam Roller Mini,Sports & Outdoors,41,38,1418.94,1288.46,-3,-0.0732,-0.092,False
+PRD-00829,Lumen & Co Denim Jacket Compact,Fashion,41,38,2577.96,2442.57,-3,-0.0732,-0.0525,False
+PRD-00106,Verity Tennis Racket Studio,Sports & Outdoors,28,26,2066.97,1921.2,-2,-0.0714,-0.0705,False
+PRD-00206,Silverleaf Yoga Mat,Sports & Outdoors,28,26,1479.76,1480.27,-2,-0.0714,0.0003,False
+PRD-00274,Verity Ground Coffee Compact,Grocery,14,13,242.51,233.27,-1,-0.0714,-0.0381,False
+PRD-00601,Palladium Electric Toothbrush Pro,Beauty & Personal Care,28,26,332.88,310.08,-2,-0.0714,-0.0685,False
+PRD-00848,Nordkap Travel Guide Mini,Books & Media,14,13,201.11,179.1,-1,-0.0714,-0.1094,False
+PRD-00905,Corvus Foam Roller Mini,Sports & Outdoors,70,65,2731.41,2570.8,-5,-0.0714,-0.0588,False
+PRD-00775,Nordkap Sunscreen SPF50,Beauty & Personal Care,29,27,1093.94,952.14,-2,-0.069,-0.1296,False
+PRD-00938,Cassia Noise-Cancelling Headphones Studio,Electronics,29,27,3562.38,3187.81,-2,-0.069,-0.1051,False
+PRD-00584,Marlow Canvas Backpack Pro,Fashion,74,69,3935.66,3748.59,-5,-0.0676,-0.0475,False
+PRD-00111,Marlow Body Lotion,Beauty & Personal Care,15,14,226.37,209.51,-1,-0.0667,-0.0745,False
+PRD-00604,Solstice Wool Scarf Compact,Fashion,30,28,1479.59,1402.65,-2,-0.0667,-0.052,False
+PRD-00898,Nomad Kits Robot Vacuum Mini,Home & Kitchen,31,29,1653.95,1548.6,-2,-0.0645,-0.0637,False
+PRD-00051,Verity Leather Belt,Fashion,78,73,6413.93,6041.1,-5,-0.0641,-0.0581,False
+PRD-00167,Marlow Plush Toy,Toys & Games,16,15,289.37,272.48,-1,-0.0625,-0.0584,False
+PRD-00297,Kestrel Resistance Bands,Sports & Outdoors,32,30,2573.38,2606.26,-2,-0.0625,0.0128,False
+PRD-00358,Corvus Perfume Compact,Beauty & Personal Care,16,15,251.59,238.37,-1,-0.0625,-0.0525,False
+PRD-00586,Hearthstone Goods Protein Bars,Grocery,16,15,144.63,154.82,-1,-0.0625,0.0705,False
+PRD-00936,Blue Fjord Tablet Stand Plus,Electronics,16,15,2615.32,2508.17,-1,-0.0625,-0.041,False
+PRD-00398,Marlow Webcam,Electronics,33,31,2939.07,2742.22,-2,-0.0606,-0.067,False
+PRD-00034,Alder & Ash Body Lotion,Beauty & Personal Care,34,32,685.45,660.82,-2,-0.0588,-0.0359,False
+PRD-00136,Nomad Kits Air Fryer,Home & Kitchen,17,16,388.09,393.03,-1,-0.0588,0.0127,False
+PRD-00821,Verdant Espresso Machine Premium,Home & Kitchen,68,64,1677.23,1614.69,-4,-0.0588,-0.0373,False
+PRD-00100,Verdant Electric Toothbrush Essential,Beauty & Personal Care,54,51,1987.41,1868.56,-3,-0.0556,-0.0598,False
+PRD-00435,Verity Plush Toy,Toys & Games,18,17,654.53,650.13,-1,-0.0556,-0.0067,False
+PRD-00600,Verity Puzzle 1000 Pieces Compact,Toys & Games,18,17,1099.18,1032.3,-1,-0.0556,-0.0608,False
+PRD-00919,Brickford Resistance Bands,Sports & Outdoors,18,17,1791.17,1601.53,-1,-0.0556,-0.1059,False
+PRD-00621,Palladium Leather Belt Mini,Fashion,55,52,1355.94,1332.44,-3,-0.0545,-0.0173,False
+PRD-00282,Marlow Rain Jacket,Fashion,38,36,1613.53,1620.7,-2,-0.0526,0.0044,False
+PRD-00400,Verity Canvas Backpack Mini,Fashion,19,18,1781.64,1766.26,-1,-0.0526,-0.0086,False
+PRD-00483,Fable & Fern Noise-Cancelling Headphones Mini,Electronics,38,36,7409.89,7162.79,-2,-0.0526,-0.0333,False
+PRD-00329,Silverleaf Body Lotion Studio,Beauty & Personal Care,20,19,278.97,277.99,-1,-0.05,-0.0035,False
+PRD-00336,Nomad Kits Espresso Machine,Home & Kitchen,20,19,992.64,905.77,-1,-0.05,-0.0875,False
+PRD-00531,Verdant Chino Trousers Mini,Fashion,487,463,36176.82,34270.83,-24,-0.0493,-0.0527,False
+PRD-00095,Silverleaf Hair Dryer,Beauty & Personal Care,21,20,1174.92,1234.16,-1,-0.0476,0.0504,False
+PRD-01168,Corvus Face Mask Set Plus,Beauty & Personal Care,21,20,942.06,956.85,-1,-0.0476,0.0157,False
+PRD-01187,Cassia Honey,Grocery,21,20,556.01,489.39,-1,-0.0476,-0.1198,False
+PRD-00460,Northwind Supply Toaster Essential,Home & Kitchen,43,41,727.89,683.75,-2,-0.0465,-0.0606,False
+PRD-00794,Aurelia Tennis Racket,Sports & Outdoors,43,41,3266.01,3010.2,-2,-0.0465,-0.0783,False
+PRD-00796,Aurelia Webcam,Electronics,22,21,2843.04,2644.98,-1,-0.0455,-0.0697,False
+PRD-00984,Palladium Action Figure Classic,Toys & Games,22,21,236.24,225.06,-1,-0.0455,-0.0473,False
+PRD-01133,Northwind Supply Knife Set Mini,Home & Kitchen,22,21,1730.08,1626.58,-1,-0.0455,-0.0598,False
+PRD-00255,Pinewood Cotton T-Shirt,Fashion,46,44,6450.84,6171.9,-2,-0.0435,-0.0432,False
+PRD-00342,Verdant Board Game Essential,Toys & Games,46,44,2476.25,2406.47,-2,-0.0435,-0.0282,False
+PRD-00867,Hearthstone Goods Resistance Bands Essential,Sports & Outdoors,23,22,773.26,740.15,-1,-0.0435,-0.0428,False
+PRD-00112,Kestrel Sneakers Mini,Fashion,48,46,1383.51,1334.72,-2,-0.0417,-0.0353,False
+PRD-01131,Pinewood Espresso Machine,Home & Kitchen,24,23,3396.14,3314.74,-1,-0.0417,-0.024,False
+PRD-00780,Northwind Supply Air Fryer Studio,Home & Kitchen,25,24,803.36,757.55,-1,-0.04,-0.057,False
+PRD-00593,Verdant Vacuum Flask Studio,Home & Kitchen,26,25,2191.59,2151.4,-1,-0.0385,-0.0183,False
+PRD-00877,Pinewood Insulated Bottle Essential,Sports & Outdoors,26,25,1712.9,1782.43,-1,-0.0385,0.0406,False
+PRD-00194,Pinewood Denim Jacket Mini,Fashion,27,26,902.33,879.51,-1,-0.037,-0.0253,False
+PRD-00434,Northwind Supply Dinnerware Set Pro,Home & Kitchen,27,26,1416.43,1462.1,-1,-0.037,0.0322,False
+PRD-00522,Nordkap Chino Trousers Premium,Fashion,27,26,1801.46,1801.85,-1,-0.037,0.0002,False
+PRD-00810,Marlow Cycling Helmet Plus,Sports & Outdoors,27,26,937.67,937.61,-1,-0.037,-0.0001,False
+PRD-00452,Wildacre Dinnerware Set Compact,Home & Kitchen,55,53,3805.61,3707.86,-2,-0.0364,-0.0257,False
+PRD-00622,Silverleaf Science Kit Essential,Toys & Games,28,27,567.1,541.78,-1,-0.0357,-0.0446,False
+PRD-00625,Nomad Kits Tennis Racket,Sports & Outdoors,29,28,984.65,929.62,-1,-0.0345,-0.0559,False
+PRD-00558,Fable & Fern Trekking Poles Pro,Sports & Outdoors,30,29,1148.56,1131.01,-1,-0.0333,-0.0153,False
+PRD-00632,Marlow Moisturiser Premium,Beauty & Personal Care,30,29,377.85,385.55,-1,-0.0333,0.0204,False
+PRD-00641,Nordkap Rain Jacket Plus,Fashion,31,30,1362.67,1384.38,-1,-0.0323,0.0159,False
+PRD-00785,Nordkap Moisturiser,Beauty & Personal Care,31,30,202.85,201.87,-1,-0.0323,-0.0048,False
+PRD-01096,Corvus Lip Balm Set,Beauty & Personal Care,161,156,4976.39,4697.77,-5,-0.0311,-0.056,False
+PRD-00295,Hearthstone Goods Lip Balm Set Studio,Beauty & Personal Care,129,125,2265.29,2236.38,-4,-0.031,-0.0128,False
+PRD-00192,Wildacre Denim Jacket Premium,Fashion,33,32,2081.95,2060.24,-1,-0.0303,-0.0104,False
+PRD-01178,Corvus Sneakers Mini,Fashion,101,98,4958.88,4857.05,-3,-0.0297,-0.0205,False
+PRD-01122,Northwind Supply Leather Belt,Fashion,71,69,1313.06,1261.76,-2,-0.0282,-0.0391,False
+PRD-00161,Nomad Kits Cotton T-Shirt,Fashion,42,41,950.69,952.62,-1,-0.0238,0.002,False
+PRD-00697,Wildacre Running Shoes,Sports & Outdoors,43,42,1891.38,1830.04,-1,-0.0233,-0.0324,False
+PRD-00127,Silverleaf Tennis Racket,Sports & Outdoors,46,45,4180.13,4316.03,-1,-0.0217,0.0325,False
+PRD-00376,Mirin Sneakers,Fashion,48,47,1086.65,1009.61,-1,-0.0208,-0.0709,False
+PRD-00166,Wildacre Hair Dryer,Beauty & Personal Care,49,48,901.56,894.32,-1,-0.0204,-0.008,False
+PRD-01062,Corvus Sunscreen SPF50,Beauty & Personal Care,105,103,4602.34,4686.49,-2,-0.019,0.0183,False
+PRD-00203,Wildacre Children's Picture Book,Books & Media,62,61,486.79,470.71,-1,-0.0161,-0.033,False
+PRD-00664,Kestrel Canvas Backpack Plus,Fashion,62,61,4232.48,4223.97,-1,-0.0161,-0.002,False
+PRD-00475,Silverleaf Moisturiser Essential,Beauty & Personal Care,1136,1120,16715.69,16630.0,-16,-0.0141,-0.0051,False
+PRD-00568,Brickford Noise-Cancelling Headphones Classic,Electronics,231,230,28630.59,28869.47,-1,-0.0043,0.0083,False
+PRD-00006,Solstice Makeup Brush Set Essential,Beauty & Personal Care,19,19,245.68,248.95,0,0.0,0.0133,False
+PRD-00028,Orbit Lab Honey Compact,Grocery,19,19,304.2,298.88,0,0.0,-0.0175,False
+PRD-00030,Cassia Lip Balm Set Compact,Beauty & Personal Care,18,18,445.4,446.74,0,0.0,0.003,False
+PRD-00062,Marlow Swim Goggles,Sports & Outdoors,16,16,849.3,834.85,0,0.0,-0.017,False
+PRD-00099,Northwind Supply Building Blocks Set Premium,Toys & Games,53,53,2548.35,2539.64,0,0.0,-0.0034,False
+PRD-00108,Marlow Plush Toy Studio,Toys & Games,11,11,465.49,520.51,0,0.0,0.1182,False
+PRD-00150,Wildacre USB-C Hub,Electronics,91,91,7241.89,7372.6,0,0.0,0.018,False
+PRD-00222,Tessera Knit Sweater Essential,Fashion,28,28,446.06,437.81,0,0.0,-0.0185,False
+PRD-00284,Cassia Espresso Machine Compact,Home & Kitchen,21,21,1027.71,1053.61,0,0.0,0.0252,False
+PRD-00286,Hearthstone Goods Cast Iron Skillet,Home & Kitchen,42,42,3813.1,4009.03,0,0.0,0.0514,False
+PRD-00296,Kestrel Doll House Premium,Toys & Games,10,10,252.06,297.2,0,0.0,0.1791,False
+PRD-00301,Pinewood Puzzle 1000 Pieces,Toys & Games,28,28,677.96,641.19,0,0.0,-0.0542,False
+PRD-00318,Tessera Bluetooth Speaker Plus,Electronics,16,16,1639.42,1571.45,0,0.0,-0.0415,False
+PRD-00323,Tessera Noise-Cancelling Headphones Mini,Electronics,15,15,1187.21,1222.55,0,0.0,0.0298,False
+PRD-00325,Solstice Perfume,Beauty & Personal Care,26,26,350.07,364.79,0,0.0,0.042,False
+PRD-00360,Nordkap Swim Goggles Compact,Sports & Outdoors,20,20,540.4,532.58,0,0.0,-0.0145,False
+PRD-00466,Tessera Resistance Bands Compact,Sports & Outdoors,30,30,3842.23,3867.67,0,0.0,0.0066,False
+PRD-00489,Corvus Knife Set Pro,Home & Kitchen,42,42,2244.6,2287.71,0,0.0,0.0192,False
+PRD-00491,Corvus Mechanical Keyboard,Electronics,11,11,2422.49,2546.98,0,0.0,0.0514,False
+PRD-00526,Mirin Action Figure,Toys & Games,16,16,473.59,490.05,0,0.0,0.0348,False
+PRD-00528,Blue Fjord Protein Bars,Grocery,29,29,436.94,428.12,0,0.0,-0.0202,False
+PRD-00529,Mirin Espresso Machine,Home & Kitchen,49,49,744.48,768.52,0,0.0,0.0323,False
+PRD-00594,Verity Rain Jacket Plus,Fashion,38,38,1818.73,1860.81,0,0.0,0.0231,False
+PRD-00599,Solstice Noise-Cancelling Headphones Plus,Electronics,16,16,1731.17,1714.8,0,0.0,-0.0095,False
+PRD-00616,Blue Fjord Leather Belt Classic,Fashion,29,29,699.66,716.81,0,0.0,0.0245,False
+PRD-00617,Tessera Perfume Essential,Beauty & Personal Care,20,20,656.74,647.37,0,0.0,-0.0143,False
+PRD-00650,Verity Air Fryer Compact,Home & Kitchen,34,34,4680.03,4832.29,0,0.0,0.0325,False
+PRD-00663,Northwind Supply Wireless Earbuds,Electronics,12,12,3453.43,3590.91,0,0.0,0.0398,False
+PRD-00668,Nordkap Swim Goggles Compact,Sports & Outdoors,89,89,9297.34,9265.37,0,0.0,-0.0034,False
+PRD-00690,Hearthstone Goods Swim Goggles,Sports & Outdoors,15,15,1043.84,1032.02,0,0.0,-0.0113,False
+PRD-00693,Palladium Noise-Cancelling Headphones,Electronics,16,16,2718.8,2796.87,0,0.0,0.0287,False
+PRD-00705,Solstice Air Fryer Plus,Home & Kitchen,20,20,428.53,441.0,0,0.0,0.0291,False
+PRD-00708,Mirin Webcam,Electronics,15,15,7170.83,7504.77,0,0.0,0.0466,False
+PRD-00725,Cassia Paperback Novel,Books & Media,11,11,231.12,245.65,0,0.0,0.0629,False
+PRD-00726,Nomad Kits Espresso Machine Essential,Home & Kitchen,21,21,1091.71,1149.51,0,0.0,0.0529,False
+PRD-00748,Mirin Face Mask Set Classic,Beauty & Personal Care,36,36,1076.63,1055.46,0,0.0,-0.0197,False
+PRD-00749,Cassia Running Socks,Fashion,24,24,742.32,721.18,0,0.0,-0.0285,False
+PRD-00764,Marlow Hair Dryer,Beauty & Personal Care,16,16,720.69,742.37,0,0.0,0.0301,False
+PRD-00790,Verdant Foam Roller Pro,Sports & Outdoors,23,23,731.75,712.95,0,0.0,-0.0257,False
+PRD-00815,Verity Chino Trousers,Fashion,33,33,1495.28,1480.47,0,0.0,-0.0099,False
+PRD-00856,Blue Fjord Denim Jacket,Fashion,37,37,2983.39,3184.82,0,0.0,0.0675,False
+PRD-00886,Blue Fjord Toaster,Home & Kitchen,34,34,2590.92,2510.29,0,0.0,-0.0311,False
+PRD-00928,Verity Cotton T-Shirt,Fashion,63,63,4348.59,4264.59,0,0.0,-0.0193,False
+PRD-00953,Silverleaf Chino Trousers Plus,Fashion,34,34,1078.54,1068.08,0,0.0,-0.0097,False
+PRD-00972,Nordkap Air Fryer Plus,Home & Kitchen,32,32,1074.19,1059.74,0,0.0,-0.0135,False
+PRD-00986,Kestrel Science Kit,Toys & Games,26,26,762.69,726.66,0,0.0,-0.0472,False
+PRD-00990,Lumen & Co Tennis Racket Premium,Sports & Outdoors,18,18,556.81,565.16,0,0.0,0.015,False
+PRD-00996,Pinewood Cookbook,Books & Media,10,10,261.35,256.31,0,0.0,-0.0193,False
+PRD-01139,Hearthstone Goods Robot Vacuum,Home & Kitchen,28,28,888.78,908.34,0,0.0,0.022,False
+PRD-01170,Nordkap Building Blocks Set Compact,Toys & Games,19,19,595.64,607.59,0,0.0,0.0201,False
+PRD-01173,Northwind Supply Herbal Tea,Grocery,25,25,393.2,414.0,0,0.0,0.0529,False
+PRD-01190,Brickford Tablet Stand Premium,Electronics,24,24,4947.17,4875.12,0,0.0,-0.0146,False
+PRD-01192,Aurelia Yoga Mat,Sports & Outdoors,28,28,1570.85,1501.18,0,0.0,-0.0444,False
+PRD-00744,Solstice Blender Essential,Home & Kitchen,135,137,6674.34,6757.16,2,0.0148,0.0124,False
+PRD-00952,Marlow Craft Kit,Toys & Games,122,124,4204.06,4336.88,2,0.0164,0.0316,False
+PRD-01068,Nomad Kits Rain Jacket Classic,Fashion,58,59,2495.02,2592.45,1,0.0172,0.039,False
+PRD-00170,Mirin Knit Sweater Mini,Fashion,56,57,913.57,909.55,1,0.0179,-0.0044,False
+PRD-00038,Hearthstone Goods Rain Jacket Compact,Fashion,109,111,3809.43,3826.11,2,0.0183,0.0044,False
+PRD-00055,Cassia Knit Sweater,Fashion,47,48,2272.33,2398.2,1,0.0213,0.0554,False
+PRD-00450,Hearthstone Goods Toaster,Home & Kitchen,44,45,2837.13,3035.42,1,0.0227,0.0699,False
+PRD-00219,Hearthstone Goods Denim Jacket Plus,Fashion,43,44,1334.24,1442.21,1,0.0233,0.0809,False
+PRD-00160,Cassia Air Fryer,Home & Kitchen,40,41,3067.75,2963.41,1,0.025,-0.034,False
+PRD-00244,Pinewood Canvas Backpack,Fashion,157,161,12447.16,12743.04,4,0.0255,0.0238,False
+PRD-00461,Blue Fjord Running Socks,Fashion,39,40,820.03,797.52,1,0.0256,-0.0275,False
+PRD-00823,Blue Fjord Blender,Home & Kitchen,38,39,1039.9,1107.22,1,0.0263,0.0647,False
+PRD-00060,Corvus Sneakers Premium,Fashion,518,532,10259.53,10623.58,14,0.027,0.0355,False
+PRD-00431,Marlow Dumbbell Set Pro,Sports & Outdoors,36,37,1475.46,1679.35,1,0.0278,0.1382,False
+PRD-01186,Fable & Fern Perfume,Beauty & Personal Care,138,142,4328.87,4584.03,4,0.029,0.0589,False
+PRD-00978,Blue Fjord Perfume,Beauty & Personal Care,34,35,540.59,552.72,1,0.0294,0.0224,False
+PRD-00288,Solstice Knit Sweater,Fashion,67,69,2553.53,2663.91,2,0.0299,0.0432,False
+PRD-01159,Marlow Canvas Backpack Classic,Fashion,32,33,1625.04,1680.85,1,0.0312,0.0343,False
+PRD-01177,Verdant Doll House Essential,Toys & Games,32,33,844.36,886.13,1,0.0312,0.0495,False
+PRD-00023,Silverleaf Cotton T-Shirt Classic,Fashion,30,31,839.38,883.08,1,0.0333,0.0521,False
+PRD-00942,Silverleaf Breakfast Cereals,Grocery,89,92,2036.03,2079.46,3,0.0337,0.0213,False
+PRD-00887,Aurelia Moisturiser Classic,Beauty & Personal Care,28,29,384.04,387.62,1,0.0357,0.0093,False
+PRD-00588,Northwind Supply Vacuum Flask,Home & Kitchen,27,28,2214.96,2198.3,1,0.037,-0.0075,False
+PRD-00334,Northwind Supply Espresso Machine Compact,Home & Kitchen,26,27,1193.39,1143.69,1,0.0385,-0.0416,False
+PRD-00734,Marlow Espresso Machine,Home & Kitchen,78,81,2917.1,3043.11,3,0.0385,0.0432,False
+PRD-00998,Northwind Supply Bluetooth Speaker Compact,Electronics,26,27,8552.95,9546.82,1,0.0385,0.1162,False
+PRD-01036,Silverleaf Espresso Machine,Home & Kitchen,52,54,6840.58,6898.25,2,0.0385,0.0084,False
+PRD-00904,Alder & Ash Resistance Bands Premium,Sports & Outdoors,25,26,1236.19,1295.61,1,0.04,0.0481,False
+PRD-01085,Cassia Rain Jacket,Fashion,47,49,1745.01,1846.49,2,0.0426,0.0582,False
+PRD-00572,Silverleaf Doll House Essential,Toys & Games,23,24,662.11,688.52,1,0.0435,0.0399,False
+PRD-00240,Silverleaf Foam Roller,Sports & Outdoors,22,23,2634.24,2770.57,1,0.0455,0.0518,False
+PRD-00891,Mirin Knife Set Pro,Home & Kitchen,22,23,2886.19,3160.37,1,0.0455,0.095,False
+PRD-00309,Palladium Toaster,Home & Kitchen,21,22,1276.24,1300.19,1,0.0476,0.0188,False
+PRD-01026,Mirin Running Socks,Fashion,21,22,715.82,742.51,1,0.0476,0.0373,False
+PRD-01038,Aurelia Face Mask Set,Beauty & Personal Care,21,22,835.93,838.62,1,0.0476,0.0032,False
+PRD-01073,Mirin Business Paperback Studio,Books & Media,21,22,560.94,578.37,1,0.0476,0.0311,False
+PRD-01156,Marlow Chino Trousers,Fashion,62,65,1583.86,1610.3,3,0.0484,0.0167,False
+PRD-00275,Nordkap Espresso Machine Essential,Home & Kitchen,102,107,4837.96,5302.78,5,0.049,0.0961,False
+PRD-00088,Pinewood Knife Set,Home & Kitchen,60,63,1754.69,1845.2,3,0.05,0.0516,False
+PRD-00473,Verity Tennis Racket,Sports & Outdoors,20,21,524.34,546.79,1,0.05,0.0428,False
+PRD-00712,Nomad Kits Wool Scarf Pro,Fashion,77,81,1588.41,1725.56,4,0.0519,0.0863,False
+PRD-00496,Brickford Noise-Cancelling Headphones Premium,Electronics,38,40,3027.51,3339.19,2,0.0526,0.1029,False
+PRD-00576,Nordkap Perfume,Beauty & Personal Care,38,40,2156.19,2395.0,2,0.0526,0.1108,False
+PRD-00710,Tessera Chino Trousers Studio,Fashion,37,39,2059.79,2171.22,2,0.0541,0.0541,False
+PRD-00742,Lumen & Co Plush Toy Studio,Toys & Games,36,38,800.74,886.86,2,0.0556,0.1076,False
+PRD-01007,Hearthstone Goods Noise-Cancelling Headphones,Electronics,18,19,1999.1,2263.89,1,0.0556,0.1325,False
+PRD-00068,Orbit Lab Blender Pro,Home & Kitchen,17,18,752.97,814.19,1,0.0588,0.0813,False
+PRD-01044,Wildacre Chino Trousers Premium,Fashion,33,35,876.54,868.47,2,0.0606,-0.0092,False
+PRD-00596,Kestrel Fitness Tracker,Electronics,16,17,5392.35,5230.04,1,0.0625,-0.0301,False
+PRD-01033,Nomad Kits Toaster,Home & Kitchen,16,17,1273.78,1471.68,1,0.0625,0.1554,False
+PRD-01155,Aurelia Toaster Premium,Home & Kitchen,48,51,4215.47,4537.64,3,0.0625,0.0764,False
+PRD-01162,Blue Fjord Colouring Book,Books & Media,16,17,429.74,448.95,1,0.0625,0.0447,False
+PRD-00305,Northwind Supply Science Kit,Toys & Games,15,16,286.24,301.77,1,0.0667,0.0543,False
+PRD-00582,Corvus Wireless Earbuds Mini,Electronics,15,16,2883.51,3169.28,1,0.0667,0.0991,False
+PRD-00623,Hearthstone Goods Blender Premium,Home & Kitchen,60,64,3234.04,3596.02,4,0.0667,0.1119,False
+PRD-01005,Pinewood Chino Trousers Mini,Fashion,30,32,1331.82,1427.87,2,0.0667,0.0721,False
+PRD-01083,Hearthstone Goods Air Fryer Essential,Home & Kitchen,134,143,18880.0,19430.48,9,0.0672,0.0292,False
+PRD-00715,Corvus Blender,Home & Kitchen,59,63,1450.97,1502.95,4,0.0678,0.0358,False
+PRD-00193,Corvus Knit Sweater Pro,Fashion,28,30,1004.4,1049.46,2,0.0714,0.0449,False
+PRD-00524,Nomad Kits Toaster,Home & Kitchen,28,30,1538.4,1639.81,2,0.0714,0.0659,False
+PRD-00651,Hearthstone Goods Doll House,Toys & Games,14,15,439.82,433.38,1,0.0714,-0.0146,False
+PRD-00802,Corvus Perfume,Beauty & Personal Care,14,15,416.74,444.77,1,0.0714,0.0673,False
+PRD-00914,Hearthstone Goods Smart Watch Plus,Electronics,14,15,2080.71,2195.12,1,0.0714,0.055,False
+PRD-00045,Nomad Kits Canvas Backpack Compact,Fashion,82,88,3583.16,3941.34,6,0.0732,0.1,False
+PRD-00876,Lumen & Co Tennis Racket Premium,Sports & Outdoors,122,131,9681.82,10471.37,9,0.0738,0.0815,False
+PRD-00190,Northwind Supply Cotton T-Shirt,Fashion,27,29,1057.43,1164.78,2,0.0741,0.1015,False
+PRD-00504,Orbit Lab Makeup Brush Set Classic,Beauty & Personal Care,40,43,1180.59,1237.44,3,0.075,0.0482,False
+PRD-00577,Alder & Ash Card Game,Toys & Games,383,412,13207.95,14336.12,29,0.0757,0.0854,False
+PRD-00052,Nordkap Blender,Home & Kitchen,26,28,1456.62,1528.83,2,0.0769,0.0496,False
+PRD-00727,Mirin Running Socks,Fashion,26,28,699.22,753.78,2,0.0769,0.078,False
+PRD-00782,Pinewood Espresso Machine,Home & Kitchen,26,28,860.05,904.18,2,0.0769,0.0513,False
+PRD-00903,Corvus Cotton T-Shirt Mini,Fashion,39,42,2952.19,3240.23,3,0.0769,0.0976,False
+PRD-01171,Blue Fjord Smart Watch,Electronics,13,14,4711.91,4869.66,1,0.0769,0.0335,False
+PRD-01174,Northwind Supply Espresso Machine,Home & Kitchen,26,28,761.9,808.77,2,0.0769,0.0615,False
+PRD-00043,Nordkap Dinnerware Set,Home & Kitchen,25,27,765.74,821.11,2,0.08,0.0723,False
+PRD-00172,Solstice Notebook Set Pro,Books & Media,25,27,254.62,272.0,2,0.08,0.0683,False
+PRD-00479,Corvus Air Fryer,Home & Kitchen,25,27,1669.16,1796.54,2,0.08,0.0763,False
+PRD-00809,Mirin Resistance Bands,Sports & Outdoors,25,27,2038.94,2122.69,2,0.08,0.0411,False
+PRD-01130,Lumen & Co Leather Belt,Fashion,25,27,831.01,963.38,2,0.08,0.1593,False
+PRD-00131,Pinewood Canvas Backpack Compact,Fashion,48,52,1797.23,2139.97,4,0.0833,0.1907,False
+PRD-00395,Alder & Ash USB-C Hub,Electronics,36,39,5888.71,6360.63,3,0.0833,0.0801,False
+PRD-00701,Blue Fjord Fitness Tracker Premium,Electronics,12,13,1459.58,1609.01,1,0.0833,0.1024,False
+PRD-00069,Nomad Kits Knit Sweater,Fashion,83,90,2395.01,2563.53,7,0.0843,0.0704,False
+PRD-00084,Pinewood Insulated Bottle Pro,Sports & Outdoors,23,25,1255.81,1393.38,2,0.087,0.1095,False
+PRD-01067,Corvus Action Figure Plus,Toys & Games,23,25,1036.5,1267.28,2,0.087,0.2227,False
+PRD-00852,Tessera Vacuum Flask,Home & Kitchen,57,62,7060.7,7756.72,5,0.0877,0.0986,False
+PRD-00103,Cassia Knit Sweater Classic,Fashion,44,48,1296.79,1409.03,4,0.0909,0.0866,False
+PRD-00199,Hearthstone Goods Smart Watch,Electronics,22,24,3115.15,3422.93,2,0.0909,0.0988,False
+PRD-00551,Wildacre Knit Sweater Pro,Fashion,22,24,1065.17,1193.81,2,0.0909,0.1208,False
+PRD-00553,Cassia Perfume Mini,Beauty & Personal Care,22,24,228.1,258.33,2,0.0909,0.1325,False
+PRD-00611,Nordkap Biography,Books & Media,22,24,493.6,565.72,2,0.0909,0.1461,False
+PRD-00633,Nordkap Moisturiser Compact,Beauty & Personal Care,22,24,553.24,626.3,2,0.0909,0.1321,False
+PRD-00779,Blue Fjord Foam Roller,Sports & Outdoors,33,36,1268.97,1439.82,3,0.0909,0.1346,False
+PRD-01054,Mirin Denim Jacket,Fashion,22,24,794.44,835.94,2,0.0909,0.0522,False
+PRD-00211,Verity Hair Dryer Premium,Beauty & Personal Care,32,35,618.6,667.61,3,0.0938,0.0792,False
+PRD-00326,Lumen & Co Body Lotion,Beauty & Personal Care,32,35,733.15,807.82,3,0.0938,0.1018,False
+PRD-00185,Wildacre Denim Jacket Essential,Fashion,74,81,3283.06,3615.23,7,0.0946,0.1012,False
+PRD-00352,Alder & Ash Canvas Backpack Compact,Fashion,21,23,899.76,1074.07,2,0.0952,0.1937,False
+PRD-00357,Hearthstone Goods Blender Pro,Home & Kitchen,21,23,2857.31,3352.16,2,0.0952,0.1732,False
+PRD-01117,Verity Breakfast Cereals,Grocery,21,23,306.3,346.6,2,0.0952,0.1316,False
+PRD-00420,Marlow Tennis Racket,Sports & Outdoors,52,57,2554.35,2761.39,5,0.0962,0.0811,False
+PRD-00300,Kestrel Cotton T-Shirt Studio,Fashion,31,34,1387.82,1464.33,3,0.0968,0.0551,False
+PRD-00563,Kestrel Toaster Mini,Home & Kitchen,31,34,617.92,687.85,3,0.0968,0.1132,False
+PRD-00777,Verdant Chino Trousers,Fashion,31,34,2060.34,2134.07,3,0.0968,0.0358,False
+PRD-00567,Nordkap Swim Goggles,Sports & Outdoors,41,45,915.21,1016.31,4,0.0976,0.1105,False
+PRD-00063,Lumen & Co Robot Vacuum,Home & Kitchen,20,22,923.86,991.14,2,0.1,0.0728,False
+PRD-00145,Cassia Perfume Essential,Beauty & Personal Care,20,22,636.87,665.71,2,0.1,0.0453,False
+PRD-00467,Nomad Kits Makeup Brush Set,Beauty & Personal Care,60,66,1195.55,1347.8,6,0.1,0.1273,False
+PRD-00730,Kestrel Resistance Bands,Sports & Outdoors,30,33,1149.63,1306.18,3,0.1,0.1362,False
+PRD-00921,Marlow Espresso Machine,Home & Kitchen,30,33,975.52,1069.25,3,0.1,0.0961,False
+PRD-00291,Palladium Knit Sweater,Fashion,29,32,1886.28,2103.42,3,0.1034,0.1151,False
+PRD-00896,Silverleaf USB-C Hub Compact,Electronics,29,32,1743.94,1855.96,3,0.1034,0.0642,False
+PRD-01077,Kestrel Chino Trousers Compact,Fashion,58,64,1629.98,1803.55,6,0.1034,0.1065,False
+PRD-01023,Pinewood Chino Trousers Mini,Fashion,48,53,2629.83,2974.23,5,0.1042,0.131,False
+PRD-01004,Solstice Wool Scarf,Fashion,67,74,4894.98,5648.29,7,0.1045,0.1539,False
+PRD-01182,Pinewood Wool Scarf Compact,Fashion,19,21,1302.57,1437.88,2,0.1053,0.1039,False
+PRD-00486,Pinewood Denim Jacket Plus,Fashion,75,83,3723.55,4211.19,8,0.1067,0.131,False
+PRD-00298,Nomad Kits Knife Set,Home & Kitchen,18,20,1292.23,1292.01,2,0.1111,-0.0002,False
+PRD-00353,Fable & Fern Children's Picture Book,Books & Media,18,20,278.57,321.94,2,0.1111,0.1557,False
+PRD-00377,Tessera Biography Mini,Books & Media,18,20,366.23,433.94,2,0.1111,0.1849,False
+PRD-00456,Fable & Fern Vacuum Flask,Home & Kitchen,36,40,2988.65,3404.56,4,0.1111,0.1392,False
+PRD-00492,Verdant Craft Kit,Toys & Games,27,30,871.62,985.64,3,0.1111,0.1308,False
+PRD-00799,Alder & Ash Air Fryer Plus,Home & Kitchen,27,30,761.82,873.42,3,0.1111,0.1465,False
+PRD-00920,Cassia Toaster,Home & Kitchen,27,30,1540.63,1780.54,3,0.1111,0.1557,False
+PRD-00941,Solstice Trekking Poles,Sports & Outdoors,54,60,10117.58,11447.29,6,0.1111,0.1314,False
+PRD-01115,Verity Chino Trousers,Fashion,27,30,957.29,1092.38,3,0.1111,0.1411,False
+PRD-01189,Alder & Ash Knife Set Plus,Home & Kitchen,27,30,4513.03,5300.87,3,0.1111,0.1746,False
+PRD-01094,Orbit Lab Insulated Bottle Classic,Sports & Outdoors,62,69,3026.84,3364.2,7,0.1129,0.1115,False
+PRD-00801,Tessera Air Fryer,Home & Kitchen,141,157,6858.57,7951.81,16,0.1135,0.1594,False
+PRD-01148,Lumen & Co Fitness Tracker Classic,Electronics,193,215,27712.08,30919.17,22,0.114,0.1157,False
+PRD-00077,Kestrel Sunscreen SPF50,Beauty & Personal Care,26,29,275.18,309.59,3,0.1154,0.125,False
+PRD-01020,Silverleaf Knife Set,Home & Kitchen,26,29,720.85,771.57,3,0.1154,0.0704,False
+PRD-00094,Silverleaf Chino Trousers,Fashion,69,77,6483.86,7216.84,8,0.1159,0.113,False
+PRD-00057,Kestrel USB-C Hub Plus,Electronics,43,48,5173.8,5993.17,5,0.1163,0.1584,False
+PRD-00861,Marlow Breakfast Cereals,Grocery,60,67,889.25,1005.31,7,0.1167,0.1305,False
+PRD-00135,Northwind Supply Olive Oil Premium,Grocery,17,19,185.63,209.64,2,0.1176,0.1293,False
+PRD-00628,Corvus Fitness Tracker,Electronics,17,19,2315.26,2611.12,2,0.1176,0.1278,False
+PRD-00805,Wildacre Business Paperback Compact,Books & Media,17,19,296.8,369.19,2,0.1176,0.2439,False
+PRD-00859,Verdant Fitness Tracker,Electronics,17,19,1674.46,1909.28,2,0.1176,0.1402,False
+PRD-00786,Verity Smart Watch Compact,Electronics,59,66,14493.87,16353.34,7,0.1186,0.1283,False
+PRD-00458,Marlow Cotton T-Shirt Essential,Fashion,25,28,1165.63,1440.29,3,0.12,0.2356,False
+PRD-00609,Fable & Fern Food Storage Set,Home & Kitchen,25,28,1730.11,2009.81,3,0.12,0.1617,False
+PRD-01108,Fable & Fern Chino Trousers Pro,Fashion,25,28,1097.81,1253.7,3,0.12,0.142,False
+PRD-01063,Verity Plush Toy,Toys & Games,58,65,1589.39,1867.1,7,0.1207,0.1747,False
+PRD-00306,Kestrel Denim Jacket,Fashion,33,37,2590.89,3026.41,4,0.1212,0.1681,False
+PRD-00098,Orbit Lab Dumbbell Set,Sports & Outdoors,41,46,900.26,1044.69,5,0.122,0.1604,False
+PRD-00122,Blue Fjord Perfume Pro,Beauty & Personal Care,49,55,1204.46,1338.6,6,0.1224,0.1114,False
+PRD-00662,Aurelia Rain Jacket Mini,Fashion,57,64,3037.76,3515.82,7,0.1228,0.1574,False
+PRD-00618,Aurelia Robot Vacuum,Home & Kitchen,113,127,5042.08,5758.87,14,0.1239,0.1422,False
+PRD-00213,Lumen & Co Puzzle Book Plus,Books & Media,24,27,424.3,497.36,3,0.125,0.1722,False
+PRD-00842,Brickford Knife Set,Home & Kitchen,78,88,9068.49,9957.97,10,0.1282,0.0981,False
+PRD-00639,Aurelia Vacuum Flask,Home & Kitchen,31,35,1206.41,1412.04,4,0.129,0.1704,False
+PRD-00320,Northwind Supply Power Bank Classic,Electronics,23,26,2999.45,3419.58,3,0.1304,0.1401,False
+PRD-00818,Corvus Rain Jacket Plus,Fashion,23,26,620.3,714.5,3,0.1304,0.1519,False
+PRD-00841,Tessera Lip Balm Set Plus,Beauty & Personal Care,23,26,1034.18,1081.75,3,0.1304,0.046,False
+PRD-00561,Wildacre Vacuum Flask Compact,Home & Kitchen,15,17,603.69,612.66,2,0.1333,0.0149,False
+PRD-00638,Verdant Dinnerware Set Mini,Home & Kitchen,90,102,6840.49,7676.76,12,0.1333,0.1223,False
+PRD-00807,Marlow Swim Goggles,Sports & Outdoors,15,17,1006.44,1121.49,2,0.1333,0.1143,False
+PRD-00350,Cassia Cotton T-Shirt Compact,Fashion,22,25,968.53,1090.57,3,0.1364,0.126,False
+PRD-00713,Lumen & Co Webcam,Electronics,22,25,4742.67,5615.78,3,0.1364,0.1841,False
+PRD-00205,Blue Fjord Noise-Cancelling Headphones,Electronics,51,58,2771.33,3170.85,7,0.1373,0.1442,False
+PRD-00404,Corvus Denim Jacket,Fashion,184,210,9007.42,10435.95,26,0.1413,0.1586,False
+PRD-00165,Wildacre Vitamin C Serum,Beauty & Personal Care,21,24,264.16,301.15,3,0.1429,0.14,False
+PRD-00602,Palladium Breakfast Cereals Compact,Grocery,14,16,112.57,130.41,2,0.1429,0.1585,False
+PRD-00769,Aurelia Food Storage Set,Home & Kitchen,21,24,740.39,828.12,3,0.1429,0.1185,False
+PRD-00995,Alder & Ash Espresso Machine,Home & Kitchen,21,24,2112.03,2400.23,3,0.1429,0.1365,False
+PRD-01111,Aurelia Robot Vacuum,Home & Kitchen,21,24,1285.1,1436.38,3,0.1429,0.1177,False
+PRD-00637,Marlow Cast Iron Skillet,Home & Kitchen,55,63,4303.66,4855.75,8,0.1455,0.1283,False
+PRD-00368,Brickford Sneakers,Fashion,41,47,2518.79,2839.98,6,0.1463,0.1275,False
+PRD-00308,Silverleaf Knife Set Compact,Home & Kitchen,27,31,2792.04,3357.19,4,0.1481,0.2024,False
+PRD-01010,Marlow Chino Trousers Premium,Fashion,27,31,1433.26,1626.04,4,0.1481,0.1345,False
+PRD-00168,Orbit Lab Running Socks Compact,Fashion,60,69,2263.93,2684.44,9,0.15,0.1857,False
+PRD-00200,Lumen & Co Air Fryer,Home & Kitchen,60,69,2106.35,2516.17,9,0.15,0.1946,False
+PRD-00542,Aurelia Electric Toothbrush,Beauty & Personal Care,20,23,357.03,413.49,3,0.15,0.1581,False
+PRD-00707,Aurelia Tablet Stand,Electronics,20,23,1128.89,1399.52,3,0.15,0.2397,False
+PRD-00345,Nomad Kits Knife Set,Home & Kitchen,33,38,3440.41,4090.99,5,0.1515,0.1891,False
+PRD-00587,Solstice Electric Toothbrush Compact,Beauty & Personal Care,33,38,839.36,949.51,5,0.1515,0.1312,False
+PRD-00544,Lumen & Co Toaster,Home & Kitchen,46,53,2045.29,2383.39,7,0.1522,0.1653,False
+PRD-01078,Verdant Body Lotion,Beauty & Personal Care,26,30,702.43,741.89,4,0.1538,0.0562,False
+PRD-00878,Fable & Fern Vacuum Flask Mini,Home & Kitchen,167,193,5275.37,6199.59,26,0.1557,0.1752,False
+PRD-00464,Blue Fjord Resistance Bands Plus,Sports & Outdoors,19,22,1618.26,1856.21,3,0.1579,0.147,False
+PRD-00643,Nomad Kits Card Game Studio,Toys & Games,19,22,1072.66,1311.76,3,0.1579,0.2229,False
+PRD-00681,Corvus Dinnerware Set Classic,Home & Kitchen,19,22,947.88,1141.58,3,0.1579,0.2044,False
+PRD-00833,Tessera Mechanical Keyboard Premium,Electronics,19,22,2884.79,3435.95,3,0.1579,0.1911,False
+PRD-00916,Nomad Kits Insulated Bottle,Sports & Outdoors,19,22,1511.45,1811.1,3,0.1579,0.1983,False
+PRD-00615,Solstice Dumbbell Set Plus,Sports & Outdoors,132,153,14688.63,17391.73,21,0.1591,0.184,False
+PRD-00396,Aurelia Building Blocks Set Studio,Toys & Games,56,65,1567.32,1825.64,9,0.1607,0.1648,False
+PRD-00210,Nordkap Body Lotion,Beauty & Personal Care,31,36,981.17,1242.55,5,0.1613,0.2664,False
+PRD-00626,Verdant Leather Belt,Fashion,31,36,1406.52,1627.0,5,0.1613,0.1568,False
+PRD-00844,Alder & Ash Rain Jacket Compact,Fashion,31,36,1078.62,1294.43,5,0.1613,0.2001,False
+PRD-01088,Silverleaf Webcam,Electronics,31,36,8968.7,10172.8,5,0.1613,0.1343,False
+PRD-00484,Wildacre Cotton T-Shirt Classic,Fashion,37,43,501.34,595.33,6,0.1622,0.1875,False
+PRD-00674,Pinewood Fitness Tracker Pro,Electronics,37,43,4814.75,5589.06,6,0.1622,0.1608,False
+PRD-00177,Solstice Travel Guide Pro,Books & Media,12,14,214.39,234.57,2,0.1667,0.0941,False
+PRD-00256,Alder & Ash Children's Picture Book,Books & Media,12,14,119.69,141.51,2,0.1667,0.1823,False
+PRD-00417,Cassia Toaster,Home & Kitchen,24,28,1645.31,1922.6,4,0.1667,0.1685,False
+PRD-00573,Fable & Fern Yoga Mat Mini,Sports & Outdoors,18,21,879.54,1017.37,3,0.1667,0.1567,False
+PRD-00640,Silverleaf Puzzle 1000 Pieces Plus,Toys & Games,12,14,347.93,419.55,2,0.1667,0.2058,False
+PRD-01079,Corvus Wool Scarf,Fashion,36,42,1077.17,1302.65,6,0.1667,0.2093,False
+PRD-00929,Verity Rain Jacket,Fashion,41,48,1594.54,1886.49,7,0.1707,0.1831,False
+PRD-00654,Corvus Swim Goggles,Sports & Outdoors,58,68,2804.91,3457.42,10,0.1724,0.2326,False
+PRD-00105,Hearthstone Goods Fitness Tracker Pro,Electronics,110,129,14069.37,16107.52,19,0.1727,0.1449,False
+PRD-00825,Verity Action Figure,Toys & Games,23,27,532.1,655.36,4,0.1739,0.2316,False
+PRD-00851,Silverleaf Leather Belt,Fashion,63,74,5887.05,6997.93,11,0.1746,0.1887,False
+PRD-00871,Nordkap Face Mask Set Compact,Beauty & Personal Care,40,47,1077.24,1246.91,7,0.175,0.1575,False
+PRD-00058,Nordkap Noise-Cancelling Headphones,Electronics,131,154,20944.84,24297.75,23,0.1756,0.1601,False
+PRD-00517,Wildacre Vacuum Flask Mini,Home & Kitchen,39,46,3539.82,4206.63,7,0.1795,0.1884,False
+PRD-00414,Marlow Board Game,Toys & Games,22,26,706.15,844.58,4,0.1818,0.196,False
+PRD-00658,Aurelia Bluetooth Speaker Compact,Electronics,11,13,2281.95,2507.08,2,0.1818,0.0987,False
+PRD-00735,Brickford Nut Mix,Grocery,11,13,95.22,116.57,2,0.1818,0.2242,False
+PRD-00846,Orbit Lab Canvas Backpack Plus,Fashion,22,26,1972.23,2215.24,4,0.1818,0.1232,False
+PRD-01184,Verity Swim Goggles Plus,Sports & Outdoors,33,39,1594.02,1969.91,6,0.1818,0.2358,False
+PRD-00016,Kestrel Knit Sweater,Fashion,38,45,1296.32,1526.71,7,0.1842,0.1777,False
+PRD-00280,Hearthstone Goods Rain Jacket Plus,Fashion,27,32,2347.29,2783.9,5,0.1852,0.186,False
+PRD-00408,Lumen & Co Knit Sweater Premium,Fashion,27,32,1541.6,1650.81,5,0.1852,0.0708,False
+PRD-00174,Verdant Craft Kit Pro,Toys & Games,16,19,708.68,873.83,3,0.1875,0.233,False
+PRD-00364,Fable & Fern Dark Chocolate,Grocery,16,19,208.99,254.81,3,0.1875,0.2192,False
+PRD-01197,Northwind Supply Vacuum Flask,Home & Kitchen,16,19,734.32,824.31,3,0.1875,0.1225,False
+PRD-00756,Palladium Ground Coffee Plus,Grocery,132,157,1034.34,1225.72,25,0.1894,0.185,False
+PRD-00332,Orbit Lab Puzzle Book Mini,Books & Media,21,25,397.47,466.27,4,0.1905,0.1731,False
+PRD-00565,Verdant Wireless Earbuds,Electronics,21,25,720.21,903.32,4,0.1905,0.2542,False
+PRD-00963,Palladium Vitamin C Serum,Beauty & Personal Care,21,25,381.45,462.9,4,0.1905,0.2135,False
+PRD-00548,Nordkap Wool Scarf,Fashion,26,31,1235.69,1539.17,5,0.1923,0.2456,False
+PRD-00723,Solstice Puzzle 1000 Pieces,Toys & Games,26,31,1798.78,2108.39,5,0.1923,0.1721,False
+PRD-00767,Silverleaf Chino Trousers,Fashion,26,31,1902.19,2310.78,5,0.1923,0.2148,False
+PRD-00026,Nomad Kits Bluetooth Speaker Premium,Electronics,129,154,15932.13,19095.14,25,0.1938,0.1985,False
+PRD-00267,Palladium Hair Dryer,Beauty & Personal Care,41,49,327.22,382.06,8,0.1951,0.1676,False
+PRD-00811,Verity Knit Sweater Premium,Fashion,101,121,2408.04,2916.08,20,0.198,0.211,False
+PRD-00181,Hearthstone Goods Knife Set,Home & Kitchen,15,18,1145.14,1307.5,3,0.2,0.1418,False
+PRD-00261,Blue Fjord Swim Goggles Studio,Sports & Outdoors,15,18,1544.73,2139.14,3,0.2,0.3848,False
+PRD-00349,Pinewood Puzzle Book Mini,Books & Media,10,12,171.76,209.83,2,0.2,0.2216,False
+PRD-00367,Blue Fjord Doll House Plus,Toys & Games,70,84,2300.41,2936.76,14,0.2,0.2766,False
+PRD-00379,Verity Air Fryer Essential,Home & Kitchen,30,36,1827.38,2233.7,6,0.2,0.2224,False
+PRD-00401,Wildacre Dinnerware Set,Home & Kitchen,15,18,456.91,573.75,3,0.2,0.2557,False
+PRD-00436,Cassia Perfume,Beauty & Personal Care,35,42,1088.32,1327.38,7,0.2,0.2197,False
+PRD-00472,Mirin Swim Goggles Studio,Sports & Outdoors,15,18,1070.38,1275.55,3,0.2,0.1917,False
+PRD-00516,Kestrel Biography,Books & Media,15,18,747.46,835.6,3,0.2,0.1179,False
+PRD-00560,Blue Fjord Swim Goggles,Sports & Outdoors,40,48,4286.39,5043.63,8,0.2,0.1767,False
+PRD-00612,Cassia Protein Bars,Grocery,10,12,77.8,93.59,2,0.2,0.203,False
+PRD-00838,Lumen & Co Foam Roller,Sports & Outdoors,25,30,678.51,838.73,5,0.2,0.2361,False
+PRD-01040,Orbit Lab Colouring Book,Books & Media,15,18,322.72,414.26,3,0.2,0.2837,False
+PRD-01069,Lumen & Co USB-C Hub Premium,Electronics,20,24,1751.29,2243.25,4,0.2,0.2809,False
+PRD-01153,Marlow Sparkling Water Classic,Grocery,10,12,138.42,177.89,2,0.2,0.2851,False
+PRD-00557,Alder & Ash Rain Jacket Classic,Fashion,34,41,930.42,1103.33,7,0.2059,0.1858,False
+PRD-00792,Fable & Fern Cotton T-Shirt,Fashion,34,41,1988.76,2506.36,7,0.2059,0.2603,False
+PRD-00874,Nomad Kits Cotton T-Shirt,Fashion,34,41,1080.87,1297.5,7,0.2059,0.2004,False
+PRD-01051,Aurelia Dinnerware Set,Home & Kitchen,34,41,2200.95,2662.29,7,0.2059,0.2096,False
+PRD-01052,Corvus Leather Belt Classic,Fashion,34,41,786.3,985.83,7,0.2059,0.2538,False
+PRD-00761,Solstice Knit Sweater Premium,Fashion,24,29,500.87,621.08,5,0.2083,0.24,False
+PRD-00926,Alder & Ash Sparkling Water Pro,Grocery,62,75,913.12,1126.82,13,0.2097,0.234,False
+PRD-00125,Aurelia Sunscreen SPF50 Studio,Beauty & Personal Care,19,23,362.27,422.41,4,0.2105,0.166,False
+PRD-00644,Verdant Lip Balm Set Pro,Beauty & Personal Care,19,23,303.21,353.57,4,0.2105,0.1661,False
+PRD-01181,Verdant Robot Vacuum,Home & Kitchen,19,23,853.6,1015.17,4,0.2105,0.1893,False
+PRD-00330,Lumen & Co Leather Belt Essential,Fashion,33,40,2147.87,2889.21,7,0.2121,0.3452,False
+PRD-00355,Palladium Wool Scarf,Fashion,33,40,800.61,970.69,7,0.2121,0.2124,False
+PRD-00012,Lumen & Co Mechanical Keyboard,Electronics,14,17,2207.78,2875.27,3,0.2143,0.3023,False
+PRD-00014,Verdant Board Game,Toys & Games,14,17,528.59,650.15,3,0.2143,0.23,False
+PRD-00302,Brickford Card Game,Toys & Games,14,17,498.31,619.36,3,0.2143,0.2429,False
+PRD-00335,Verdant Wireless Earbuds,Electronics,28,34,2893.52,3540.05,6,0.2143,0.2234,False
+PRD-00416,Fable & Fern Dinnerware Set,Home & Kitchen,84,102,2265.11,2834.0,18,0.2143,0.2512,False
+PRD-00453,Northwind Supply Electric Toothbrush,Beauty & Personal Care,14,17,313.89,411.34,3,0.2143,0.3105,False
+PRD-00888,Wildacre Smart Watch,Electronics,14,17,1632.13,2180.69,3,0.2143,0.3361,False
+PRD-00951,Hearthstone Goods Espresso Machine,Home & Kitchen,42,51,1498.71,1884.24,9,0.2143,0.2572,False
+PRD-01024,Nordkap Hair Dryer,Beauty & Personal Care,28,34,412.59,492.16,6,0.2143,0.1929,False
+PRD-00976,Solstice Dumbbell Set,Sports & Outdoors,102,124,5060.33,5999.18,22,0.2157,0.1855,False
+PRD-00070,Marlow Dinnerware Set Essential,Home & Kitchen,37,45,2038.49,2477.0,8,0.2162,0.2151,False
+PRD-00366,Palladium Dumbbell Set,Sports & Outdoors,23,28,1025.24,1257.5,5,0.2174,0.2265,False
+PRD-00613,Blue Fjord Running Shoes Premium,Sports & Outdoors,23,28,2037.36,2461.02,5,0.2174,0.2079,False
+PRD-00758,Verity Insulated Bottle,Sports & Outdoors,23,28,4787.58,6031.01,5,0.2174,0.2597,False
+PRD-01003,Tessera Cast Iron Skillet Mini,Home & Kitchen,23,28,1343.33,1714.28,5,0.2174,0.2761,False
+PRD-01037,Marlow Tennis Racket Compact,Sports & Outdoors,23,28,1319.65,1492.37,5,0.2174,0.1309,False
+PRD-01057,Silverleaf Canvas Backpack,Fashion,23,28,1449.61,1789.36,5,0.2174,0.2344,False
+PRD-00109,Blue Fjord Knit Sweater Compact,Fashion,27,33,535.64,661.49,6,0.2222,0.235,False
+PRD-00149,Nomad Kits Insulated Bottle Classic,Sports & Outdoors,18,22,1497.06,1831.14,4,0.2222,0.2232,False
+PRD-00337,Cassia Knife Set,Home & Kitchen,63,77,2258.84,2817.49,14,0.2222,0.2473,False
+PRD-00493,Solstice Makeup Brush Set Premium,Beauty & Personal Care,18,22,803.67,949.06,4,0.2222,0.1809,False
+PRD-01152,Verdant Lip Balm Set Compact,Beauty & Personal Care,18,22,416.68,513.6,4,0.2222,0.2326,False
+PRD-00419,Palladium Hair Dryer Mini,Beauty & Personal Care,31,38,949.04,1151.47,7,0.2258,0.2133,False
+PRD-00930,Tessera Electric Toothbrush Mini,Beauty & Personal Care,22,27,1047.47,1371.92,5,0.2273,0.3097,False
+PRD-01144,Corvus Vacuum Flask Pro,Home & Kitchen,35,43,4049.37,5260.31,8,0.2286,0.299,False
+PRD-00897,Silverleaf Vitamin C Serum Pro,Beauty & Personal Care,100,123,2145.85,2622.79,23,0.23,0.2223,False
+PRD-00245,Nomad Kits Moisturiser,Beauty & Personal Care,26,32,604.79,718.14,6,0.2308,0.1874,False
+PRD-00405,Pinewood Running Socks,Fashion,52,64,2308.12,2858.49,12,0.2308,0.2384,False
+PRD-00465,Pinewood Food Storage Set Plus,Home & Kitchen,52,64,3310.88,4150.37,12,0.2308,0.2536,False
+PRD-00814,Nordkap Knit Sweater Studio,Fashion,26,32,1813.44,2218.13,6,0.2308,0.2232,False
+PRD-00506,Fable & Fern Wool Scarf,Fashion,30,37,1398.11,1814.64,7,0.2333,0.2979,False
+PRD-01103,Brickford Toaster,Home & Kitchen,46,57,366.99,447.85,11,0.2391,0.2203,False
+PRD-00824,Verity Moisturiser,Beauty & Personal Care,25,31,451.19,550.69,6,0.24,0.2205,False
+PRD-00849,Kestrel Smart Watch,Electronics,25,31,5616.98,6834.31,6,0.24,0.2167,False
+PRD-00495,Marlow Air Fryer Plus,Home & Kitchen,29,36,794.37,971.94,7,0.2414,0.2235,False
+PRD-00463,Tessera Canvas Backpack Mini,Fashion,49,61,2702.2,3321.65,12,0.2449,0.2292,False
+PRD-00117,Solstice Power Bank Essential,Electronics,65,81,7229.46,8848.85,16,0.2462,0.224,False
+PRD-00003,Palladium Knife Set,Home & Kitchen,112,140,8898.75,11255.47,28,0.25,0.2648,False
+PRD-00229,Silverleaf Fitness Tracker Premium,Electronics,20,25,4226.49,5412.27,5,0.25,0.2806,False
+PRD-00344,Marlow Canvas Backpack,Fashion,32,40,759.88,1021.6,8,0.25,0.3444,False
+PRD-00520,Verity Trekking Poles,Sports & Outdoors,24,30,1182.32,1497.12,6,0.25,0.2663,False
+PRD-00540,Aurelia Dinnerware Set Plus,Home & Kitchen,16,20,423.74,506.52,4,0.25,0.1954,False
+PRD-00760,Brickford Vitamin C Serum,Beauty & Personal Care,48,60,1261.06,1627.16,12,0.25,0.2903,False
+PRD-00959,Orbit Lab Knit Sweater Plus,Fashion,24,30,722.78,944.97,6,0.25,0.3074,False
+PRD-00983,Silverleaf Swim Goggles,Sports & Outdoors,24,30,1199.37,1491.18,6,0.25,0.2433,False
+PRD-01058,Lumen & Co Craft Kit Classic,Toys & Games,20,25,570.61,697.3,5,0.25,0.222,False
+PRD-01143,Nordkap Electric Toothbrush,Beauty & Personal Care,64,80,1812.2,2169.45,16,0.25,0.1971,False
+PRD-00227,Tessera Sunscreen SPF50 Premium,Beauty & Personal Care,39,49,761.86,1013.79,10,0.2564,0.3307,False
+PRD-01097,Northwind Supply Honey Essential,Grocery,39,49,624.99,801.61,10,0.2564,0.2826,False
+PRD-00287,Blue Fjord Wool Scarf Classic,Fashion,31,39,1143.95,1407.61,8,0.2581,0.2305,False
+PRD-00789,Silverleaf Moisturiser Classic,Beauty & Personal Care,31,39,477.13,635.25,8,0.2581,0.3314,False
+PRD-00433,Brickford Perfume Essential,Beauty & Personal Care,15,19,332.3,421.69,4,0.2667,0.269,False
+PRD-00950,Alder & Ash Ground Coffee,Grocery,15,19,243.46,314.63,4,0.2667,0.2923,False
+PRD-00217,Blue Fjord Chino Trousers Classic,Fashion,48,61,1466.74,1857.72,13,0.2708,0.2666,False
+PRD-00338,Verity Notebook Set Classic,Books & Media,11,14,119.01,155.98,3,0.2727,0.3106,False
+PRD-01172,Verity Dinnerware Set Mini,Home & Kitchen,29,37,4520.45,6153.43,8,0.2759,0.3612,False
+PRD-00321,Mirin Air Fryer,Home & Kitchen,18,23,477.4,654.7,5,0.2778,0.3714,False
+PRD-00863,Tessera Cycling Helmet Compact,Sports & Outdoors,36,46,840.8,1092.93,10,0.2778,0.2999,False
+PRD-01167,Alder & Ash Smart Watch,Electronics,18,23,1588.0,2051.97,5,0.2778,0.2922,False
+PRD-01169,Fable & Fern Vacuum Flask,Home & Kitchen,36,46,3298.14,4356.21,10,0.2778,0.3208,False
+PRD-00264,Kestrel Yoga Mat Plus,Sports & Outdoors,115,147,7942.49,10127.59,32,0.2783,0.2751,False
+PRD-00232,Aurelia Sneakers Pro,Fashion,25,32,920.24,1218.41,7,0.28,0.324,False
+PRD-00188,Cassia Robot Vacuum,Home & Kitchen,21,27,1971.95,2583.28,6,0.2857,0.31,False
+PRD-00214,Blue Fjord Food Storage Set,Home & Kitchen,35,45,2805.02,3642.37,10,0.2857,0.2985,False
+PRD-00351,Nordkap Vitamin C Serum,Beauty & Personal Care,14,18,189.89,255.53,4,0.2857,0.3457,False
+PRD-00530,Brickford Vacuum Flask Essential,Home & Kitchen,14,18,708.39,938.56,4,0.2857,0.3249,False
+PRD-00132,Verity Vacuum Flask,Home & Kitchen,38,49,1678.09,2179.92,11,0.2895,0.299,False
+PRD-00687,Kestrel Cycling Helmet Compact,Sports & Outdoors,62,80,2723.36,3525.33,18,0.2903,0.2945,False
+PRD-00085,Silverleaf Chino Trousers Mini,Fashion,24,31,1335.5,1720.77,7,0.2917,0.2885,False
+PRD-01141,Alder & Ash Vacuum Flask Studio,Home & Kitchen,27,35,1662.56,2294.26,8,0.2963,0.38,False
+PRD-00250,Blue Fjord Puzzle Book,Books & Media,37,48,733.09,942.02,11,0.2973,0.285,False
+PRD-00509,Fable & Fern Notebook Set Essential,Books & Media,20,26,156.02,201.01,6,0.3,0.2884,False
+PRD-01140,Orbit Lab Trekking Poles,Sports & Outdoors,20,26,1349.74,1799.63,6,0.3,0.3333,False
+PRD-00437,Nomad Kits Lip Balm Set Essential,Beauty & Personal Care,23,30,850.17,1153.51,7,0.3043,0.3568,False
+PRD-00873,Wildacre Cotton T-Shirt,Fashion,23,30,825.49,1096.49,7,0.3043,0.3283,False
+PRD-00262,Tessera Vacuum Flask Studio,Home & Kitchen,59,77,1817.28,2405.48,18,0.3051,0.3237,False
+PRD-00246,Fable & Fern Wool Scarf,Fashion,39,51,2408.92,3328.51,12,0.3077,0.3817,False
+PRD-00630,Silverleaf Wireless Earbuds Pro,Electronics,13,17,1906.46,2550.65,4,0.3077,0.3379,False
+PRD-01100,Kestrel Moisturiser,Beauty & Personal Care,68,89,1428.37,1888.2,21,0.3088,0.3219,False
+PRD-00534,Alder & Ash Honey,Grocery,16,21,494.91,625.02,5,0.3125,0.2629,False
+PRD-01127,Aurelia Insulated Bottle Compact,Sports & Outdoors,32,42,2872.35,3745.77,10,0.3125,0.3041,False
+PRD-00178,Pinewood Face Mask Set Premium,Beauty & Personal Care,35,46,761.98,1022.58,11,0.3143,0.342,False
+PRD-00121,Wildacre Trekking Poles Studio,Sports & Outdoors,19,25,2492.59,3236.51,6,0.3158,0.2985,False
+PRD-00235,Nordkap Puzzle 1000 Pieces,Toys & Games,19,25,548.25,736.51,6,0.3158,0.3434,False
+PRD-00341,Nomad Kits Toaster Mini,Home & Kitchen,22,29,1399.77,1826.6,7,0.3182,0.3049,False
+PRD-00812,Alder & Ash Knife Set Compact,Home & Kitchen,22,29,699.71,904.54,7,0.3182,0.2927,False
+PRD-00822,Palladium Food Storage Set,Home & Kitchen,22,29,1316.7,1692.25,7,0.3182,0.2852,False
+PRD-00035,Wildacre Card Game Compact,Toys & Games,25,33,604.48,795.63,8,0.32,0.3162,False
+PRD-00413,Alder & Ash Sunscreen SPF50,Beauty & Personal Care,25,33,482.4,626.63,8,0.32,0.299,False
+PRD-00603,Nomad Kits Blender,Home & Kitchen,25,33,1103.74,1484.11,8,0.32,0.3446,False
+PRD-00159,Mirin Travel Guide,Books & Media,28,37,327.75,431.94,9,0.3214,0.3179,False
+PRD-00480,Kestrel Robot Vacuum,Home & Kitchen,31,41,1527.14,2052.37,10,0.3226,0.3439,False
+PRD-00766,Lumen & Co Air Fryer Compact,Home & Kitchen,37,49,711.81,932.73,12,0.3243,0.3104,False
+PRD-00089,Hearthstone Goods Leather Belt Compact,Fashion,150,199,9708.92,12651.82,49,0.3267,0.3031,False
+PRD-00086,Lumen & Co Bluetooth Speaker,Electronics,39,52,4103.06,5566.2,13,0.3333,0.3566,False
+PRD-00251,Hearthstone Goods Honey,Grocery,12,16,129.29,182.76,4,0.3333,0.4136,False
+PRD-00369,Mirin Chino Trousers Compact,Fashion,27,36,789.37,1117.34,9,0.3333,0.4155,False
+PRD-00407,Nomad Kits Noise-Cancelling Headphones,Electronics,12,16,1142.34,1643.16,4,0.3333,0.4384,False
+PRD-00580,Nomad Kits Colouring Book,Books & Media,39,52,700.64,923.11,13,0.3333,0.3175,False
+PRD-00608,Kestrel Perfume,Beauty & Personal Care,24,32,449.48,623.79,8,0.3333,0.3878,False
+PRD-01008,Hearthstone Goods Puzzle Book Studio,Books & Media,12,16,168.45,232.51,4,0.3333,0.3803,False
+PRD-01158,Kestrel Robot Vacuum Essential,Home & Kitchen,12,16,216.21,268.98,4,0.3333,0.2441,False
+PRD-00155,Pinewood Espresso Machine,Home & Kitchen,44,59,1138.38,1506.21,15,0.3409,0.3231,False
+PRD-00549,Brickford Dumbbell Set Studio,Sports & Outdoors,38,51,1487.42,2041.13,13,0.3421,0.3723,False
+PRD-00910,Orbit Lab Makeup Brush Set Plus,Beauty & Personal Care,52,70,1785.03,2347.8,18,0.3462,0.3153,False
+PRD-01104,Nomad Kits Wool Scarf,Fashion,26,35,1285.29,1725.24,9,0.3462,0.3423,False
+PRD-01086,Silverleaf Webcam,Electronics,23,31,2473.74,3439.62,8,0.3478,0.3905,False
+PRD-01050,Kestrel Cotton T-Shirt Essential,Fashion,80,108,3612.25,4831.44,28,0.35,0.3375,False
+PRD-00147,Blue Fjord Running Shoes,Sports & Outdoors,48,65,5560.95,7303.33,17,0.3542,0.3133,False
+PRD-00339,Aurelia Tablet Stand Mini,Electronics,14,19,3269.49,4260.28,5,0.3571,0.303,False
+PRD-00711,Orbit Lab Honey Premium,Grocery,14,19,127.48,176.85,5,0.3571,0.3873,False
+PRD-00797,Blue Fjord Blender Studio,Home & Kitchen,28,38,1520.08,2069.66,10,0.3571,0.3615,False
+PRD-00191,Blue Fjord Protein Bars,Grocery,11,15,140.94,201.84,4,0.3636,0.4321,False
+PRD-00649,Alder & Ash Cast Iron Skillet,Home & Kitchen,33,45,1444.77,2032.93,12,0.3636,0.4071,False
+PRD-01021,Lumen & Co Fitness Tracker,Electronics,11,15,1282.74,1772.11,4,0.3636,0.3815,False
+PRD-00731,Tessera Sneakers Compact,Fashion,38,52,1495.91,2058.25,14,0.3684,0.3759,False
+PRD-01106,Corvus Insulated Bottle,Sports & Outdoors,19,26,1550.82,2146.2,7,0.3684,0.3839,False
+PRD-00272,Nomad Kits Swim Goggles Pro,Sports & Outdoors,54,74,1900.54,2575.33,20,0.3704,0.3551,False
+PRD-00050,Brickford RC Car,Toys & Games,24,33,355.03,497.69,9,0.375,0.4018,False
+PRD-00140,Brickford Webcam,Electronics,24,33,2110.18,3008.43,9,0.375,0.4257,False
+PRD-00685,Aurelia Sunscreen SPF50 Mini,Beauty & Personal Care,16,22,829.14,1131.5,6,0.375,0.3647,False
+PRD-00840,Cassia Resistance Bands,Sports & Outdoors,24,33,1718.52,2446.89,9,0.375,0.4238,False
+PRD-00067,Alder & Ash Face Mask Set,Beauty & Personal Care,37,51,532.98,751.4,14,0.3784,0.4098,False
+PRD-00743,Blue Fjord Mechanical Keyboard Premium,Electronics,21,29,7647.6,10026.21,8,0.381,0.311,False
+PRD-01113,Orbit Lab Vitamin C Serum Studio,Beauty & Personal Care,21,29,455.72,670.53,8,0.381,0.4714,False
+PRD-00279,Hearthstone Goods Plush Toy Essential,Toys & Games,47,65,1743.86,2567.59,18,0.383,0.4724,False
+PRD-00555,Marlow Chino Trousers,Fashion,47,65,1382.85,1968.48,18,0.383,0.4235,False
+PRD-00523,Lumen & Co USB-C Hub Studio,Electronics,13,18,1823.14,2688.4,5,0.3846,0.4746,False
+PRD-00949,Aurelia Food Storage Set,Home & Kitchen,13,18,750.87,963.35,5,0.3846,0.283,False
+PRD-01114,Corvus Paperback Novel,Books & Media,13,18,330.27,482.98,5,0.3846,0.4624,False
+PRD-01147,Lumen & Co Lip Balm Set,Beauty & Personal Care,18,25,306.03,431.97,7,0.3889,0.4115,False
+PRD-00091,Northwind Supply Dinnerware Set,Home & Kitchen,23,32,1164.59,1562.65,9,0.3913,0.3418,False
+PRD-00202,Hearthstone Goods RC Car Mini,Toys & Games,15,21,315.15,429.56,6,0.4,0.363,False
+PRD-00505,Solstice Canvas Backpack Essential,Fashion,25,35,1272.76,1762.54,10,0.4,0.3848,False
+PRD-00698,Kestrel Noise-Cancelling Headphones,Electronics,15,21,4658.88,6769.16,6,0.4,0.453,False
+PRD-00803,Alder & Ash Fitness Tracker,Electronics,30,42,5248.29,7644.48,12,0.4,0.4566,False
+PRD-00830,Aurelia Plush Toy Pro,Toys & Games,10,14,376.75,539.66,4,0.4,0.4324,False
+PRD-01163,Corvus Webcam Studio,Electronics,37,52,6895.98,10095.8,15,0.4054,0.464,False
+PRD-00080,Wildacre Craft Kit Mini,Toys & Games,17,24,251.0,343.6,7,0.4118,0.3689,False
+PRD-00285,Palladium Leather Belt,Fashion,34,48,1995.06,2902.58,14,0.4118,0.4549,False
+PRD-00671,Cassia Foam Roller Mini,Sports & Outdoors,29,41,1462.54,2099.81,12,0.4138,0.4357,False
+PRD-00969,Cassia Denim Jacket Plus,Fashion,29,41,2030.36,2819.04,12,0.4138,0.3884,False
+PRD-00722,Palladium Moisturiser,Beauty & Personal Care,12,17,182.02,254.84,5,0.4167,0.4001,False
+PRD-01110,Tessera Rain Jacket,Fashion,24,34,615.44,846.9,10,0.4167,0.3761,False
+PRD-00839,Verdant Canvas Backpack,Fashion,31,44,1186.0,1757.36,13,0.4194,0.4818,False
+PRD-00763,Hearthstone Goods Knit Sweater Essential,Fashion,50,71,2455.53,3585.09,21,0.42,0.46,False
+PRD-00462,Nordkap Doll House Pro,Toys & Games,19,27,282.71,375.68,8,0.4211,0.3289,False
+PRD-01194,Mirin Foam Roller,Sports & Outdoors,19,27,2426.96,3378.06,8,0.4211,0.3919,False
+PRD-01029,Mirin Blender Studio,Home & Kitchen,52,74,4213.1,5897.95,22,0.4231,0.3999,False
+PRD-00569,Solstice Toaster Compact,Home & Kitchen,33,47,3871.28,5125.36,14,0.4242,0.3239,False
+PRD-01042,Cassia Tablet Stand Mini,Electronics,54,77,5380.9,7459.52,23,0.4259,0.3863,False
+PRD-00503,Hearthstone Goods Science Kit,Toys & Games,21,30,209.61,308.92,9,0.4286,0.4738,False
+PRD-00597,Nomad Kits Food Storage Set Premium,Home & Kitchen,21,30,1233.98,1836.66,9,0.4286,0.4884,False
+PRD-00865,Palladium Tennis Racket,Sports & Outdoors,21,30,1491.82,2218.93,9,0.4286,0.4874,False
+PRD-01161,Aurelia Blender Classic,Home & Kitchen,14,20,526.38,736.08,6,0.4286,0.3984,False
+PRD-00389,Marlow Swim Goggles Essential,Sports & Outdoors,16,23,926.18,1403.22,7,0.4375,0.5151,False
+PRD-00056,Tessera Fitness Tracker Essential,Electronics,27,39,3616.48,5424.79,12,0.4444,0.5,False
+PRD-00695,Hearthstone Goods Lip Balm Set,Beauty & Personal Care,18,26,424.52,622.72,8,0.4444,0.4669,False
+PRD-01087,Orbit Lab Knife Set,Home & Kitchen,109,158,7566.85,11055.49,49,0.4495,0.461,False
+PRD-00776,Northwind Supply RC Car Mini,Toys & Games,11,16,567.88,791.87,5,0.4545,0.3944,False
+PRD-00882,Nomad Kits Wireless Earbuds Compact,Electronics,33,48,9765.77,14223.28,15,0.4545,0.4564,False
+PRD-00215,Nordkap Smart Watch Plus,Electronics,13,19,2420.15,3657.48,6,0.4615,0.5113,False
+PRD-00242,Brickford Wireless Earbuds Premium,Electronics,13,19,2874.63,4211.7,6,0.4615,0.4651,False
+PRD-00864,Mirin Olive Oil Pro,Grocery,13,19,123.94,194.51,6,0.4615,0.5694,False
+PRD-00494,Verity Dinnerware Set,Home & Kitchen,15,22,561.43,860.15,7,0.4667,0.5321,False
+PRD-01076,Kestrel Denim Jacket Studio,Fashion,30,44,932.08,1411.1,14,0.4667,0.5139,False
+PRD-00426,Fable & Fern Makeup Brush Set Compact,Beauty & Personal Care,36,53,665.76,970.35,17,0.4722,0.4575,False
+PRD-01060,Palladium Toaster,Home & Kitchen,19,28,915.82,1355.99,9,0.4737,0.4806,False
+PRD-01123,Nordkap Moisturiser Classic,Beauty & Personal Care,19,28,375.62,509.39,9,0.4737,0.3561,False
+PRD-00762,Nomad Kits Toaster,Home & Kitchen,21,31,2105.71,2838.37,10,0.4762,0.3479,False
+PRD-00260,Blue Fjord Foam Roller Compact,Sports & Outdoors,29,43,607.7,933.16,14,0.4828,0.5356,False
+PRD-00469,Orbit Lab Food Storage Set,Home & Kitchen,53,79,1458.43,2204.17,26,0.4906,0.5113,False
+PRD-00018,Silverleaf Running Socks,Fashion,28,42,684.71,1019.0,14,0.5,0.4882,False
+PRD-00183,Blue Fjord Toaster,Home & Kitchen,32,48,3547.58,5103.91,16,0.5,0.4387,False
+PRD-00226,Brickford Vitamin C Serum Compact,Beauty & Personal Care,22,33,287.83,465.45,11,0.5,0.6171,False
+PRD-00257,Northwind Supply Rain Jacket,Fashion,36,54,4097.82,6273.21,18,0.5,0.5309,False
+PRD-00385,Cassia Olive Oil Compact,Grocery,16,24,129.9,212.45,8,0.5,0.6355,False
+PRD-00412,Verity Building Blocks Set Studio,Toys & Games,10,15,245.23,369.59,5,0.5,0.5071,False
+PRD-00667,Silverleaf Mechanical Keyboard Premium,Electronics,14,21,1520.26,2403.67,7,0.5,0.5811,False
+PRD-00808,Nomad Kits Cotton T-Shirt Plus,Fashion,20,30,1360.54,2087.97,10,0.5,0.5347,False
+PRD-01165,Fable & Fern Webcam Premium,Electronics,14,21,3381.96,5164.87,7,0.5,0.5272,False
+PRD-01176,Marlow Smart Watch Pro,Electronics,91,137,30678.53,46539.7,46,0.5055,0.517,False
+PRD-00027,Kestrel Wireless Earbuds,Electronics,65,98,18484.65,28786.22,33,0.5077,0.5573,False
+PRD-00610,Lumen & Co Biography,Books & Media,33,50,700.18,1044.0,17,0.5152,0.491,False
+PRD-00365,Palladium Paperback Novel Mini,Books & Media,27,41,511.35,760.74,14,0.5185,0.4877,False
+PRD-00899,Corvus Leather Belt,Fashion,27,41,2085.67,3214.46,14,0.5185,0.5412,False
+PRD-00263,Aurelia Sneakers,Fashion,38,58,829.83,1321.32,20,0.5263,0.5923,False
+PRD-00451,Orbit Lab Electric Toothbrush Premium,Beauty & Personal Care,19,29,440.17,731.91,10,0.5263,0.6628,False
+PRD-00909,Nordkap Denim Jacket Pro,Fashion,38,58,1380.61,2150.11,20,0.5263,0.5574,False
+PRD-00116,Blue Fjord Blender Mini,Home & Kitchen,15,23,1216.91,1916.84,8,0.5333,0.5752,False
+PRD-00310,Alder & Ash Herbal Tea Studio,Grocery,15,23,158.84,261.32,8,0.5333,0.6452,False
+PRD-00137,Hearthstone Goods Denim Jacket Pro,Fashion,28,43,883.05,1348.38,15,0.5357,0.527,False
+PRD-00141,Solstice Board Game Compact,Toys & Games,13,20,494.11,768.01,7,0.5385,0.5543,False
+PRD-00315,Northwind Supply Perfume Mini,Beauty & Personal Care,13,20,280.17,415.81,7,0.5385,0.4841,False
+PRD-00508,Silverleaf Body Lotion,Beauty & Personal Care,13,20,401.8,613.96,7,0.5385,0.528,False
+PRD-00773,Cassia Cotton T-Shirt,Fashion,52,80,2613.85,3904.57,28,0.5385,0.4938,False
+PRD-01027,Nordkap Resistance Bands,Sports & Outdoors,26,40,1420.92,2246.67,14,0.5385,0.5811,False
+PRD-01059,Pinewood Action Figure,Toys & Games,129,199,2193.11,3297.91,70,0.5426,0.5038,False
+PRD-00507,Pinewood Breakfast Cereals Compact,Grocery,11,17,220.2,343.67,6,0.5455,0.5607,False
+PRD-00733,Tessera Cast Iron Skillet Classic,Home & Kitchen,11,17,635.35,1028.38,6,0.5455,0.6186,False
+PRD-00948,Pinewood RC Car Studio,Toys & Games,11,17,509.27,768.65,6,0.5455,0.5093,False
+PRD-00128,Lumen & Co Card Game Compact,Toys & Games,20,31,421.19,649.19,11,0.55,0.5413,False
+PRD-00441,Mirin Plush Toy,Toys & Games,20,31,455.26,701.07,11,0.55,0.5399,False
+PRD-00485,Aurelia Yoga Mat Studio,Sports & Outdoors,29,45,1975.31,3015.12,16,0.5517,0.5264,False
+PRD-00498,Brickford Power Bank Plus,Electronics,27,42,2827.09,4447.31,15,0.5556,0.5731,False
+PRD-01034,Kestrel Running Socks,Fashion,25,39,656.5,1021.83,14,0.56,0.5565,False
+PRD-00741,Mirin Action Figure,Toys & Games,16,25,883.45,1329.15,9,0.5625,0.5045,False
+PRD-01091,Fable & Fern Smart Watch Mini,Electronics,16,25,3388.47,5151.15,9,0.5625,0.5202,False
+PRD-00546,Orbit Lab Canvas Backpack,Fashion,30,47,1325.9,2149.22,17,0.5667,0.621,False
+PRD-00538,Verity Leather Belt,Fashion,35,55,1100.08,1775.11,20,0.5714,0.6136,False
+PRD-00669,Aurelia Body Lotion Essential,Beauty & Personal Care,14,22,414.92,636.6,8,0.5714,0.5343,False
+PRD-00097,Northwind Supply Canvas Backpack,Fashion,24,38,502.35,815.97,14,0.5833,0.6243,False
+PRD-00403,Lumen & Co Wireless Earbuds Essential,Electronics,12,19,2259.93,3550.49,7,0.5833,0.5711,False
+PRD-00900,Silverleaf Protein Bars Essential,Grocery,12,19,112.67,173.52,7,0.5833,0.5401,False
+PRD-00870,Blue Fjord Knife Set,Home & Kitchen,29,46,4476.56,6927.37,17,0.5862,0.5475,False
+PRD-00476,Wildacre Air Fryer Mini,Home & Kitchen,46,73,1793.21,2995.55,27,0.587,0.6705,False
+PRD-00883,Pinewood Vitamin C Serum Studio,Beauty & Personal Care,17,27,572.41,928.53,10,0.5882,0.6221,False
+PRD-00439,Mirin Chino Trousers Pro,Fashion,27,43,1933.42,3052.77,16,0.5926,0.5789,False
+PRD-00656,Verdant Toaster,Home & Kitchen,32,51,4468.7,6946.55,19,0.5938,0.5545,False
+PRD-00682,Palladium Chino Trousers Compact,Fashion,20,32,1033.68,1694.51,12,0.6,0.6393,False
+PRD-00683,Fable & Fern Dark Chocolate Classic,Grocery,10,16,143.18,223.07,6,0.6,0.558,False
+PRD-00892,Mirin Dinnerware Set,Home & Kitchen,25,40,2107.87,3437.12,15,0.6,0.6306,False
+PRD-01001,Cassia Air Fryer Compact,Home & Kitchen,30,48,1863.97,3155.01,18,0.6,0.6926,False
+PRD-01102,Blue Fjord Language Course,Books & Media,40,64,507.1,818.44,24,0.6,0.614,False
+PRD-01120,Hearthstone Goods Tablet Stand Essential,Electronics,10,16,2022.65,3282.14,6,0.6,0.6227,False
+PRD-00911,Blue Fjord Vitamin C Serum Essential,Beauty & Personal Care,23,37,577.99,957.66,14,0.6087,0.6569,False
+PRD-00370,Pinewood Webcam Studio,Electronics,18,29,3929.55,6539.55,11,0.6111,0.6642,False
+PRD-00635,Nordkap Wireless Earbuds Premium,Electronics,18,29,4482.95,7468.42,11,0.6111,0.666,False
+PRD-01179,Verity Sunscreen SPF50,Beauty & Personal Care,31,50,982.3,1570.41,19,0.6129,0.5987,False
+PRD-00126,Lumen & Co Food Storage Set Pro,Home & Kitchen,26,42,2230.39,3606.36,16,0.6154,0.6169,False
+PRD-00004,Cassia Rain Jacket,Fashion,24,39,641.0,1057.55,15,0.625,0.6498,False
+PRD-00696,Corvus Toaster,Home & Kitchen,24,39,2630.95,4117.53,15,0.625,0.565,False
+PRD-00129,Aurelia Cotton T-Shirt,Fashion,25,41,912.3,1562.38,16,0.64,0.7126,False
+PRD-00268,Silverleaf Air Fryer,Home & Kitchen,14,23,337.39,565.02,9,0.6429,0.6747,False
+PRD-01124,Solstice Sneakers Classic,Fashion,28,46,962.07,1545.57,18,0.6429,0.6065,False
+PRD-00819,Silverleaf Ground Coffee Studio,Grocery,31,51,519.1,864.58,20,0.6452,0.6655,False
+PRD-00182,Hearthstone Goods Wireless Earbuds Compact,Electronics,17,28,4436.96,7248.02,11,0.6471,0.6336,False
+PRD-00104,Lumen & Co Cast Iron Skillet,Home & Kitchen,20,33,3178.14,5445.49,13,0.65,0.7134,False
+PRD-00539,Cassia Rain Jacket,Fashion,20,33,696.07,1156.17,13,0.65,0.661,False
+PRD-00087,Mirin Air Fryer,Home & Kitchen,26,43,1619.45,2893.63,17,0.6538,0.7868,False
+PRD-00247,Marlow Chino Trousers,Fashion,209,347,14167.3,24205.57,138,0.6603,0.7086,False
+PRD-00130,Pinewood Blender,Home & Kitchen,33,55,1315.26,2165.57,22,0.6667,0.6465,False
+PRD-00237,Solstice Robot Vacuum Plus,Home & Kitchen,30,50,1973.91,3264.15,20,0.6667,0.6536,False
+PRD-00512,Nordkap Smart Watch,Electronics,51,85,3553.92,5974.83,34,0.6667,0.6812,False
+PRD-01090,Corvus Colouring Book,Books & Media,12,20,157.52,302.71,8,0.6667,0.9217,False
+PRD-01093,Nomad Kits Dinnerware Set,Home & Kitchen,12,20,324.73,512.51,8,0.6667,0.5783,False
+PRD-01013,Fable & Fern Business Paperback Mini,Books & Media,19,32,576.02,1004.84,13,0.6842,0.7445,False
+PRD-00198,Palladium Action Figure,Toys & Games,16,27,443.06,741.22,11,0.6875,0.673,False
+PRD-00487,Nomad Kits Yoga Mat Plus,Sports & Outdoors,13,22,710.83,1185.31,9,0.6923,0.6675,False
+PRD-00591,Blue Fjord Leather Belt Premium,Fashion,26,44,684.16,1231.43,18,0.6923,0.7999,False
+PRD-00835,Verdant Dark Chocolate Mini,Grocery,13,22,117.54,210.8,9,0.6923,0.7934,False
+PRD-00893,Nomad Kits Business Paperback,Books & Media,13,22,235.33,393.72,9,0.6923,0.6731,False
+PRD-00918,Northwind Supply Air Fryer Mini,Home & Kitchen,13,22,1944.07,3066.86,9,0.6923,0.5775,False
+PRD-00429,Fable & Fern Cookbook Pro,Books & Media,10,17,247.62,445.86,7,0.7,0.8006,False
+PRD-00817,Wildacre Biography Pro,Books & Media,27,46,752.83,1268.23,19,0.7037,0.6846,False
+PRD-00252,Silverleaf Ground Coffee,Grocery,14,24,166.86,262.42,10,0.7143,0.5727,False
+PRD-00547,Mirin Wool Scarf Compact,Fashion,21,36,409.84,723.42,15,0.7143,0.7651,False
+PRD-00771,Silverleaf Action Figure Studio,Toys & Games,14,24,643.8,984.22,10,0.7143,0.5288,False
+PRD-00752,Lumen & Co Blender,Home & Kitchen,18,31,1421.25,2190.78,13,0.7222,0.5414,False
+PRD-00102,Mirin Swim Goggles,Sports & Outdoors,29,50,1030.31,1774.94,21,0.7241,0.7227,False
+PRD-00843,Mirin Bluetooth Speaker Premium,Electronics,11,19,3777.06,6685.28,8,0.7273,0.77,False
+PRD-01053,Pinewood Business Paperback Premium,Books & Media,15,26,215.4,354.32,11,0.7333,0.6449,False
+PRD-00945,Fable & Fern Wool Scarf,Fashion,19,33,432.84,784.01,14,0.7368,0.8113,False
+PRD-00071,Verdant Business Paperback Mini,Books & Media,12,21,186.0,320.22,9,0.75,0.7216,False
+PRD-00311,Palladium Herbal Tea,Grocery,32,56,191.82,338.77,24,0.75,0.7661,False
+PRD-00363,Nomad Kits Knit Sweater,Fashion,44,77,5053.7,8791.76,33,0.75,0.7397,False
+PRD-00424,Brickford Yoga Mat,Sports & Outdoors,25,44,1345.71,2401.65,19,0.76,0.7847,False
+PRD-00836,Solstice Air Fryer Compact,Home & Kitchen,35,62,1991.67,3687.61,27,0.7714,0.8515,False
+PRD-00410,Fable & Fern Wool Scarf,Fashion,22,39,987.36,1730.46,17,0.7727,0.7526,False
+PRD-00634,Fable & Fern Sneakers Pro,Fashion,33,59,911.05,1616.06,26,0.7879,0.7738,False
+PRD-00184,Cassia Moisturiser Classic,Beauty & Personal Care,15,27,226.0,449.31,12,0.8,0.9881,False
+PRD-00832,Solstice Chino Trousers,Fashion,15,27,420.93,802.12,12,0.8,0.9056,False
+PRD-00598,Fable & Fern Card Game Pro,Toys & Games,11,20,451.67,910.87,9,0.8182,1.0167,False
+PRD-00283,Verdant Dinnerware Set,Home & Kitchen,18,33,1016.96,1785.43,15,0.8333,0.7557,False
+PRD-00428,Blue Fjord Rain Jacket,Fashion,19,35,1149.33,2112.3,16,0.8421,0.8379,False
+PRD-00447,Northwind Supply Vitamin C Serum Classic,Beauty & Personal Care,21,39,703.99,1282.09,18,0.8571,0.8212,False
+PRD-00422,Brickford Power Bank,Electronics,15,28,2875.25,5263.19,13,0.8667,0.8305,False
+PRD-00925,Alder & Ash Mechanical Keyboard,Electronics,15,28,3324.39,6849.53,13,0.8667,1.0604,False
+PRD-01154,Silverleaf Trekking Poles Mini,Sports & Outdoors,11,21,407.02,735.99,10,0.9091,0.8082,False
+PRD-00046,Fable & Fern Moisturiser Premium,Beauty & Personal Care,12,23,359.07,666.43,11,0.9167,0.856,False
+PRD-00902,Mirin Moisturiser,Beauty & Personal Care,13,25,351.43,696.96,12,0.9231,0.9832,False
+PRD-00642,Lumen & Co Action Figure Studio,Toys & Games,17,33,736.38,1498.91,16,0.9412,1.0355,False
+PRD-00890,Tessera Canvas Backpack Mini,Fashion,17,33,1013.72,1907.42,16,0.9412,0.8816,False
+PRD-00629,Pinewood Chino Trousers Essential,Fashion,18,35,909.29,1686.83,17,0.9444,0.8551,False
+PRD-00550,Aurelia Espresso Machine Classic,Home & Kitchen,25,49,1961.54,3880.56,24,0.96,0.9783,False
+PRD-00373,Solstice USB-C Hub Compact,Electronics,11,22,1009.99,1956.9,11,1.0,0.9375,False
+PRD-00592,Aurelia Robot Vacuum,Home & Kitchen,17,34,1512.73,3185.6,17,1.0,1.1059,False
+PRD-00937,Corvus Food Storage Set Compact,Home & Kitchen,10,20,817.92,1665.72,10,1.0,1.0365,False
+PRD-00954,Silverleaf Denim Jacket Studio,Fashion,20,40,1362.54,2774.29,20,1.0,1.0361,False
+PRD-01064,Hearthstone Goods Foam Roller Essential,Sports & Outdoors,18,36,931.89,1934.92,18,1.0,1.0763,False
+PRD-01199,Solstice Nut Mix,Grocery,13,26,144.13,271.59,13,1.0,0.8843,False
+PRD-00684,Aurelia Doll House,Toys & Games,16,33,509.62,1095.07,17,1.0625,1.1488,False
+PRD-00024,Verity Fitness Tracker Studio,Electronics,12,25,1329.05,2897.8,13,1.0833,1.1804,False
+PRD-00869,Cassia Rain Jacket,Fashion,12,25,459.27,1035.4,13,1.0833,1.2544,False
+PRD-00152,Fable & Fern Knit Sweater,Fashion,38,80,561.47,1214.4,42,1.1053,1.1629,False
+PRD-00054,Silverleaf Cycling Helmet,Sports & Outdoors,17,36,4116.05,8301.0,19,1.1176,1.0167,False
+PRD-00153,Corvus Colouring Book Mini,Books & Media,16,34,337.27,727.96,18,1.125,1.1584,False
+PRD-00186,Aurelia Insulated Bottle,Sports & Outdoors,13,28,393.2,784.56,15,1.1538,0.9953,False
+PRD-00138,Alder & Ash Air Fryer,Home & Kitchen,19,41,901.59,1993.65,22,1.1579,1.2113,False
+PRD-01082,Lumen & Co Vacuum Flask Mini,Home & Kitchen,19,41,1605.58,3606.74,22,1.1579,1.2464,False
+PRD-01128,Wildacre Mechanical Keyboard Premium,Electronics,17,37,2637.5,5468.76,20,1.1765,1.0735,False
+PRD-00933,Solstice Children's Picture Book Essential,Books & Media,11,24,162.36,373.58,13,1.1818,1.3009,False
+PRD-00142,Solstice Nut Mix,Grocery,10,22,210.57,464.01,12,1.2,1.2036,False
+PRD-00454,Verity Cast Iron Skillet Pro,Home & Kitchen,25,56,777.53,1733.62,31,1.24,1.2297,False
+PRD-00537,Lumen & Co Hair Dryer,Beauty & Personal Care,12,27,371.38,864.28,15,1.25,1.3272,False
+PRD-00292,Nordkap Travel Guide,Books & Media,11,25,317.22,709.24,14,1.2727,1.2358,False
+PRD-00388,Blue Fjord Body Lotion,Beauty & Personal Care,18,41,314.04,777.68,23,1.2778,1.4764,False
+PRD-00375,Verity Yoga Mat Mini,Sports & Outdoors,13,30,1047.0,2494.96,17,1.3077,1.383,False
+PRD-00064,Corvus Vitamin C Serum Plus,Beauty & Personal Care,22,51,298.73,712.06,29,1.3182,1.3836,False
+PRD-00501,Nomad Kits Hair Dryer,Beauty & Personal Care,16,38,300.52,720.13,22,1.375,1.3963,False
+PRD-00688,Aurelia Espresso Machine Studio,Home & Kitchen,12,29,757.83,1830.22,17,1.4167,1.4151,False
+PRD-01084,Marlow Tennis Racket Classic,Sports & Outdoors,15,37,1497.98,3405.72,22,1.4667,1.2735,False
+PRD-00946,Corvus Smart Watch,Electronics,11,28,1244.72,3208.07,17,1.5455,1.5773,False
+PRD-00248,Marlow Webcam,Electronics,14,36,539.63,1434.33,22,1.5714,1.658,False
+PRD-00788,Brickford Wool Scarf Essential,Fashion,12,33,917.48,2647.76,21,1.75,1.8859,False
+PRD-00075,Blue Fjord Moisturiser,Beauty & Personal Care,10,28,150.12,429.05,18,1.8,1.858,False
+PRD-00189,Nordkap Cast Iron Skillet Premium,Home & Kitchen,10,28,527.99,1559.41,18,1.8,1.9535,False
+PRD-01048,Pinewood Olive Oil,Grocery,12,35,147.62,407.77,23,1.9167,1.7623,False
+PRD-00423,Fable & Fern Board Game Premium,Toys & Games,10,33,295.47,964.25,23,2.3,2.2634,False

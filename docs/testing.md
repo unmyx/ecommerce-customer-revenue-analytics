@@ -85,10 +85,18 @@ Reconciliation checks cover:
   mart, lines → product and category marts, daily and monthly marts;
 * counts: recognised orders, recognised units, attributed orders.
 
-## Planned test coverage (later milestones)
+## Current totals
 
-* Dashboard assets: the Power BI model must expose the same KPI definitions as
-  `analytics.kpis` and the executed notebook.
-* Executive summary: every headline number in the README must be reproducible from the
-  published tables.
+179 unit tests (no database required) plus 36 database-backed integration tests, and one
+full-scale generation test marked `slow`. `python -m compileall -q src scripts` and
+`python -m ruff check src tests scripts` are part of the final verification.
+
+## Known test gaps (documented and accepted)
+
+* **The Power BI model itself is not automated.** The datasets, measures, theme and page
+  specification are generated and tested; assembling the `.pbix` is a manual step documented in
+  `powerbi/README.md`.
+* **README headline figures are not asserted against the data.** They are copied from the
+  generated outputs during the final review; the numbers they quote are covered by the export and
+  reconciliation tests, but the prose itself is not machine-checked.
 

@@ -28,6 +28,8 @@ from novacart.analytics.common import (
 
 FIGURE_SIZE = (11.0, 5.5)
 FIGURE_DPI = 150
+PRIMARY_COLOR = "#1f4e79"
+INK_COLOR = "#1f2933"
 
 FIGURE_FILENAMES: dict[str, str] = {
     "monthly_revenue": "monthly_revenue_trend.png",
@@ -79,7 +81,7 @@ def apply_business_style() -> None:
 apply_business_style()
 
 
-def _currency_formatter(value: float, _position: float | None = None) -> str:
+def currency_formatter(value: float, _position: float | None = None) -> str:
     if abs(value) >= 1_000_000:
         return f"€{value / 1_000_000:.1f}m"
     if abs(value) >= 1_000:
@@ -87,7 +89,7 @@ def _currency_formatter(value: float, _position: float | None = None) -> str:
     return f"€{value:.0f}"
 
 
-def _count_formatter(value: float, _position: float | None = None) -> str:
+def count_formatter(value: float, _position: float | None = None) -> str:
     return f"{value:,.0f}"
 
 
@@ -110,6 +112,64 @@ def save_figure(figure: Figure, filename: str, *, output_dir: Path | None = None
     return path
 
 
+def bar_panel(
+    axis,
+    labels: list[str],
+    values: np.ndarray,
+    title: str,
+    *,
+    horizontal: bool = True,
+    formatter=currency_formatter,
+    colors=None,
+    annotate: bool = True,
+    label_size: float = 8.5,
+) -> None:
+    """Draw one bar panel with the project's formatting (shared by every page/report)."""
+    positions = np.arange(len(labels))
+    if horizontal:
+        axis.barh(positions, values, color=colors or PRIMARY_COLOR, height=0.72)
+        axis.set_yticks(positions)
+        axis.set_yticklabels(labels, fontsize=label_size)
+        axis.grid(axis="y", visible=False)
+        axis.xaxis.set_major_formatter(FuncFormatter(formatter))
+        if annotate:
+            for position, value in zip(positions, values):
+                axis.text(
+                    value,
+                    position,
+                    f"  {formatter(value)}",
+                    va="center",
+                    fontsize=label_size - 1,
+                    color=INK_COLOR,
+                )
+    else:
+        axis.bar(positions, values, color=colors or PRIMARY_COLOR, width=0.7)
+        axis.set_xticks(positions)
+        axis.set_xticklabels(labels, fontsize=label_size - 0.5, rotation=45, ha="right")
+        axis.yaxis.set_major_formatter(FuncFormatter(formatter))
+    axis.set_title(title, loc="left")
+
+
+def line_panel(
+    axis,
+    labels: list[str],
+    values: np.ndarray,
+    title: str,
+    *,
+    formatter=currency_formatter,
+    max_labels: int = 12,
+) -> None:
+    """Draw one line panel with the project's formatting."""
+    axis.plot(
+        range(len(labels)), values, marker="o", markersize=3.5, color=PRIMARY_COLOR, linewidth=2
+    )
+    step = max(1, len(labels) // max_labels)
+    axis.set_xticks(list(range(0, len(labels), step)))
+    axis.set_xticklabels(labels[::step], fontsize=8, rotation=45, ha="right")
+    axis.yaxis.set_major_formatter(FuncFormatter(formatter))
+    axis.set_title(title, loc="left")
+
+
 def _month_labels(axis, labels: list[str], step: int = 2) -> None:
     positions = list(range(len(labels)))
     axis.set_xticks(positions[::step])
@@ -129,7 +189,7 @@ def plot_monthly_revenue_trend(monthly: pd.DataFrame) -> Figure:
     axis.set_title("Monthly net revenue")
     axis.set_xlabel("Month")
     axis.set_ylabel("Net revenue (EUR)")
-    axis.yaxis.set_major_formatter(FuncFormatter(_currency_formatter))
+    axis.yaxis.set_major_formatter(FuncFormatter(currency_formatter))
     _month_labels(axis, list(frame["year_month"]))
     _add_definition(figure)
     figure.tight_layout(rect=(0, 0.03, 1, 1))
@@ -147,7 +207,7 @@ def plot_monthly_orders_trend(monthly: pd.DataFrame) -> Figure:
     axis.set_title("Orders per month (completed orders)")
     axis.set_xlabel("Month")
     axis.set_ylabel("Orders")
-    axis.yaxis.set_major_formatter(FuncFormatter(_count_formatter))
+    axis.yaxis.set_major_formatter(FuncFormatter(count_formatter))
     _month_labels(axis, list(frame["year_month"]))
     _add_definition(figure)
     figure.tight_layout(rect=(0, 0.03, 1, 1))
@@ -172,7 +232,7 @@ def plot_monthly_aov_trend(monthly: pd.DataFrame) -> Figure:
     axis.set_title("Average order value per month")
     axis.set_xlabel("Month")
     axis.set_ylabel("Average order value (EUR)")
-    axis.yaxis.set_major_formatter(FuncFormatter(_currency_formatter))
+    axis.yaxis.set_major_formatter(FuncFormatter(currency_formatter))
     _month_labels(axis, list(frame["year_month"]))
     _add_definition(figure)
     figure.tight_layout(rect=(0, 0.03, 1, 1))
@@ -190,7 +250,7 @@ def plot_revenue_by_category(categories: pd.DataFrame) -> Figure:
     axis.set_title("Revenue by category (24 months)")
     axis.set_xlabel("Net revenue (EUR)")
     axis.set_ylabel("")
-    axis.xaxis.set_major_formatter(FuncFormatter(_currency_formatter))
+    axis.xaxis.set_major_formatter(FuncFormatter(currency_formatter))
     axis.grid(axis="y", visible=False)
     total = float(frame["revenue"].sum())
     for position, value in enumerate(frame["revenue"]):
@@ -198,7 +258,7 @@ def plot_revenue_by_category(categories: pd.DataFrame) -> Figure:
         axis.text(
             value,
             position,
-            f"  {_currency_formatter(value)} ({share:.1%})",
+            f"  {currency_formatter(value)} ({share:.1%})",
             va="center",
             fontsize=9,
         )
@@ -225,10 +285,10 @@ def plot_top_products_by_revenue(products: pd.DataFrame, n: int = 10) -> Figure:
     axis.set_title(f"Top {n} products by revenue")
     axis.set_xlabel("Net revenue (EUR)")
     axis.set_ylabel("")
-    axis.xaxis.set_major_formatter(FuncFormatter(_currency_formatter))
+    axis.xaxis.set_major_formatter(FuncFormatter(currency_formatter))
     axis.grid(axis="y", visible=False)
     for position, value in enumerate(frame["revenue"]):
-        axis.text(value, position, f"  {_currency_formatter(value)}", va="center", fontsize=9)
+        axis.text(value, position, f"  {currency_formatter(value)}", va="center", fontsize=9)
     _add_definition(figure)
     figure.tight_layout(rect=(0, 0.03, 1, 1))
     return figure
@@ -258,8 +318,8 @@ def plot_customer_revenue_distribution(customers: pd.DataFrame) -> Figure:
     left.set_title("Customer revenue distribution")
     left.set_xlabel("Revenue per purchasing customer (EUR, clipped at 99th percentile)")
     left.set_ylabel("Customers")
-    left.xaxis.set_major_formatter(FuncFormatter(_currency_formatter))
-    left.yaxis.set_major_formatter(FuncFormatter(_count_formatter))
+    left.xaxis.set_major_formatter(FuncFormatter(currency_formatter))
+    left.yaxis.set_major_formatter(FuncFormatter(count_formatter))
 
     positions = list(range(len(deciles)))
     right.bar(positions, deciles["revenue_share_pct"], color="#c55a11")
@@ -286,10 +346,10 @@ def plot_revenue_by_country(countries: pd.DataFrame, n: int = 12) -> Figure:
     axis.set_title(f"Revenue by country (top {min(n, len(frame))} markets)")
     axis.set_xlabel("Net revenue (EUR)")
     axis.set_ylabel("Country")
-    axis.xaxis.set_major_formatter(FuncFormatter(_currency_formatter))
+    axis.xaxis.set_major_formatter(FuncFormatter(currency_formatter))
     axis.grid(axis="y", visible=False)
     for position, value in enumerate(frame["revenue"]):
-        axis.text(value, position, f"  {_currency_formatter(value)}", va="center", fontsize=9)
+        axis.text(value, position, f"  {currency_formatter(value)}", va="center", fontsize=9)
     _add_definition(figure)
     figure.tight_layout(rect=(0, 0.03, 1, 1))
     return figure
@@ -338,7 +398,7 @@ def plot_rfm_segment_customers(segments: pd.DataFrame) -> Figure:
     axis.set_title("Customers by RFM segment")
     axis.set_xlabel("Customers")
     axis.set_ylabel("")
-    axis.xaxis.set_major_formatter(FuncFormatter(_count_formatter))
+    axis.xaxis.set_major_formatter(FuncFormatter(count_formatter))
     axis.grid(axis="y", visible=False)
     for position, row in enumerate(frame.itertuples()):
         axis.text(
@@ -372,13 +432,13 @@ def plot_rfm_segment_revenue(segments: pd.DataFrame) -> Figure:
     axis.set_title("Net revenue by RFM segment")
     axis.set_xlabel("Net revenue (EUR)")
     axis.set_ylabel("")
-    axis.xaxis.set_major_formatter(FuncFormatter(_currency_formatter))
+    axis.xaxis.set_major_formatter(FuncFormatter(currency_formatter))
     axis.grid(axis="y", visible=False)
     for position, row in enumerate(frame.itertuples()):
         axis.text(
             row.revenue,
             position,
-            f"  {_currency_formatter(row.revenue)} ({row.revenue_share_pct:.1f}%)",
+            f"  {currency_formatter(row.revenue)} ({row.revenue_share_pct:.1f}%)",
             va="center",
             fontsize=9,
         )
@@ -435,7 +495,11 @@ def plot_cohort_retention_heatmap(retention_matrix: pd.DataFrame) -> Figure:
     axis.set_xticks(range(retention_matrix.shape[1]))
     axis.set_xticklabels([str(column) for column in retention_matrix.columns])
     axis.set_yticks(range(retention_matrix.shape[0]))
-    axis.set_yticklabels([timestamp.strftime("%Y-%m") for timestamp in retention_matrix.index])
+    # The matrix arrives either from the analytics layer (datetime index) or from a
+    # CSV round-trip (text); normalise before formatting.
+    axis.set_yticklabels(
+        list(pd.to_datetime(list(retention_matrix.index)).strftime("%Y-%m"))
+    )
     axis.set_xlabel("Months since first purchase")
     axis.set_ylabel("Cohort (first purchase month)")
     axis.set_title("Monthly cohort retention")
@@ -480,7 +544,7 @@ def plot_cohort_sizes(sizes: pd.DataFrame) -> Figure:
     axis.set_title("Customers per acquisition cohort")
     axis.set_xlabel("Cohort (first purchase month)")
     axis.set_ylabel("Customers")
-    axis.yaxis.set_major_formatter(FuncFormatter(_count_formatter))
+    axis.yaxis.set_major_formatter(FuncFormatter(count_formatter))
     _step = 2 if len(labels) > 12 else 1
     axis.set_xticks(positions[::_step])
     axis.set_xticklabels(labels[::_step], rotation=45, ha="right")
@@ -518,7 +582,7 @@ def plot_cohort_revenue_curve(revenue: pd.DataFrame) -> Figure:
     axis.set_title("Average revenue per cohort customer by month offset")
     axis.set_xlabel("Months since first purchase")
     axis.set_ylabel("Revenue per cohort customer (EUR)")
-    axis.yaxis.set_major_formatter(FuncFormatter(_currency_formatter))
+    axis.yaxis.set_major_formatter(FuncFormatter(currency_formatter))
     _add_definition(
         figure,
         "Revenue in an offset month divided by the original cohort size, averaged across cohorts.",
@@ -606,7 +670,7 @@ def plot_campaign_confidence_intervals(statistics: pd.DataFrame) -> Figure:
     axis.set_xlabel("Difference in revenue per assigned customer (EUR)")
     axis.set_ylabel("Campaign")
     axis.set_title("Campaign lift with 95% confidence intervals")
-    axis.xaxis.set_major_formatter(FuncFormatter(_currency_formatter))
+    axis.xaxis.set_major_formatter(FuncFormatter(currency_formatter))
     axis.grid(axis="y", visible=False)
     _add_definition(
         figure,

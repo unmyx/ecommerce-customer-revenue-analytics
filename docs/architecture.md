@@ -56,7 +56,7 @@ Two rules shape every decision in this repository:
 | `novacart.statistics` *(later)* | Hypothesis tests, effect sizes, multiple-comparison correction |
 | `novacart.visualization` *(later)* | Dashboard-oriented visual polish on top of `analytics.plots` |
 
-Planned milestones and their entry points are listed in the README.
+The end-to-end workflow and its entry points are listed in the README.
 
 ## Key design decisions
 

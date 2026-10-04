@@ -22,6 +22,16 @@ import pandas as pd
 from matplotlib.figure import Figure
 
 from novacart.analytics.common import AnalyticsError, require_columns
+from novacart.analytics.plots import (
+    bar_panel as _bar_panel,
+)
+from novacart.analytics.plots import (
+    count_formatter,
+    currency_formatter,
+)
+from novacart.analytics.plots import (
+    line_panel as _line_panel,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -60,19 +70,6 @@ def _style() -> None:
 _style()
 
 
-def _eur(value: float, _position: float | None = None) -> str:
-    magnitude = abs(value)
-    if magnitude >= 1_000_000:
-        return f"€{value / 1_000_000:.1f}m"
-    if magnitude >= 1_000:
-        return f"€{value / 1_000:.0f}k"
-    return f"€{value:,.0f}"
-
-
-def _number(value: float, _position: float | None = None) -> str:
-    return f"{value:,.0f}"
-
-
 def _page(title: str, subtitle: str) -> Figure:
     figure = plt.figure(figsize=PAGE_SIZE, dpi=PAGE_DPI)
     figure.suptitle(title, x=0.012, ha="left", fontsize=16, fontweight="bold", color=INK)
@@ -105,45 +102,6 @@ def _kpi_cards(figure: Figure, items: list[tuple[str, str]], *, top: float = 0.8
         axis.set_facecolor("#f7f9fc")
         axis.text(0.5, 0.66, label.upper(), ha="center", va="center", fontsize=8, color=MUTED)
         axis.text(0.5, 0.28, value, ha="center", va="center", fontsize=14, fontweight="bold", color=ACCENT)
-
-
-def _bar_panel(
-    axis,
-    labels: list[str],
-    values: np.ndarray,
-    title: str,
-    *,
-    horizontal: bool = True,
-    formatter=_eur,
-    colors=None,
-    annotate: bool = True,
-) -> None:
-    if horizontal:
-        positions = np.arange(len(labels))
-        axis.barh(positions, values, color=colors or ACCENT, height=0.72)
-        axis.set_yticks(positions)
-        axis.set_yticklabels(labels, fontsize=8.5)
-        axis.grid(axis="y", visible=False)
-        axis.xaxis.set_major_formatter(plt.FuncFormatter(formatter))
-        if annotate:
-            for position, value in zip(positions, values):
-                axis.text(value, position, f"  {formatter(value)}", va="center", fontsize=7.5, color=INK)
-    else:
-        positions = np.arange(len(labels))
-        axis.bar(positions, values, color=colors or ACCENT, width=0.7)
-        axis.set_xticks(positions)
-        axis.set_xticklabels(labels, fontsize=8, rotation=45, ha="right")
-        axis.yaxis.set_major_formatter(plt.FuncFormatter(formatter))
-    axis.set_title(title, loc="left")
-
-
-def _line_panel(axis, labels: list[str], values: np.ndarray, title: str, *, formatter=_eur) -> None:
-    axis.plot(range(len(labels)), values, marker="o", markersize=3.5, color=ACCENT, linewidth=2)
-    step = max(1, len(labels) // 12)
-    axis.set_xticks(list(range(0, len(labels), step)))
-    axis.set_xticklabels(labels[::step], fontsize=8, rotation=45, ha="right")
-    axis.yaxis.set_major_formatter(plt.FuncFormatter(formatter))
-    axis.set_title(title, loc="left")
 
 
 def _table_panel(axis, headers: list[str], rows: list[list[str]], title: str) -> None:
@@ -224,7 +182,7 @@ def draw_executive_overview(frames: dict[str, pd.DataFrame]) -> Figure:
     _kpi_cards(
         figure,
         [
-            ("Net revenue", _eur(kpi["total_revenue"])),
+            ("Net revenue", currency_formatter(kpi["total_revenue"])),
             ("Orders", f"{kpi['total_orders']:,.0f}"),
             ("Customers", f"{kpi['unique_customers']:,.0f}"),
             ("AOV", f"€{kpi['average_order_value']:,.2f}"),
@@ -249,7 +207,7 @@ def draw_executive_overview(frames: dict[str, pd.DataFrame]) -> Figure:
         monthly["orders_recognised"].to_numpy(),
         "Orders per month",
         horizontal=False,
-        formatter=_number,
+        formatter=count_formatter,
         annotate=False,
     )
     top_categories = categories.sort_values("revenue", ascending=True)
@@ -318,7 +276,7 @@ def draw_customer_analytics(frames: dict[str, pd.DataFrame]) -> Figure:
         list(by_customers["rfm_segment"]),
         by_customers["customers"].to_numpy(),
         "Customers by RFM segment",
-        formatter=_number,
+        formatter=count_formatter,
     )
     by_revenue = segments.loc[segments["revenue"] > 0].sort_values("revenue")
     _bar_panel(
@@ -349,7 +307,7 @@ def draw_customer_analytics(frames: dict[str, pd.DataFrame]) -> Figure:
         sizes_sorted["cohort_size"].to_numpy(),
         "Customers per acquisition cohort",
         horizontal=False,
-        formatter=_number,
+        formatter=count_formatter,
         annotate=False,
     )
     return figure
@@ -388,7 +346,7 @@ def draw_product_analytics(frames: dict[str, pd.DataFrame]) -> Figure:
         list(by_units["category"]),
         by_units["units"].to_numpy(),
         "Units by category",
-        formatter=_number,
+        formatter=count_formatter,
     )
     top_products = products.sort_values("revenue", ascending=False).head(10).sort_values("revenue")
     labels = [
@@ -484,7 +442,7 @@ def draw_campaign_analytics(frames: dict[str, pd.DataFrame]) -> Figure:
     axis.axvline(0, color=INK, linewidth=1)
     axis.set_yticks(range(len(intervals)))
     axis.set_yticklabels(intervals["campaign_id"], fontsize=7.5)
-    axis.xaxis.set_major_formatter(plt.FuncFormatter(_eur))
+    axis.xaxis.set_major_formatter(plt.FuncFormatter(currency_formatter))
     axis.set_title("Lift with 95% confidence intervals", loc="left")
     axis.grid(axis="y", visible=False)
 
