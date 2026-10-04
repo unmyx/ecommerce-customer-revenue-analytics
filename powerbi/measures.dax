@@ -1,0 +1,197 @@
+// ===========================================================================
+// NovaCart - Power BI measures
+// ---------------------------------------------------------------------------
+// Design rule: the dashboard does not define business metrics. Every measure
+// below aggregates a canonical column produced by the project's SQL layer and
+// Python analytics, or divides two such columns to make a ratio. Nothing here
+// recalculates revenue, RFM scores, cohort retention or campaign statistics.
+//
+// Recognised revenue rule: `revenue` columns are recognised net merchandise
+// revenue (completed orders, after line discounts, excluding shipping and VAT).
+// In fact_orders / fact_order_lines the gross and discount columns cover every
+// order status, so filter on is_revenue_recognised = TRUE, or sum revenue and
+// recognised_orders, which are already zero for other statuses.
+// ===========================================================================
+
+
+// ---------------------------------------------------------------------------
+// 1. Window KPIs (page 1 cards)
+//    kpi_summary is a single row describing the whole analysis window, so these
+//    cards show the published window values regardless of slicers. That is the
+//    intended executive-header behaviour, and it matches the generated executive
+//    summary and the reconciliation checks exactly.
+// ---------------------------------------------------------------------------
+Window Net Revenue = MIN ( kpi_summary[total_revenue] )
+Window Orders = MIN ( kpi_summary[total_orders] )
+Window Units = MIN ( kpi_summary[total_units] )
+Window Purchasing Customers = MIN ( kpi_summary[unique_customers] )
+Window Registered Customers = MIN ( kpi_summary[registered_customers] )
+Window Average Order Value = MIN ( kpi_summary[average_order_value] )
+Window Revenue per Customer = MIN ( kpi_summary[revenue_per_customer] )
+Window Revenue per Registered Customer = MIN ( kpi_summary[revenue_per_registered_customer] )
+Window Repeat Customer Rate = MIN ( kpi_summary[repeat_customer_rate] )
+Window Days = MIN ( kpi_summary[days_in_period] )
+
+
+// ---------------------------------------------------------------------------
+// 2. Selection KPIs (respond to the date / country / category / segment slicers)
+//    These sum canonical fact columns, so they stay correct under any filter.
+//    Label them "current selection" so they are not confused with window cards.
+// ---------------------------------------------------------------------------
+Selected Net Revenue = SUM ( fact_orders[revenue] )
+Selected Orders = SUM ( fact_orders[recognised_orders] )
+Selected Units = SUM ( fact_orders[units] )
+Selected Average Order Value = DIVIDE ( [Selected Net Revenue], [Selected Orders] )
+
+Selected Purchasing Customers =
+CALCULATE (
+    DISTINCTCOUNT ( fact_orders[customer_id] ),
+    fact_orders[is_revenue_recognised] = TRUE
+)
+
+Selected Revenue per Customer =
+DIVIDE ( [Selected Net Revenue], [Selected Purchasing Customers] )
+
+// Repeat customer rate for the current selection: customers with two or more
+// recognised orders divided by customers with at least one. The window-level
+// answer is in kpi_summary; this version reacts to slicers.
+Selected Repeat Customer Rate =
+VAR CustomersWithOrders =
+    CALCULATETABLE (
+        SUMMARIZE (
+            FILTER ( fact_orders, fact_orders[is_revenue_recognised] = TRUE ),
+            fact_orders[customer_id]
+        )
+    )
+VAR WithOrderCounts =
+    ADDCOLUMNS (
+        CustomersWithOrders,
+        "@orders",
+            CALCULATE (
+                SUM ( fact_orders[recognised_orders] ),
+                ALLEXCEPT ( fact_orders, fact_orders[customer_id] )
+            )
+    )
+RETURN
+    DIVIDE (
+        COUNTROWS ( FILTER ( WithOrderCounts, [@orders] >= 2 ) ),
+        COUNTROWS ( WithOrderCounts )
+    )
+
+
+// ---------------------------------------------------------------------------
+// 3. Monthly trend measures
+//    For line and column charts: month_start on the axis, one of these as values.
+// ---------------------------------------------------------------------------
+Monthly Net Revenue = SUM ( monthly_revenue[revenue] )
+Monthly Orders = SUM ( monthly_revenue[orders_recognised] )
+Monthly Customers = SUM ( monthly_revenue[purchasing_customers] )
+Monthly Units = SUM ( monthly_revenue[units] )
+Monthly Average Order Value = DIVIDE ( [Monthly Net Revenue], [Monthly Orders] )
+Monthly Revenue MoM % = AVERAGE ( monthly_revenue[revenue_mom_pct] )
+
+// Trailing windows: one row per day, so put order_date on the axis.
+Rolling 7-Day Revenue = AVERAGE ( daily_revenue[revenue_rolling_7d] )
+Rolling 30-Day Revenue = AVERAGE ( daily_revenue[revenue_rolling_30d] )
+
+
+// ---------------------------------------------------------------------------
+// 4. Product and category measures
+// ---------------------------------------------------------------------------
+Category Revenue = SUM ( category_performance[revenue] )
+Category Units = SUM ( category_performance[units] )
+Category Revenue Share % = AVERAGE ( category_performance[revenue_share_pct] )
+
+Product Revenue = SUM ( product_performance[revenue] )
+Product Units = SUM ( product_performance[units] )
+Product Revenue Rank =
+    RANKX ( ALLSELECTED ( product_performance[product_name] ), [Product Revenue], , DESC )
+
+Declining Products Flagged =
+CALCULATE ( COUNTROWS ( declining_products ), declining_products[is_declining] = TRUE )
+
+Products Compared For Decline = COUNTROWS ( declining_products )
+
+Worst Declining Unit Change % = MIN ( declining_products[units_change_pct] )
+
+
+// ---------------------------------------------------------------------------
+// 5. Customer and cohort measures
+// ---------------------------------------------------------------------------
+Segment Customers = SUM ( customer_segments[customers] )
+Segment Revenue = SUM ( customer_segments[revenue] )
+Segment Average Customer Revenue = AVERAGE ( customer_segments[average_customer_revenue] )
+Segment Repeat Rate = AVERAGE ( customer_segments[repeat_customer_rate] )
+Segment Revenue Share % =
+DIVIDE (
+    SUM ( customer_segments[revenue] ),
+    CALCULATE ( SUM ( customer_segments[revenue] ), ALLSELECTED ( customer_segments ) )
+)
+
+// Concentration (single-row table)
+Top 10% Revenue Share = MIN ( customer_concentration[top_10pct_revenue_share_pct] )
+Bottom 50% Revenue Share = MIN ( customer_concentration[bottom_50pct_revenue_share_pct] )
+
+// Cohort retention: the visual should filter month_offset; cohort_index > 0
+// excludes the left-censored first cohort from the headline retention numbers.
+Retention Month 1 =
+CALCULATE (
+    AVERAGE ( cohort_retention[retention_rate] ),
+    cohort_retention[month_offset] = 1,
+    cohort_retention[cohort_index] > 0
+)
+
+Retention Month 3 =
+CALCULATE (
+    AVERAGE ( cohort_retention[retention_rate] ),
+    cohort_retention[month_offset] = 3,
+    cohort_retention[cohort_index] > 0
+)
+
+Cohort Customers = SUM ( cohort_sizes[cohort_size] )
+
+
+// ---------------------------------------------------------------------------
+// 6. Campaign measures
+//    Descriptive and inferential values already exist per campaign; these
+//    measures aggregate them for cards and significance indicators.
+// ---------------------------------------------------------------------------
+Campaigns Tested = COUNTROWS ( campaign_results )
+
+Significant Campaigns =
+CALCULATE (
+    COUNTROWS ( campaign_results ),
+    campaign_results[statistically_significant] = TRUE
+)
+
+Practically Significant Campaigns =
+CALCULATE (
+    COUNTROWS ( campaign_results ),
+    campaign_results[practically_significant] = TRUE
+)
+
+Best Campaign Lift EUR = MAX ( campaign_results[absolute_difference] )
+Best Campaign Lift % = MAX ( campaign_results[relative_difference] )
+Average Campaign Lift EUR = AVERAGE ( campaign_results[absolute_difference] )
+
+// Use these on a card or table row where one campaign is in scope.
+Campaign Lift EUR = SELECTEDVALUE ( campaign_results[absolute_difference] )
+Campaign Lift % = SELECTEDVALUE ( campaign_results[relative_difference] )
+Campaign CI Low = SELECTEDVALUE ( campaign_results[confidence_interval_low] )
+Campaign CI High = SELECTEDVALUE ( campaign_results[confidence_interval_high] )
+Campaign Adjusted P = SELECTEDVALUE ( campaign_results[adjusted_p_value] )
+Campaign Effect Size = SELECTEDVALUE ( campaign_results[effect_size] )
+Campaign Interpretation = SELECTEDVALUE ( campaign_results[business_interpretation] )
+
+Campaign Significance Label =
+VAR IsSignificant = SELECTEDVALUE ( campaign_results[statistically_significant] )
+VAR IsPractical = SELECTEDVALUE ( campaign_results[practically_significant] )
+RETURN
+    SWITCH (
+        TRUE (),
+        IsSignificant && IsPractical, "Significant and material",
+        IsSignificant, "Significant but small",
+        IsPractical, "Promising, inconclusive",
+        "No detectable effect"
+    )
+

@@ -1,0 +1,72 @@
+{
+  "name": "NovaCart Analytics",
+  "dataColors": [
+    "#1F4E79",
+    "#2E75B6",
+    "#9DC3E6",
+    "#C55A11",
+    "#7F7F7F",
+    "#4A5568",
+    "#A6A6A6",
+    "#2F5597"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#1F2933",
+  "tableAccent": "#1F4E79",
+  "good": "#2E7D32",
+  "neutral": "#9DC3E6",
+  "bad": "#C55A11",
+  "textClasses": {
+    "title": { "fontFace": "Segoe UI Semibold", "fontSize": 14, "color": "#1F2933" },
+    "header": { "fontFace": "Segoe UI Semibold", "fontSize": 11, "color": "#4A5568" },
+    "label": { "fontFace": "Segoe UI", "fontSize": 10, "color": "#1F2933" },
+    "callout": { "fontFace": "Segoe UI Semibold", "fontSize": 28, "color": "#1F4E79" },
+    "data": { "fontFace": "Segoe UI", "fontSize": 10, "color": "#1F2933" }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          { "show": true, "color": { "solid": { "color": "#FFFFFF" } }, "transparency": 0 }
+        ],
+        "border": [{ "show": false }],
+        "visualHeader": [{ "show": false }],
+        "title": [
+          {
+            "show": true,
+            "fontColor": { "solid": { "color": "#1F2933" } },
+            "background": { "solid": { "color": "#FFFFFF" } },
+            "alignment": "left",
+            "fontSize": 12,
+            "fontFamily": "Segoe UI Semibold"
+          }
+        ]
+      }
+    },
+    "card": {
+      "*": {
+        "labels": [
+          {
+            "fontSize": 28,
+            "color": { "solid": { "color": "#1F4E79" } },
+            "fontFamily": "Segoe UI Semibold"
+          }
+        ],
+        "categoryLabels": [
+          { "show": true, "fontSize": 10, "color": { "solid": { "color": "#6B7280" } } }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          { "color": { "solid": { "color": "#FFFFFF" } }, "transparency": 0 }
+        ],
+        "outspace": [
+          { "color": { "solid": { "color": "#F7F9FC" } }, "transparency": 0 }
+        ]
+      }
+    }
+  }
+}
+

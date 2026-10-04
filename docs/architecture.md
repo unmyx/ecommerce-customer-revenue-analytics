@@ -52,6 +52,7 @@ Two rules shape every decision in this repository:
 | `novacart.ingestion` | Applies the DDL and bulk-loads generated CSVs into `raw` |
 | `novacart.warehouse` | Builds the analytical SQL layer in dependency order; reconciliation reader |
 | `novacart.analytics` | Analytics over the marts: data access, revenue, KPIs, trends, products, customers, RFM, cohorts, campaigns, statistics, plots, report |
+| `novacart.dashboard` | Presentation layer: declared export schemas, dashboard datasets, executive summary, page previews, CLI |
 | `novacart.statistics` *(later)* | Hypothesis tests, effect sizes, multiple-comparison correction |
 | `novacart.visualization` *(later)* | Dashboard-oriented visual polish on top of `analytics.plots` |
 
@@ -171,6 +172,33 @@ The Milestone 4 calculations follow three rules:
 
 Method detail lives in [analytics_methods.md](analytics_methods.md).
 
+### Presentation layer (Milestone 5)
+
+```
+raw schema -> analytical SQL layer -> Python analytics -> dashboard exports -> Power BI
+```
+
+| Module / asset | Responsibility |
+| --- | --- |
+| `dashboard/schema.py` | declared column contract for every dashboard dataset, plus shared field descriptions |
+| `dashboard/exports.py` | reshapes canonical analytics frames into dashboard-ready CSVs, the data dictionary and the export manifest |
+| `dashboard/summary.py` | generates the executive summary (Markdown, HTML, Excel) with every number injected from the canonical results |
+| `dashboard/preview.py` | renders the four static page previews from the exported datasets |
+| `dashboard/cli.py` | `novacart-dashboard`: runs the analysis, exports, summary and previews in one command |
+| `powerbi/` | build kit: `measures.dax`, `theme.json`, `page_specs.md`, `README.md`, `screenshots/` |
+
+Rules that keep the presentation layer honest:
+
+1. **No metric is recalculated.** Every dataset is a copy, rename or export-layer join of canonical
+   columns; `powerbi/measures.dax` only aggregates those columns (or divides two of them).
+2. **Schemas are declared and tested.** `EXPORT_SPECS` is the contract; a test asserts that each
+   export matches it exactly and that the data dictionary documents every column.
+3. **Facts and aggregates must reconcile.** Two sliceable fact exports (`fact_orders`,
+   `fact_order_lines`) support the dashboard slicers; tests prove they tie back to the aggregates
+   at total, monthly, country, segment, category and product level.
+4. **The prose cannot drift.** The executive summary is generated from the same canonical results
+   and quotes only measured values.
+
 Design rules:
 
 * **Calculations are pure functions over DataFrames.** Only `common.load_*` touches the
@@ -230,6 +258,17 @@ notebooks/01_business_analysis.ipynb      business KPIs, trends, products, custo
 notebooks/02_customer_segmentation.ipynb  RFM methodology, segments, figures
 notebooks/03_cohort_analysis.ipynb        retention matrix, heatmap, cohort revenue
 notebooks/04_campaign_analysis.ipynb      campaign statistics, intervals, limitations
+
+novacart-dashboard                    scripts/build_dashboard.py
+  analyse()                   -> canonical results (no recalculation)
+  build_dashboard_exports()   -> outputs/dashboard/csv/*.csv      (18 datasets + dictionary)
+                                  + export_manifest.json (row counts, checksums)
+  build_executive_summary()   -> outputs/dashboard/summary/executive_summary.{md,html,xlsx}
+  render_dashboard_previews() -> powerbi/screenshots/page{1..4}_*.png
+
+powerbi/
+  measures.dax, theme.json, page_specs.md, README.md
+  Power BI Desktop loads outputs/dashboard/csv and follows page_specs.md
 ```
 
 ## Environments and reproducibility

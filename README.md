@@ -28,7 +28,7 @@ This project builds the data platform and the analysis to answer those questions
 | 7 | Which segments generate revenue and retain best? | ✅ Segment value + cohort retention (milestone 4) |
 | 8 | Which campaigns are associated with higher customer value? | ✅ Campaign analysis (milestone 4) |
 | 9 | Are those campaign differences statistically meaningful? | ✅ Statistical testing with FDR control (milestone 4) |
-| 10 | What business actions follow? | Executive summary (milestone 9) |
+| 10 | What business actions follow? | ✅ Generated executive summary with measured recommendations (milestone 5) |
 
 ## Architecture
 
@@ -216,6 +216,61 @@ limitations: [docs/analytics_methods.md](docs/analytics_methods.md).
 
 ## Repository layout
 
+## Dashboard and executive summary (Milestone 5)
+
+The presentation layer turns the canonical analytical outputs into dashboard-ready files. Power BI
+loads those files; **no value is typed into the dashboard by hand**, and no metric is redefined
+inside it.
+
+```
+raw schema -> analytical SQL -> Python analytics -> dashboard exports (CSV) -> Power BI
+```
+
+```bash
+python scripts/build_dashboard.py        # exports + executive summary + page previews
+```
+
+| Output | Location |
+| --- | --- |
+| 18 dashboard datasets (16 aggregates + 2 sliceable facts) | `outputs/dashboard/csv/` |
+| Data dictionary and export manifest (row counts, columns, checksums) | `outputs/dashboard/csv/` |
+| Executive summary (Markdown, HTML, Excel) | `outputs/dashboard/summary/` |
+| Static page previews | `powerbi/screenshots/` |
+| Power BI build kit (measures, theme, page specs) | `powerbi/` |
+
+### Dashboard pages
+
+| Page | Content |
+| --- | --- |
+| 1 - Executive overview | Net revenue, orders, customers, AOV, repeat rate and revenue per customer; monthly revenue and order trends; revenue by category, segment, country and campaign lift |
+| 2 - Customer analytics | RFM segment distribution and revenue, customer value deciles, cohort retention heatmap, cohort sizes |
+| 3 - Product analytics | Category revenue and units, top products, declining products, category detail table |
+| 4 - Campaign analytics | Treatment vs holdout comparison, lift and confidence intervals, significance indicators, full results table |
+
+### Executive overview preview
+
+![Executive overview](powerbi/screenshots/page1_executive_overview.png)
+
+Additional previews: [customer analytics](powerbi/screenshots/page2_customer_analytics.png),
+[product analytics](powerbi/screenshots/page3_product_analytics.png),
+[campaign analytics](powerbi/screenshots/page4_campaign_analytics.png). These are static renders of
+the page designs produced from the exported datasets, not Power BI screenshots.
+
+### Data lineage and KPI definitions
+
+* Every dataset is a copy, join or label of a canonical column: aggregates come from
+  `novacart.analytics`, and the two sliceable fact tables come from `analytics.fct_orders` and
+  `analytics.fct_order_lines` (plus the customer country and RFM segment for slicers).
+* The revenue definition, KPI definitions, rolling windows, repeat-customer rule and product
+  ranking method are documented above and in
+  [docs/analytics_methods.md](docs/analytics_methods.md). Dashboards use the same definition.
+* `tests/test_dashboard_exports.py` proves that the fact tables reconcile exactly with every
+  aggregate (total, monthly, country, segment, category and product level).
+
+Manual steps that cannot be automated: connecting the CSV folder, creating the model relationships
+and placing the visuals. The build guide and the page-by-page specification are in
+[powerbi/README.md](powerbi/README.md) and [powerbi/page_specs.md](powerbi/page_specs.md).
+
 ```
 ├── docker-compose.yml          PostgreSQL 16 for local development
 ├── pyproject.toml              dependencies, console scripts, pytest/ruff config
@@ -230,7 +285,9 @@ limitations: [docs/analytics_methods.md](docs/analytics_methods.md).
 │   └── 04_campaign_analysis.ipynb     campaign comparison and statistics
 ├── outputs/                    generated analysis artefacts (git-ignored)
 │   ├── figures/                16 business charts
-│   └── tables/                 25 CSV result tables
+│   ├── tables/                 25 CSV result tables
+│   └── dashboard/              dashboard datasets, data dictionary, manifest, executive summary
+├── powerbi/                    dashboard build kit (measures, theme, page specs, previews)
 ├── scripts/                    thin CLI wrappers (generate, load, checks, build analytics)
 ├── sql/
 │   ├── 01_schemas.sql           raw / analytics / meta schemas
@@ -269,8 +326,8 @@ limitations: [docs/analytics_methods.md](docs/analytics_methods.md).
 | 2. Analytical SQL layer (staging views, facts, revenue/customer/product/campaign marts, reconciliation) | ✅ complete |
 | 3. Business analytics in Python (revenue, trends, products, customers, KPIs, figures, notebook) | ✅ complete |
 | 4. RFM segmentation, cohort retention, campaign evaluation, statistical testing | ✅ complete |
-| 5. Power BI dashboard over the analytics schema | ⏳ next |
-| 6. Executive summary, README findings and final polish | ⏳ |
+| 5. Dashboard exports, Power BI build kit, page previews and executive summary | ✅ complete |
+| 6. Final polish: README findings review and publish-ready walkthrough | ⏳ next |
 
 ## Licence and data notice
 

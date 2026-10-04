@@ -27,6 +27,10 @@
 | Cohort retention (unit) | `tests/test_cohorts.py` | first-purchase cohort assignment, month-0 baseline = 100%, retention never above 100%, unobservable offsets left blank, cumulative revenue, invariant validation rejecting impossible tables, determinism |
 | Campaign statistics (unit) | `tests/test_campaign_statistics.py` | hand-computed Welch values, CI consistency with the test, Hedges' g, bootstrap determinism, Benjamini-Hochberg against a known example and NaN/order handling, campaign aggregation, pre-specified practical thresholds, untestable small groups |
 | Business analytics (database) | `tests/test_analytics_integration.py` | the Python layer reproduces the SQL marts (category, product, monthly, rolling, campaign means), RFM reconciles to the customer mart, cohort invariants hold on real data, the full run writes 25 tables and 16 figures, and the analysis never reads the generator ground truth |
+| Dashboard exports (unit) | `tests/test_dashboard_exports.py` | every export matches its declared schema, row counts match the canonical tables, the two fact exports reconcile with every aggregate (total, month, country, segment, category, product), the published repeat-customer rule is reproducible from the facts, the data dictionary covers all 230 columns, the manifest records rows and checksums, and exports are byte-deterministic |
+| Executive summary (unit) | `tests/test_dashboard_summary.py` | all seven required sections, every quoted figure matches the canonical results, recommendations are derived from measured values, limitations include the required caveats, and changing the data changes the prose |
+| Page previews (unit) | `tests/test_dashboard_preview.py` | each page renders the expected panels, the four previews are written under deterministic names, and a window without declining products degrades gracefully |
+| Presentation layer (database) | `tests/test_dashboard_integration.py` | the exports reconcile with the SQL marts and the Python analytics, the campaign export equals the statistical results table, and the full build writes 18 datasets, 4 previews and the Markdown/HTML/Excel summary |
 
 ## Running the tests
 
@@ -45,6 +49,9 @@ python scripts/run_reconciliation.py
 # the analysis and the notebook
 python scripts/build_business_analysis.py
 python -m nbconvert --to notebook --execute --inplace notebooks/01_business_analysis.ipynb
+
+# the presentation layer
+python scripts/build_dashboard.py
 ```
 
 Database tests truncate and reload the `raw` schema of the database in `.env`, so they are
