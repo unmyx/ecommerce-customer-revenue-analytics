@@ -23,7 +23,10 @@
 | Raw layer (database) | `tests/test_database_integration.py` | DDL applies idempotently, COPY loads, the 15 raw SQL checks pass |
 | Analytical layer (database) | `tests/test_analytics_layer.py` | revenue reconciles order → line → customer → product → daily/monthly, keys are unique, date/recency/repeat logic is correct, rolling windows are right, campaign attribution follows the exposure and window rules, no ground truth leaks into SQL |
 | Business analytics (unit) | `tests/test_analytics_metrics.py`, `test_analytics_revenue.py`, `test_analytics_trends.py`, `test_analytics_products.py`, `test_analytics_customers.py`, `test_analytics_plots.py` | KPI/AOV/repeat-rate maths, rolling windows, month-over-month change, product and customer aggregation, ranking and declining rules, chart data and labels, empty frames and zero denominators - all on hand-built frames with known answers |
-| Business analytics (database) | `tests/test_analytics_integration.py` | the Python layer reproduces the SQL marts (category, product, monthly, 7/30-day rolling), the KPI reconciles to the customer mart, and the full run writes 15 tables and 7 figures |
+| RFM segmentation (unit) | `tests/test_rfm.py` | quintile scoring with reversed recency, deterministic tie-breaking, every documented segment rule, exhaustive coverage of all 125 score combinations, never-purchased handling, segment totals reconciling to the input |
+| Cohort retention (unit) | `tests/test_cohorts.py` | first-purchase cohort assignment, month-0 baseline = 100%, retention never above 100%, unobservable offsets left blank, cumulative revenue, invariant validation rejecting impossible tables, determinism |
+| Campaign statistics (unit) | `tests/test_campaign_statistics.py` | hand-computed Welch values, CI consistency with the test, Hedges' g, bootstrap determinism, Benjamini-Hochberg against a known example and NaN/order handling, campaign aggregation, pre-specified practical thresholds, untestable small groups |
+| Business analytics (database) | `tests/test_analytics_integration.py` | the Python layer reproduces the SQL marts (category, product, monthly, rolling, campaign means), RFM reconciles to the customer mart, cohort invariants hold on real data, the full run writes 25 tables and 16 figures, and the analysis never reads the generator ground truth |
 
 ## Running the tests
 
@@ -77,12 +80,8 @@ Reconciliation checks cover:
 
 ## Planned test coverage (later milestones)
 
-* Customer analytics: RFM quintile boundaries, tie handling, reproducible segment assignment
-  and monotonicity of the score against observed behaviour.
-* Cohorts: retention matrix shape, first period = 100%, cohort revenue attribution.
-* Statistics: the treatment/control test must recover the manifest's ground truth (detect
-  genuine lifts, avoid false positives on placebo campaigns) and produce correct confidence
-  intervals, effect sizes and multiple-comparison corrections.
 * Dashboard assets: the Power BI model must expose the same KPI definitions as
   `analytics.kpis` and the executed notebook.
+* Executive summary: every headline number in the README must be reproducible from the
+  published tables.
 

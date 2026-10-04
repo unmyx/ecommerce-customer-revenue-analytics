@@ -51,7 +51,7 @@ Two rules shape every decision in this repository:
 | `novacart.synthetic` | The generator: reference data, entity builders, validation, writer, CLI |
 | `novacart.ingestion` | Applies the DDL and bulk-loads generated CSVs into `raw` |
 | `novacart.warehouse` | Builds the analytical SQL layer in dependency order; reconciliation reader |
-| `novacart.analytics` | Business analysis over the marts: data access, revenue, KPIs, trends, products, customers, plots, report |
+| `novacart.analytics` | Analytics over the marts: data access, revenue, KPIs, trends, products, customers, RFM, cohorts, campaigns, statistics, plots, report |
 | `novacart.statistics` *(later)* | Hypothesis tests, effect sizes, multiple-comparison correction |
 | `novacart.visualization` *(later)* | Dashboard-oriented visual polish on top of `analytics.plots` |
 
@@ -151,6 +151,26 @@ PostgreSQL marts  →  novacart.analytics.common (loading)  →  pure calculatio
 | `analytics/plots.py` | reusable business charts; deterministic filenames in `outputs/figures/` |
 | `analytics/report.py` | orchestration (`novacart-analyze`) that writes `outputs/tables/` and `outputs/figures/` |
 
+### Advanced analytics (Milestone 4)
+
+| Module | Responsibility |
+| --- | --- |
+| `analytics/rfm.py` | quintile RFM scores with deterministic tie-breaking and priority-ordered segments (`segment_for_scores` is the single source of truth for the rules) |
+| `analytics/cohorts.py` | monthly cohorts by first purchase month, retention by month offset on an observability-aware grid, cumulative cohort revenue, and invariant validation |
+| `analytics/statistics.py` | Welch t-test, confidence intervals, percentile bootstrap, Hedges' g, Benjamini-Hochberg adjustment and effect-size labels |
+| `analytics/campaigns.py` | customer-level intention-to-treat comparison, campaign results table, significance flags, business interpretation and the significance overview |
+
+The Milestone 4 calculations follow three rules:
+
+1. **The unit of analysis is the customer**, not the order, for every campaign statistic.
+2. **The decision rules are pre-specified in code** (test, alpha, FDR level, practical
+   thresholds) so they cannot be chosen after seeing the results.
+3. **The generator's ground truth is never read** by the package: the true lift lives outside
+   PostgreSQL and is used only by a clearly-marked post-hoc validation cell in
+   `notebooks/04_campaign_analysis.ipynb` plus tests that assert the package never references it.
+
+Method detail lives in [analytics_methods.md](analytics_methods.md).
+
 Design rules:
 
 * **Calculations are pure functions over DataFrames.** Only `common.load_*` touches the
@@ -201,12 +221,15 @@ novacart-reconcile                     scripts/run_reconciliation.py
 novacart-analyze                       scripts/build_business_analysis.py
   load_analysis_inputs()      -> fct_orders, fct_order_lines, customer/product/category marts
   analyse()                   -> KPI snapshot, daily/weekly/monthly trends, product and
-                                 customer tables, declining products
-  write tables                -> outputs/tables/*.csv
-  render figures              -> outputs/figures/*.png  (7 deterministic filenames)
+                                 customer tables, declining products, RFM segments,
+                                 cohort retention, campaign statistics
+  write tables                -> outputs/tables/*.csv          (25 deterministic names)
+  render figures              -> outputs/figures/*.png         (16 deterministic names)
 
-notebooks/01_business_analysis.ipynb
-  same modules, presented as a findings narrative with embedded figures
+notebooks/01_business_analysis.ipynb      business KPIs, trends, products, customers
+notebooks/02_customer_segmentation.ipynb  RFM methodology, segments, figures
+notebooks/03_cohort_analysis.ipynb        retention matrix, heatmap, cohort revenue
+notebooks/04_campaign_analysis.ipynb      campaign statistics, intervals, limitations
 ```
 
 ## Environments and reproducibility

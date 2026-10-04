@@ -51,6 +51,8 @@ ALLOWED_RELATIONS: frozenset[str] = frozenset(
         "analytics.mart_category_performance",
         "analytics.mart_revenue_daily",
         "analytics.mart_revenue_monthly",
+        "analytics.mart_campaign_customer_outcomes",
+        "analytics.mart_campaign_performance",
         "analytics.analysis_window",
     }
 )
@@ -70,6 +72,13 @@ DATE_COLUMNS: dict[str, tuple[str, ...]] = {
     "analytics.mart_category_performance": (),
     "analytics.mart_revenue_daily": ("date_key",),
     "analytics.mart_revenue_monthly": ("month_start",),
+    "analytics.mart_campaign_customer_outcomes": (
+        "start_date",
+        "end_date",
+        "assigned_at",
+        "assigned_date",
+    ),
+    "analytics.mart_campaign_performance": ("start_date", "end_date"),
     "analytics.analysis_window": ("first_order_date", "analysis_end_date"),
 }
 
@@ -89,6 +98,7 @@ class AnalysisInputs:
     categories: pd.DataFrame
     daily: pd.DataFrame
     monthly: pd.DataFrame
+    campaign_outcomes: pd.DataFrame
     window: pd.DataFrame
 
 
@@ -113,7 +123,7 @@ def load_relation(
     with engine.connect() as connection:
         frame = pd.read_sql(f"SELECT * FROM {relation}", connection)
 
-    for column in DATE_COLUMNS[relation]:
+    for column in DATE_COLUMNS.get(relation, ()):
         if column in frame.columns:
             frame[column] = pd.to_datetime(frame[column], errors="raise")
     logger.debug("Loaded %s rows from %s", f"{len(frame):,}", relation)
@@ -130,6 +140,9 @@ def load_analysis_inputs(settings: DatabaseSettings | None = None) -> AnalysisIn
         categories=load_relation("analytics.mart_category_performance", settings=settings),
         daily=load_relation("analytics.mart_revenue_daily", settings=settings),
         monthly=load_relation("analytics.mart_revenue_monthly", settings=settings),
+        campaign_outcomes=load_relation(
+            "analytics.mart_campaign_customer_outcomes", settings=settings
+        ),
         window=load_relation("analytics.analysis_window", settings=settings),
     )
 

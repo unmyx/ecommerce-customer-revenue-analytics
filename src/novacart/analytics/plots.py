@@ -37,6 +37,15 @@ FIGURE_FILENAMES: dict[str, str] = {
     "top_products_by_revenue": "top10_products_by_revenue.png",
     "customer_revenue_distribution": "customer_revenue_distribution.png",
     "revenue_by_country": "revenue_by_country.png",
+    "rfm_customer_counts": "rfm_customer_counts.png",
+    "rfm_revenue_by_segment": "rfm_revenue_by_segment.png",
+    "rfm_segment_comparison": "rfm_segment_comparison.png",
+    "cohort_retention_heatmap": "cohort_retention_heatmap.png",
+    "cohort_sizes": "cohort_sizes.png",
+    "cohort_revenue_curve": "cohort_revenue_curve.png",
+    "campaign_lift_comparison": "campaign_lift_comparison.png",
+    "campaign_confidence_intervals": "campaign_confidence_intervals.png",
+    "campaign_significance_overview": "campaign_significance_overview.png",
 }
 
 REVENUE_DEFINITION = (
@@ -304,6 +313,385 @@ def render_all_figures(
         "top_products_by_revenue": plot_top_products_by_revenue(products),
         "customer_revenue_distribution": plot_customer_revenue_distribution(customers),
         "revenue_by_country": plot_revenue_by_country(countries),
+    }
+    return {
+        key: save_figure(figure, FIGURE_FILENAMES[key], output_dir=output_dir)
+        for key, figure in figures.items()
+    }
+
+
+# ---------------------------------------------------------------------------
+# RFM segmentation figures
+# ---------------------------------------------------------------------------
+def plot_rfm_segment_customers(segments: pd.DataFrame) -> Figure:
+    """How many customers sit in each RFM segment?"""
+    require_columns(
+        segments,
+        ("rfm_segment", "customers", "customer_share_pct"),
+        "plot_rfm_segment_customers",
+    )
+    _require_rows(segments, "plot_rfm_segment_customers")
+    frame = segments.sort_values("customers", ascending=True)
+
+    figure, axis = plt.subplots(figsize=FIGURE_SIZE)
+    axis.barh(frame["rfm_segment"], frame["customers"], color="#1f4e79")
+    axis.set_title("Customers by RFM segment")
+    axis.set_xlabel("Customers")
+    axis.set_ylabel("")
+    axis.xaxis.set_major_formatter(FuncFormatter(_count_formatter))
+    axis.grid(axis="y", visible=False)
+    for position, row in enumerate(frame.itertuples()):
+        axis.text(
+            row.customers,
+            position,
+            f"  {row.customers:,.0f} ({row.customer_share_pct:.1f}%)",
+            va="center",
+            fontsize=9,
+        )
+    _add_definition(
+        figure,
+        "RFM scores are quintiles over purchasing customers; ties broken by customer id. "
+        "Segments follow the documented priority rules.",
+    )
+    figure.tight_layout(rect=(0, 0.03, 1, 1))
+    return figure
+
+
+def plot_rfm_segment_revenue(segments: pd.DataFrame) -> Figure:
+    """Which RFM segments carry the revenue?"""
+    require_columns(
+        segments,
+        ("rfm_segment", "revenue", "revenue_share_pct"),
+        "plot_rfm_segment_revenue",
+    )
+    _require_rows(segments, "plot_rfm_segment_revenue")
+    frame = segments.sort_values("revenue", ascending=True)
+
+    figure, axis = plt.subplots(figsize=FIGURE_SIZE)
+    axis.barh(frame["rfm_segment"], frame["revenue"], color="#c55a11")
+    axis.set_title("Net revenue by RFM segment")
+    axis.set_xlabel("Net revenue (EUR)")
+    axis.set_ylabel("")
+    axis.xaxis.set_major_formatter(FuncFormatter(_currency_formatter))
+    axis.grid(axis="y", visible=False)
+    for position, row in enumerate(frame.itertuples()):
+        axis.text(
+            row.revenue,
+            position,
+            f"  {_currency_formatter(row.revenue)} ({row.revenue_share_pct:.1f}%)",
+            va="center",
+            fontsize=9,
+        )
+    _add_definition(figure)
+    figure.tight_layout(rect=(0, 0.03, 1, 1))
+    return figure
+
+
+def plot_rfm_segment_comparison(profile: pd.DataFrame) -> Figure:
+    """How do segments differ on recency, frequency and monetary scores?"""
+    require_columns(
+        profile,
+        ("rfm_segment", "average_r", "average_f", "average_m"),
+        "plot_rfm_segment_comparison",
+    )
+    _require_rows(profile, "plot_rfm_segment_comparison")
+    frame = profile.iloc[::-1].reset_index(drop=True)
+
+    figure, axis = plt.subplots(figsize=(11.0, 6.0))
+    positions = np.arange(len(frame))
+    width = 0.26
+    axis.barh(positions + width, frame["average_r"], height=width, label="Recency score", color="#1f4e79")
+    axis.barh(positions, frame["average_f"], height=width, label="Frequency score", color="#2e75b6")
+    axis.barh(positions - width, frame["average_m"], height=width, label="Monetary score", color="#9dc3e6")
+    axis.set_yticks(positions)
+    axis.set_yticklabels(frame["rfm_segment"])
+    axis.set_xlim(0, 5.4)
+    axis.set_xlabel("Average score (1 = weakest, 5 = strongest)")
+    axis.set_title("RFM segment comparison (average scores)")
+    axis.grid(axis="y", visible=False)
+    axis.legend(loc="lower right")
+    _add_definition(
+        figure,
+        "Scores are quintiles: 5 is the most recent / most frequent / highest spending fifth.",
+    )
+    figure.tight_layout(rect=(0, 0.03, 1, 1))
+    return figure
+
+
+# ---------------------------------------------------------------------------
+# Cohort figures
+# ---------------------------------------------------------------------------
+def plot_cohort_retention_heatmap(retention_matrix: pd.DataFrame) -> Figure:
+    """Which acquisition cohorts retain best, and for how long?"""
+    if retention_matrix is None or retention_matrix.empty:
+        raise AnalyticsError("plot_cohort_retention_heatmap needs a non-empty matrix")
+
+    values = np.ma.masked_invalid(retention_matrix.to_numpy(dtype="float64"))
+    colour_map = plt.get_cmap("Blues").with_extremes(bad="#f0f0f0")
+
+    height = max(4.5, 0.32 * len(retention_matrix) + 1.6)
+    figure, axis = plt.subplots(figsize=(11.0, height))
+    image = axis.imshow(values, aspect="auto", cmap=colour_map, vmin=0.0, vmax=1.0)
+    axis.set_xticks(range(retention_matrix.shape[1]))
+    axis.set_xticklabels([str(column) for column in retention_matrix.columns])
+    axis.set_yticks(range(retention_matrix.shape[0]))
+    axis.set_yticklabels([timestamp.strftime("%Y-%m") for timestamp in retention_matrix.index])
+    axis.set_xlabel("Months since first purchase")
+    axis.set_ylabel("Cohort (first purchase month)")
+    axis.set_title("Monthly cohort retention")
+    axis.grid(visible=False)
+
+    for row in range(values.shape[0]):
+        for column in range(values.shape[1]):
+            value = values[row, column]
+            if np.ma.is_masked(value):
+                continue
+            axis.text(
+                column,
+                row,
+                f"{value:.0%}",
+                ha="center",
+                va="center",
+                fontsize=8,
+                color="white" if value > 0.55 else "#333333",
+            )
+
+    colour_bar = figure.colorbar(image, ax=axis, fraction=0.025, pad=0.02)
+    colour_bar.ax.yaxis.set_major_formatter(FuncFormatter(lambda value, _: f"{value:.0%}"))
+    _add_definition(
+        figure,
+        "Retention = share of the cohort with at least one recognised order in that month. "
+        "Grey cells are not yet observable as of the analysis end date.",
+    )
+    figure.tight_layout(rect=(0, 0.03, 1, 1))
+    return figure
+
+
+def plot_cohort_sizes(sizes: pd.DataFrame) -> Figure:
+    """How large is each monthly acquisition cohort?"""
+    require_columns(sizes, ("cohort_month", "cohort_size"), "plot_cohort_sizes")
+    _require_rows(sizes, "plot_cohort_sizes")
+    frame = sizes.sort_values("cohort_month")
+    labels = [timestamp.strftime("%Y-%m") for timestamp in pd.to_datetime(frame["cohort_month"])]
+
+    figure, axis = plt.subplots(figsize=FIGURE_SIZE)
+    positions = list(range(len(frame)))
+    axis.bar(positions, frame["cohort_size"], color="#2e75b6", width=0.7)
+    axis.set_title("Customers per acquisition cohort")
+    axis.set_xlabel("Cohort (first purchase month)")
+    axis.set_ylabel("Customers")
+    axis.yaxis.set_major_formatter(FuncFormatter(_count_formatter))
+    _step = 2 if len(labels) > 12 else 1
+    axis.set_xticks(positions[::_step])
+    axis.set_xticklabels(labels[::_step], rotation=45, ha="right")
+    _add_definition(
+        figure,
+        "A cohort is the calendar month of a customer's first recognised order.",
+    )
+    figure.tight_layout(rect=(0, 0.03, 1, 1))
+    return figure
+
+
+def plot_cohort_revenue_curve(revenue: pd.DataFrame) -> Figure:
+    """How much does an average cohort customer spend over time?"""
+    require_columns(
+        revenue,
+        ("month_offset", "revenue_per_cohort_customer"),
+        "plot_cohort_revenue_curve",
+    )
+    _require_rows(revenue, "plot_cohort_revenue_curve")
+    curve = (
+        revenue.groupby("month_offset", as_index=False)["revenue_per_cohort_customer"]
+        .mean()
+        .sort_values("month_offset")
+    )
+
+    figure, axis = plt.subplots(figsize=FIGURE_SIZE)
+    axis.plot(
+        curve["month_offset"],
+        curve["revenue_per_cohort_customer"],
+        marker="o",
+        markersize=4,
+        color="#1f4e79",
+        linewidth=2,
+    )
+    axis.set_title("Average revenue per cohort customer by month offset")
+    axis.set_xlabel("Months since first purchase")
+    axis.set_ylabel("Revenue per cohort customer (EUR)")
+    axis.yaxis.set_major_formatter(FuncFormatter(_currency_formatter))
+    _add_definition(
+        figure,
+        "Revenue in an offset month divided by the original cohort size, averaged across cohorts.",
+    )
+    figure.tight_layout(rect=(0, 0.03, 1, 1))
+    return figure
+
+
+# ---------------------------------------------------------------------------
+# Campaign figures
+# ---------------------------------------------------------------------------
+def plot_campaign_lift_comparison(statistics: pd.DataFrame) -> Figure:
+    """Which campaigns show the largest lift over their holdout group?"""
+    require_columns(
+        statistics,
+        ("campaign_id", "relative_difference", "statistically_significant"),
+        "plot_campaign_lift_comparison",
+    )
+    _require_rows(statistics, "plot_campaign_lift_comparison")
+    from novacart.analytics.campaigns import PRACTICAL_RELATIVE_THRESHOLD
+
+    frame = statistics.dropna(subset=["relative_difference"]).sort_values("relative_difference")
+    colours = [
+        "#1f4e79" if significant else "#9dc3e6"
+        for significant in frame["statistically_significant"]
+    ]
+
+    figure, axis = plt.subplots(figsize=FIGURE_SIZE)
+    axis.barh(frame["campaign_id"], frame["relative_difference"] * 100, color=colours)
+    axis.axvline(
+        PRACTICAL_RELATIVE_THRESHOLD * 100,
+        color="#c55a11",
+        linestyle="--",
+        linewidth=1,
+        label=f"Practical threshold ({PRACTICAL_RELATIVE_THRESHOLD:.0%})",
+    )
+    axis.axvline(0, color="#333333", linewidth=1)
+    axis.set_title("Campaign lift vs holdout (revenue per assigned customer)")
+    axis.set_xlabel("Relative difference in revenue per assigned customer (%)")
+    axis.set_ylabel("Campaign")
+    axis.grid(axis="y", visible=False)
+    axis.legend(loc="lower right")
+    _add_definition(
+        figure,
+        "Intention-to-treat comparison. Dark bars are statistically significant at FDR 5%; "
+        "the dashed line marks the pre-specified practical threshold.",
+    )
+    figure.tight_layout(rect=(0, 0.03, 1, 1))
+    return figure
+
+
+def plot_campaign_confidence_intervals(statistics: pd.DataFrame) -> Figure:
+    """How precise is each campaign lift estimate?"""
+    require_columns(
+        statistics,
+        (
+            "campaign_id",
+            "absolute_difference",
+            "confidence_interval_low",
+            "confidence_interval_high",
+        ),
+        "plot_campaign_confidence_intervals",
+    )
+    _require_rows(statistics, "plot_campaign_confidence_intervals")
+    frame = (
+        statistics.dropna(subset=["absolute_difference"])
+        .sort_values("absolute_difference")
+        .reset_index(drop=True)
+    )
+
+    figure, axis = plt.subplots(figsize=(11.0, max(5.5, 0.34 * len(frame) + 1.6)))
+    for position, row in frame.iterrows():
+        significant = bool(row.get("statistically_significant", False))
+        colour = "#1f4e79" if significant else "#9dc3e6"
+        axis.plot(
+            [row["confidence_interval_low"], row["confidence_interval_high"]],
+            [position, position],
+            color=colour,
+            linewidth=2.5,
+        )
+        axis.plot(row["absolute_difference"], position, marker="o", color=colour, markersize=6)
+    axis.axvline(0, color="#333333", linewidth=1)
+    axis.set_yticks(range(len(frame)))
+    axis.set_yticklabels(frame["campaign_id"])
+    axis.set_xlabel("Difference in revenue per assigned customer (EUR)")
+    axis.set_ylabel("Campaign")
+    axis.set_title("Campaign lift with 95% confidence intervals")
+    axis.xaxis.set_major_formatter(FuncFormatter(_currency_formatter))
+    axis.grid(axis="y", visible=False)
+    _add_definition(
+        figure,
+        "Welch 95% confidence intervals on the difference in mean revenue per assigned "
+        "customer (treatment minus holdout). Intervals crossing zero are inconclusive.",
+    )
+    figure.tight_layout(rect=(0, 0.03, 1, 1))
+    return figure
+
+
+def plot_campaign_significance_overview(statistics: pd.DataFrame) -> Figure:
+    """Which campaigns are both statistically and practically significant?"""
+    require_columns(
+        statistics,
+        ("campaign_id", "relative_difference", "adjusted_p_value"),
+        "plot_campaign_significance_overview",
+    )
+    _require_rows(statistics, "plot_campaign_significance_overview")
+    from novacart.analytics.campaigns import (
+        PRACTICAL_ABSOLUTE_THRESHOLD,
+        PRACTICAL_RELATIVE_THRESHOLD,
+    )
+
+    frame = statistics.dropna(subset=["adjusted_p_value", "relative_difference"]).copy()
+    frame["significance_score"] = -np.log10(frame["adjusted_p_value"].clip(lower=1e-12))
+
+    figure, axis = plt.subplots(figsize=FIGURE_SIZE)
+    colours = ["#1f4e79" if value else "#9dc3e6" for value in frame["statistically_significant"]]
+    sizes = [
+        90 if abs(row.absolute_difference) >= PRACTICAL_ABSOLUTE_THRESHOLD else 45
+        for row in frame.itertuples()
+    ]
+    axis.scatter(frame["relative_difference"] * 100, frame["significance_score"], c=colours, s=sizes)
+    for row in frame.itertuples():
+        axis.annotate(
+            row.campaign_id.replace("CMP-", ""),
+            (row.relative_difference * 100, row.significance_score),
+            textcoords="offset points",
+            xytext=(5, 3),
+            fontsize=8,
+        )
+    axis.axvline(PRACTICAL_RELATIVE_THRESHOLD * 100, color="#c55a11", linestyle="--", linewidth=1)
+    axis.axhline(-np.log10(0.05), color="#7f7f7f", linestyle=":", linewidth=1)
+    axis.set_title("Statistical vs practical significance by campaign")
+    axis.set_xlabel("Relative lift vs holdout (%)")
+    axis.set_ylabel("Statistical evidence (-log10 of FDR-adjusted p-value)")
+    _add_definition(
+        figure,
+        "Dashed line: 10% practical lift threshold. Dotted line: FDR-adjusted p = 0.05. "
+        "Larger markers exceed EUR 5 absolute lift per assigned customer.",
+    )
+    figure.tight_layout(rect=(0, 0.03, 1, 1))
+    return figure
+
+
+def render_segmentation_figures(
+    *,
+    segments: pd.DataFrame,
+    profile: pd.DataFrame,
+    cohort: object,
+    output_dir: Path | None = None,
+) -> dict[str, Path]:
+    """Render the RFM and cohort figures and return the saved paths."""
+    figures = {
+        "rfm_customer_counts": plot_rfm_segment_customers(segments),
+        "rfm_revenue_by_segment": plot_rfm_segment_revenue(segments),
+        "rfm_segment_comparison": plot_rfm_segment_comparison(profile),
+        "cohort_retention_heatmap": plot_cohort_retention_heatmap(cohort.retention_matrix),
+        "cohort_sizes": plot_cohort_sizes(cohort.sizes),
+        "cohort_revenue_curve": plot_cohort_revenue_curve(cohort.revenue),
+    }
+    return {
+        key: save_figure(figure, FIGURE_FILENAMES[key], output_dir=output_dir)
+        for key, figure in figures.items()
+    }
+
+
+def render_campaign_figures(
+    *, statistics: pd.DataFrame, output_dir: Path | None = None
+) -> dict[str, Path]:
+    """Render the campaign comparison figures and return the saved paths."""
+    figures = {
+        "campaign_lift_comparison": plot_campaign_lift_comparison(statistics),
+        "campaign_confidence_intervals": plot_campaign_confidence_intervals(statistics),
+        "campaign_significance_overview": plot_campaign_significance_overview(statistics),
     }
     return {
         key: save_figure(figure, FIGURE_FILENAMES[key], output_dir=output_dir)

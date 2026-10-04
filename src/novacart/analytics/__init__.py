@@ -16,6 +16,13 @@ without a database; the ``load_*`` helpers in :mod:`novacart.analytics.common`
 are the only database-aware code.
 """
 
+from novacart.analytics.campaigns import (
+    campaign_comparison,
+    campaign_customer_outcomes,
+    campaign_statistics,
+    significance_overview,
+)
+from novacart.analytics.cohorts import CohortAnalysis, cohort_analysis, customer_cohorts
 from novacart.analytics.customers import (
     country_summary,
     customer_segment_summary,
@@ -32,6 +39,12 @@ from novacart.analytics.products import (
     top_products_by_units,
 )
 from novacart.analytics.revenue import revenue_by_dimension, revenue_summary
+from novacart.analytics.rfm import rfm_table, segment_score_profile, segment_summary
+from novacart.analytics.statistics import (
+    benjamini_hochberg_adjusted,
+    bootstrap_mean_difference_ci,
+    welch_mean_difference,
+)
 from novacart.analytics.trends import (
     add_month_over_month,
     add_rolling_metrics,
@@ -41,11 +54,19 @@ from novacart.analytics.trends import (
 )
 
 __all__ = [
+    "CohortAnalysis",
     "add_month_over_month",
     "add_rolling_metrics",
+    "benjamini_hochberg_adjusted",
+    "bootstrap_mean_difference_ci",
     "business_kpi_snapshot",
+    "campaign_comparison",
+    "campaign_customer_outcomes",
+    "campaign_statistics",
     "category_summary",
+    "cohort_analysis",
     "country_summary",
+    "customer_cohorts",
     "customer_segment_summary",
     "daily_metrics",
     "declining_products",
@@ -55,9 +76,14 @@ __all__ = [
     "revenue_concentration",
     "revenue_deciles",
     "revenue_summary",
+    "rfm_table",
+    "segment_score_profile",
+    "segment_summary",
+    "significance_overview",
     "top_customers_by_revenue",
     "top_products_by_revenue",
     "top_products_by_units",
     "weekly_metrics",
+    "welch_mean_difference",
 ]
 

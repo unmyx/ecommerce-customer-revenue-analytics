@@ -1,4 +1,11 @@
-"""Orchestration for the business analysis: tables, figures and console summary."""
+"""Orchestration for the analytics layer: tables, figures and console summary.
+
+One command produces every analytical artefact:
+
+* business KPIs, revenue, product and customer tables and charts (Milestone 3);
+* RFM segments and cohort retention (Milestone 4);
+* campaign comparison and significance testing (Milestone 4).
+"""
 
 from __future__ import annotations
 
@@ -9,6 +16,12 @@ from pathlib import Path
 
 import pandas as pd
 
+from novacart.analytics.campaigns import (
+    campaign_comparison,
+    campaign_statistics,
+    significance_overview,
+)
+from novacart.analytics.cohorts import CohortAnalysis, cohort_analysis
 from novacart.analytics.common import (
     AnalysisInputs,
     ensure_output_dirs,
@@ -25,7 +38,11 @@ from novacart.analytics.customers import (
     top_customers_by_revenue,
 )
 from novacart.analytics.kpis import business_kpi_snapshot
-from novacart.analytics.plots import render_all_figures
+from novacart.analytics.plots import (
+    render_all_figures,
+    render_campaign_figures,
+    render_segmentation_figures,
+)
 from novacart.analytics.products import (
     category_summary,
     declining_products,
@@ -34,6 +51,7 @@ from novacart.analytics.products import (
     top_products_by_units,
 )
 from novacart.analytics.revenue import revenue_summary
+from novacart.analytics.rfm import rfm_table, segment_score_profile, segment_summary
 from novacart.analytics.trends import (
     add_month_over_month,
     add_rolling_metrics,
@@ -49,8 +67,9 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class BusinessAnalysis:
-    """Every table produced by the business analysis, plus written paths."""
+    """Every table produced by the analytics layer, plus written paths."""
 
+    # Milestone 3 - descriptive business analysis
     kpis: pd.DataFrame
     revenue: pd.DataFrame
     daily: pd.DataFrame
@@ -66,6 +85,14 @@ class BusinessAnalysis:
     deciles: pd.DataFrame
     concentration: pd.DataFrame
     top_customers: pd.DataFrame
+    # Milestone 4 - RFM, cohorts and campaign statistics
+    rfm: pd.DataFrame
+    rfm_segments: pd.DataFrame
+    rfm_profile: pd.DataFrame
+    cohorts: CohortAnalysis
+    campaign_comparison: pd.DataFrame
+    campaign_statistics: pd.DataFrame
+    campaign_overview: pd.DataFrame
     figures: dict[str, Path] = field(default_factory=dict)
     tables: dict[str, Path] = field(default_factory=dict)
 
@@ -87,16 +114,33 @@ class BusinessAnalysis:
             "customer_revenue_deciles": self.deciles,
             "customer_revenue_concentration": self.concentration,
             "top_customers_by_revenue": self.top_customers,
+            "rfm_customers": self.rfm,
+            "rfm_segments": self.rfm_segments,
+            "rfm_segment_scores": self.rfm_profile,
+            "cohort_sizes": self.cohorts.sizes,
+            "cohort_retention": self.cohorts.retention,
+            "cohort_retention_matrix": self.cohorts.retention_matrix.reset_index(),
+            "cohort_revenue": self.cohorts.revenue,
+            "campaign_comparison": self.campaign_comparison,
+            "campaign_statistics": self.campaign_statistics,
+            "campaign_significance_overview": self.campaign_overview,
         }
 
 
 def analyse(inputs: AnalysisInputs) -> BusinessAnalysis:
-    """Run every Milestone 3 calculation on already-loaded frames."""
+    """Run every analytical calculation on already-loaded frames."""
     monthly = add_month_over_month(monthly_metrics(inputs.orders))
     daily = add_rolling_metrics(daily_metrics(inputs.orders))
     products = product_summary(inputs.order_lines)
     categories = category_summary(inputs.order_lines)
     countries = country_summary(inputs.customers)
+
+    rfm = rfm_table(inputs.customers)
+    analysis_end_date = (
+        inputs.window["analysis_end_date"].iloc[0] if not inputs.window.empty else None
+    )
+    cohorts = cohort_analysis(inputs.orders, analysis_end_date=analysis_end_date)
+    statistics = campaign_statistics(inputs.campaign_outcomes)
 
     return BusinessAnalysis(
         kpis=business_kpi_snapshot(inputs.orders, inputs.customers),
@@ -114,6 +158,13 @@ def analyse(inputs: AnalysisInputs) -> BusinessAnalysis:
         deciles=revenue_deciles(inputs.customers),
         concentration=revenue_concentration(inputs.customers),
         top_customers=top_customers_by_revenue(inputs.customers, 10),
+        rfm=rfm,
+        rfm_segments=segment_summary(rfm),
+        rfm_profile=segment_score_profile(rfm),
+        cohorts=cohorts,
+        campaign_comparison=campaign_comparison(inputs.campaign_outcomes),
+        campaign_statistics=statistics,
+        campaign_overview=significance_overview(statistics),
     )
 
 
@@ -144,6 +195,16 @@ def build_business_analysis(
             countries=analysis.countries,
             output_dir=figures_dir,
         )
+        analysis.figures |= render_segmentation_figures(
+            segments=analysis.rfm_segments,
+            profile=analysis.rfm_profile,
+            cohort=analysis.cohorts,
+            output_dir=figures_dir,
+        )
+        analysis.figures |= render_campaign_figures(
+            statistics=analysis.campaign_statistics,
+            output_dir=figures_dir,
+        )
     return analysis
 
 
@@ -152,7 +213,10 @@ def _print_kpi(analysis: BusinessAnalysis) -> None:
     concentration = analysis.concentration.iloc[0] if not analysis.concentration.empty else None
     print(f"Analysis window              : {row['period_start']} to {row['period_end']}")
     print(f"Total net revenue            : {format_compact_currency(row['total_revenue'])}")
-    print(f"Orders / units               : {format_count(row['total_orders'])} / {format_count(row['total_units'])}")
+    print(
+        f"Orders / units               : {format_count(row['total_orders'])} / "
+        f"{format_count(row['total_units'])}"
+    )
     print(
         f"Purchasing / registered      : {format_count(row['unique_customers'])} / "
         f"{format_count(row['registered_customers'])} customers"
@@ -168,14 +232,41 @@ def _print_kpi(analysis: BusinessAnalysis) -> None:
             f"Top 10% customer share       : "
             f"{format_percent(concentration['top_10pct_revenue_share_pct'] / 100)}"
         )
-    declining = int(analysis.declining_products["is_declining"].sum())
-    print(f"Declining products flagged   : {declining}")
+    print(f"Declining products flagged   : {int(analysis.declining_products['is_declining'].sum())}")
+
+    if not analysis.rfm_segments.empty:
+        leaders = analysis.rfm_segments.sort_values("revenue", ascending=False).iloc[0]
+        print(
+            f"Top RFM segment by revenue   : {leaders['rfm_segment']} "
+            f"({format_count(leaders['customers'])} customers, "
+            f"{format_compact_currency(leaders['revenue'])})"
+        )
+    if not analysis.cohorts.sizes.empty:
+        sizes = analysis.cohorts.sizes
+        print(
+            f"Acquisition cohorts          : {len(sizes)} "
+            f"({sizes['cohort_month'].min():%Y-%m} to {sizes['cohort_month'].max():%Y-%m})"
+        )
+        month_one = analysis.cohorts.retention
+        month_one = month_one.loc[month_one["month_offset"] == 1, "retention_rate"]
+        if not month_one.empty:
+            print(f"Median month-1 retention     : {format_percent(float(month_one.median()))}")
+    if not analysis.campaign_statistics.empty:
+        statistics = analysis.campaign_statistics
+        print(
+            f"Campaigns significant (FDR)  : "
+            f"{int(statistics['statistically_significant'].sum())} of {len(statistics)}"
+        )
+        print(
+            f"Campaigns with practical lift: "
+            f"{int(statistics['practically_significant'].sum())} of {len(statistics)}"
+        )
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog="novacart-analyze",
-        description="Run the Milestone 3 business analysis and write tables and figures.",
+        description="Run the analytics layer and write tables and figures.",
     )
     parser.add_argument("--output-dir", type=Path, default=None)
     parser.add_argument("--no-figures", action="store_true")
@@ -205,8 +296,6 @@ def main(argv: list[str] | None = None) -> int:
     _print_kpi(analysis)
     if analysis.figures:
         print(f"Figures written              : {len(analysis.figures)}")
-        for name, path in sorted(analysis.figures.items()):
-            print(f"  {name:<32} {path}")
     if analysis.tables:
         print(f"Tables written               : {len(analysis.tables)}")
     return 0

@@ -33,7 +33,14 @@ def _settings_or_skip():
 
 def test_schema_loads_and_checks_pass(small_config, tmp_path) -> None:
     settings = _settings_or_skip()
-    result = generate_dataset(small_config, write=True, output_dir=tmp_path / "raw")
+    # metadata_dir must be redirected too, otherwise the reduced test dataset
+    # would overwrite the project generation manifest.
+    result = generate_dataset(
+        small_config,
+        write=True,
+        output_dir=tmp_path / "raw",
+        metadata_dir=tmp_path / "metadata",
+    )
     report = load_raw_tables(settings, data_dir=tmp_path / "raw", truncate=True)
 
     assert report.rows_loaded["customers"] == small_config.n_customers

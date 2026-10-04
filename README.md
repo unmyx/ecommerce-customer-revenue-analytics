@@ -23,11 +23,11 @@ This project builds the data platform and the analysis to answer those questions
 | 2 | Which products and categories drive revenue? | ✅ Product analysis (milestone 3) |
 | 3 | What is average order value and how does it move? | ✅ Revenue analysis (milestone 3) |
 | 4 | Which customers contribute the most revenue? | ✅ Customer value analysis (milestone 3) |
-| 5 | What is retention by acquisition cohort? | Cohort analysis (milestone 5) |
-| 6 | What RFM segments exist? | RFM segmentation (milestone 4) |
-| 7 | Which segments generate revenue and retain best? | Segmentation × cohort (milestones 4–5) |
-| 8 | Which campaigns are associated with higher customer value? | Marketing analysis (milestone 6) |
-| 9 | Are those campaign differences statistically meaningful? | Statistical testing (milestone 6) |
+| 5 | What is retention by acquisition cohort? | ✅ Cohort retention (milestone 4) |
+| 6 | What RFM segments exist? | ✅ RFM segmentation (milestone 4) |
+| 7 | Which segments generate revenue and retain best? | ✅ Segment value + cohort retention (milestone 4) |
+| 8 | Which campaigns are associated with higher customer value? | ✅ Campaign analysis (milestone 4) |
+| 9 | Are those campaign differences statistically meaningful? | ✅ Statistical testing with FDR control (milestone 4) |
 | 10 | What business actions follow? | Executive summary (milestone 9) |
 
 ## Architecture
@@ -103,16 +103,19 @@ python scripts/check_raw_data.py
 python scripts/build_analytics_layer.py
 python scripts/run_reconciliation.py
 
-# 8. business analysis: KPI tables, product/customer tables and figures
+# 8. business + advanced analysis: KPI, product, customer, RFM, cohort and campaign tables and figures
 python scripts/build_business_analysis.py
 
-# 9. tests
+# 9. notebooks (optional; they re-run the analysis and embed the figures)
+jupyter nbconvert --to notebook --execute --inplace notebooks/0*.ipynb
+
+# 10. tests
 python -m pytest -q
 ```
 
 Expected outcome: 15,000 customers / 84,263 orders / 207,374 order lines loaded, 59 in-memory
 validation checks, 15 SQL data-quality checks and 20 analytical reconciliation checks with
-zero failures, 15 analysis tables and 7 figures written to `outputs/`.
+zero failures, 25 analysis tables and 16 figures written to `outputs/`.
 
 ### Command line entry points
 
@@ -173,6 +176,44 @@ dashboard will use.
 | Declining product | prior-window recognised units ≥ 10 **and** unit change ≤ −30% between two adjacent 90-day windows ending on the last order date in the data (never the wall clock) |
 | Customer revenue decile | equal-count deciles over purchasing customers, decile 1 = lowest revenue, decile 10 = highest |
 
+## Advanced analytics (Milestone 4)
+
+RFM segmentation, cohort retention and campaign evaluation with statistical testing. The same
+`novacart-analyze` command produces the tables and figures; three notebooks present the findings.
+
+```bash
+python scripts/build_business_analysis.py                 # 25 tables and 16 figures
+jupyter nbconvert --to notebook --execute --inplace notebooks/02_customer_segmentation.ipynb
+jupyter nbconvert --to notebook --execute --inplace notebooks/03_cohort_analysis.ipynb
+jupyter nbconvert --to notebook --execute --inplace notebooks/04_campaign_analysis.ipynb
+```
+
+| Component | Method | Outputs |
+| --- | --- | --- |
+| RFM | quintile scores (ties broken by customer id) with priority-ordered segment rules | `rfm_customers`, `rfm_segments`, `rfm_segment_scores` + 3 figures |
+| Cohorts | monthly cohorts by first purchase month, retention by month offset, cumulative revenue | `cohort_sizes`, `cohort_retention`, `cohort_retention_matrix`, `cohort_revenue` + 3 figures |
+| Campaigns | customer-level intention-to-treat comparison, Welch t-test, 95% CI, bootstrap and rank checks, Hedges' g, Benjamini-Hochberg FDR | `campaign_comparison`, `campaign_statistics`, `campaign_significance_overview` + 3 figures |
+
+Full method detail, including the segment rules, the statistical test rationale and the known
+limitations: [docs/analytics_methods.md](docs/analytics_methods.md).
+
+> **Real-world limitation.** The dataset simulates randomised campaign assignment, while real
+> client data often contains confounding, selection bias, targeting effects, and non-random
+> exposure. The campaign effect estimates demonstrate the method and are not a transferable
+> client result.
+
+### Headline results (default dataset)
+
+| Finding | Value |
+| --- | --- |
+| Champions segment | 2,201 customers (14.7% of customers) generating 84.7% of revenue |
+| Segments with no repeat buyers yet | Potential Loyalists, New Customers, Needs Attention, Dormant, Never Purchased |
+| Cohort retention | 24 monthly cohorts; median month-1 activity retention 21.3%. The 2024-10 cohort (73%) is left-censored - customers already active before the window - and should be excluded from benchmarks |
+| Campaigns tested | 20, of which 8 are statistically significant at FDR 5% and 11 clear the practical thresholds |
+| Largest measured lift | +51.7% revenue per assigned customer (CMP-005, FDR-adjusted p < 0.001) |
+| Directionally positive but inconclusive | 3 campaigns have practical-sized point estimates with intervals crossing zero |
+| Post-hoc generator check | 8 of 11 genuinely-lifted campaigns detected, 0 of 9 placebo campaigns flagged |
+
 ## Repository layout
 
 ```
@@ -181,12 +222,15 @@ dashboard will use.
 ├── data/
 │   ├── raw/                    generated CSVs (git-ignored, rebuildable)
 │   └── generation_metadata/    manifest: seed, checksums, validation, ground truth
-├── docs/                       architecture, data model, generation, testing
+├── docs/                       architecture, data model, generation, testing, methods
 ├── notebooks/
-│   └── 01_business_analysis.ipynb  executed notebook: KPIs, trends, products, customers
+│   ├── 01_business_analysis.ipynb     KPIs, trends, products, customers
+│   ├── 02_customer_segmentation.ipynb RFM scoring, segments, figures
+│   ├── 03_cohort_analysis.ipynb       retention matrix, heatmap, cohort revenue
+│   └── 04_campaign_analysis.ipynb     campaign comparison and statistics
 ├── outputs/                    generated analysis artefacts (git-ignored)
-│   ├── figures/                7 business charts
-│   └── tables/                 15 CSV result tables
+│   ├── figures/                16 business charts
+│   └── tables/                 25 CSV result tables
 ├── scripts/                    thin CLI wrappers (generate, load, checks, build analytics)
 ├── sql/
 │   ├── 01_schemas.sql           raw / analytics / meta schemas
@@ -203,7 +247,8 @@ dashboard will use.
 │   ├── synthetic/               generator (reference, entities, order simulation, writer)
 │   ├── ingestion/               DDL application and COPY loading
 │   ├── warehouse.py             builds the analytical SQL layer, reads reconciliation
-│   └── analytics/               business analysis: revenue, KPIs, trends, products, customers, plots
+│   └── analytics/               revenue, KPIs, trends, products, customers, RFM,
+│                                cohorts, campaigns, statistics, plots, report
 └── tests/                       unit, rule-injection and integration tests
 ```
 
@@ -223,12 +268,9 @@ dashboard will use.
 | 1. Architecture, schema, project structure, synthetic data engine | ✅ complete |
 | 2. Analytical SQL layer (staging views, facts, revenue/customer/product/campaign marts, reconciliation) | ✅ complete |
 | 3. Business analytics in Python (revenue, trends, products, customers, KPIs, figures, notebook) | ✅ complete |
-| 4. Customer analytics and RFM segmentation | ⏳ next |
-| 5. Cohort retention analysis | ⏳ |
-| 6. Marketing evaluation with statistical testing | ⏳ |
-| 7. Business visualisation library and findings notebooks | ⏳ |
-| 8. Power BI dashboard | ⏳ |
-| 9. Executive summary and README findings | ⏳ |
+| 4. RFM segmentation, cohort retention, campaign evaluation, statistical testing | ✅ complete |
+| 5. Power BI dashboard over the analytics schema | ⏳ next |
+| 6. Executive summary, README findings and final polish | ⏳ |
 
 ## Licence and data notice
 
