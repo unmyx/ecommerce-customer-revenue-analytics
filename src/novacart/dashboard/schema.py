@@ -282,7 +282,10 @@ EXPORT_SPECS: dict[str, ExportSpec] = {
     ),
     "product_performance": ExportSpec(
         name="product_performance",
-        source="novacart.analytics.products.product_summary",
+        source=(
+            "novacart.analytics.products.product_summary - products with at least one recognised "
+            "sale in the window (products with no sales contribute zero revenue and are absent)"
+        ),
         columns=(
             "product_id",
             "product_name",
