@@ -32,6 +32,8 @@ bi = ["xlsxwriter>=3.2"]
 [project.scripts]
 novacart-generate = "novacart.synthetic.cli:main"
 novacart-load = "novacart.ingestion.cli:main"
+novacart-build-analytics = "novacart.warehouse:build_main"
+novacart-reconcile = "novacart.warehouse:reconcile_main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

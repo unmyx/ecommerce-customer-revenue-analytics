@@ -41,6 +41,9 @@ synthetic generator → CSV + manifest → PostgreSQL raw layer → analytical S
   (`src/novacart/synthetic`).
 * **Warehouse** – PostgreSQL 16 with `raw`, `analytics` and `meta` schemas; constraints,
   generated money columns and indexes defined in `sql/`.
+* **Analytical layer** – reusable SQL views: staging → order/line facts → revenue, customer,
+  product, category and campaign marts, with raw-versus-analytics reconciliation checks
+  (`sql/10..90_*.sql`, built by `novacart.warehouse`).
 * **Analysis** – reusable Python over SQL (`src/novacart/analysis`, milestones 3–6).
 * **Evidence** – pytest for transformations and calculations; SQL checks for the loaded data.
 
@@ -96,12 +99,17 @@ python scripts/load_raw.py
 # 6. verify the loaded data
 python scripts/check_raw_data.py
 
-# 7. tests
+# 7. build the analytical SQL layer and reconcile it against the raw layer
+python scripts/build_analytics_layer.py
+python scripts/run_reconciliation.py
+
+# 8. tests
 python -m pytest -q
 ```
 
 Expected outcome: 15,000 customers / 84,263 orders / 207,374 order lines loaded, 59 in-memory
-validation checks and 15 SQL data-quality checks with zero failures.
+validation checks, 15 SQL data-quality checks and 20 analytical reconciliation checks with
+zero failures.
 
 ### Command line entry points
 
@@ -109,6 +117,8 @@ validation checks and 15 SQL data-quality checks with zero failures.
 novacart-generate --customers 2000 --products 300 --campaigns 8 --orders 9000
 novacart-generate --no-write                 # validate in memory only
 novacart-load --data-dir data/raw --keep-existing
+novacart-build-analytics                     # (re)create the analytics views
+novacart-reconcile                            # reconcile analytics against raw
 ```
 
 ## Repository layout
@@ -120,15 +130,22 @@ novacart-load --data-dir data/raw --keep-existing
 │   ├── raw/                    generated CSVs (git-ignored, rebuildable)
 │   └── generation_metadata/    manifest: seed, checksums, validation, ground truth
 ├── docs/                       architecture, data model, generation, testing
-├── scripts/                    thin CLI wrappers (generate, load, quality checks)
+├── scripts/                    thin CLI wrappers (generate, load, checks, build analytics)
 ├── sql/
 │   ├── 01_schemas.sql           raw / analytics / meta schemas
 │   ├── 02_raw_tables.sql        tables, constraints, generated columns, indexes
+│   ├── 10_staging_views.sql     cleaned staging views, calendar, analysis window
+│   ├── 20_revenue_marts.sql     order/line facts, daily and monthly revenue marts
+│   ├── 21_customer_marts.sql    customer features (one row per customer)
+│   ├── 22_product_marts.sql     product and category performance
+│   ├── 23_campaign_marts.sql    treatment/holdout campaign preparation
+│   ├── 90_reconciliation_checks.sql  raw-versus-analytics reconciliations
 │   └── checks/verify_raw.sql    cross-table data-quality checks
 ├── src/novacart/
 │   ├── settings.py, db.py, logging_config.py
 │   ├── synthetic/               generator (reference, entities, order simulation, writer)
-│   └── ingestion/               DDL application and COPY loading
+│   ├── ingestion/               DDL application and COPY loading
+│   └── warehouse.py             builds the analytical SQL layer, reads reconciliation
 └── tests/                       unit, rule-injection and integration tests
 ```
 
@@ -146,8 +163,8 @@ novacart-load --data-dir data/raw --keep-existing
 | Milestone | Status |
 | --- | --- |
 | 1. Architecture, schema, project structure, synthetic data engine | ✅ complete |
-| 2. Analytical SQL layer (staging views, customer features, revenue marts) | ⏳ next |
-| 3. Revenue and product analysis | ⏳ |
+| 2. Analytical SQL layer (staging views, facts, revenue/customer/product/campaign marts, reconciliation) | ✅ complete |
+| 3. Revenue and product analysis | ⏳ next |
 | 4. Customer analytics and RFM segmentation | ⏳ |
 | 5. Cohort retention analysis | ⏳ |
 | 6. Marketing evaluation with statistical testing | ⏳ |

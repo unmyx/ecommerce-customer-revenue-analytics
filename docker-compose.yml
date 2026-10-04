@@ -5,6 +5,9 @@ services:
     image: postgres:16-alpine
     container_name: novacart-postgres
     restart: unless-stopped
+    # Analytical queries use parallel workers; the Docker default of 64 MB shared
+    # memory is too small for the reconciliation and mart queries.
+    shm_size: 512mb
     environment:
       POSTGRES_DB: ${POSTGRES_DB:?POSTGRES_DB must be set in .env}
       POSTGRES_USER: ${POSTGRES_USER:?POSTGRES_USER must be set in .env}

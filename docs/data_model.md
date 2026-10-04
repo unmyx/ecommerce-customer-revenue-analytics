@@ -143,3 +143,56 @@ Rules that span tables (for example "order subtotal equals the sum of its lines"
 expressed as a simple `CHECK`. They are enforced twice instead: in Python before anything is
 written (`validate_dataset`) and in SQL after loading (`sql/checks/verify_raw.sql`).
 
+## Analytical layer (analytics schema)
+
+The analytical layer is a set of views rebuilt by `scripts/build_analytics_layer.py`
+(`novacart.warehouse`). It follows one lineage:
+
+```
+raw → staging (stg_*) → facts (fct_*) → marts (mart_*) → Python / BI
+```
+
+| Object | Grain | Notes |
+| --- | --- | --- |
+| `analytics.analysis_window` | one row | first order date, `analysis_end_date`, window length, order count |
+| `analytics.dim_date` | one row per day | calendar spine for the loaded window; ISO week, month, weekend flag |
+| `analytics.stg_customers` | customer | cleaned customer attributes (email excluded) |
+| `analytics.stg_products` | product | catalogue with list price, cost and list margin |
+| `analytics.stg_orders` | order | raw order amounts plus resolved customer attributes |
+| `analytics.stg_order_lines` | order line | line amounts plus order context and product attributes |
+| `analytics.stg_campaigns` | campaign | campaign master with duration and daily budget |
+| `analytics.stg_campaign_assignments` | customer × campaign | arm, exposure flag (`is_exposed_treatment`) and campaign attributes |
+| `analytics.fct_orders` | order | recognition flags, line count, units, gross merchandise amount, canonical and recognised revenue |
+| `analytics.fct_order_lines` | order line | cost, gross profit, margin and recognised line revenue |
+| `analytics.mart_revenue_daily` | day | calendar-spined revenue with 7-day and 30-day rolling metrics |
+| `analytics.mart_revenue_monthly` | month | revenue, orders, customers, units, AOV |
+| `analytics.mart_customer_features` | customer | first/last order, frequency, revenue, units, AOV, repeat flag, recency and lifetime |
+| `analytics.mart_product_performance` | product | units, orders, unique customers, revenue, realised price, margin, ranks and revenue share |
+| `analytics.mart_category_performance` | category | category rollup with share and rank |
+| `analytics.mart_campaign_customer_outcomes` | campaign × customer | pre-window, in-window and post-window orders and revenue by arm |
+| `analytics.mart_campaign_performance` | campaign | treatment/holdout summary with unadjusted descriptive lifts |
+| `analytics.reconciliation_checks` | check | raw-versus-analytics reconciliation, one row per check |
+
+### Analytical metric definitions
+
+These definitions extend the metric table above and are the ones every later milestone must
+reuse:
+
+| Metric | Analytical definition |
+| --- | --- |
+| Revenue (all facts and marts) | `fct_orders.recognised_net_revenue` / `fct_order_lines.recognised_line_net_revenue`, i.e. net revenue of completed orders |
+| Average order value | revenue / recognised orders (daily, monthly, customer or campaign grain) |
+| Units | `recognised_units`, i.e. units on completed orders |
+| Repeat customer | at least two recognised orders (`mart_customer_features.repeat_customer`) |
+| Days since last order | `analysis_window.analysis_end_date - last_order_date` |
+| Customer lifetime days | `last_order_date - first_order_date` |
+| Average days between orders | `(last_order_date - first_order_date) / (total_orders - 1)` for customers with two or more orders |
+| Realised selling price | recognised product revenue / units sold (after line discounts) |
+| Gross margin | recognised line revenue − line cost (`quantity × unit_cost`) |
+| Campaign exposure | `stg_campaign_assignments.is_exposed_treatment` (treatment arm and exposed) |
+| Campaign window outcome | recognised orders and revenue between `campaign.start_date` and `campaign.end_date` for an assigned customer |
+
+The layer is verified by 20 reconciliation checks (`analytics.reconciliation_checks`) plus
+the pytest suite in `tests/test_analytics_layer.py`.
+
+
