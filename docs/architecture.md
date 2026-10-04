@@ -51,9 +51,9 @@ Two rules shape every decision in this repository:
 | `novacart.synthetic` | The generator: reference data, entity builders, validation, writer, CLI |
 | `novacart.ingestion` | Applies the DDL and bulk-loads generated CSVs into `raw` |
 | `novacart.warehouse` | Builds the analytical SQL layer in dependency order; reconciliation reader |
-| `novacart.analysis` *(later)* | Reusable revenue, customer, RFM, cohort and product analytics |
+| `novacart.analytics` | Business analysis over the marts: data access, revenue, KPIs, trends, products, customers, plots, report |
 | `novacart.statistics` *(later)* | Hypothesis tests, effect sizes, multiple-comparison correction |
-| `novacart.visualization` *(later)* | Chart builders with a consistent business style |
+| `novacart.visualization` *(later)* | Dashboard-oriented visual polish on top of `analytics.plots` |
 
 Planned milestones and their entry points are listed in the README.
 
@@ -131,6 +131,39 @@ raw → staging → facts → marts → Python / BI
 * The `unadjusted_lift_*` columns are raw descriptive differences, explicitly not causal
   estimates; significance testing belongs to the statistics milestone.
 
+## Python analytics layer (Milestone 3)
+
+The Python layer is deliberately thin and testable:
+
+```
+PostgreSQL marts  →  novacart.analytics.common (loading)  →  pure calculation functions
+                  →  clean DataFrames  →  tables (CSV) + figures (PNG) + notebook
+```
+
+| Module | Responsibility |
+| --- | --- |
+| `analytics/common.py` | loads published relations, applies the recognition filter, and provides `safe_divide`, `percentage_change`, `rolling_sum` and formatting helpers |
+| `analytics/revenue.py` | revenue/order summary and revenue by dimension |
+| `analytics/kpis.py` | the canonical one-row business KPI snapshot |
+| `analytics/trends.py` | daily/weekly/monthly series, rolling windows, month-over-month change |
+| `analytics/products.py` | category and product performance, top-N by revenue and units, declining products |
+| `analytics/customers.py` | country summary, customer segments, revenue deciles, concentration, top customers |
+| `analytics/plots.py` | reusable business charts; deterministic filenames in `outputs/figures/` |
+| `analytics/report.py` | orchestration (`novacart-analyze`) that writes `outputs/tables/` and `outputs/figures/` |
+
+Design rules:
+
+* **Calculations are pure functions over DataFrames.** Only `common.load_*` touches the
+  database, which is what makes the metric tests fast and database-free.
+* **Fallbacks exist for tests, not for production.** A frame without
+  `is_revenue_recognised` is treated as fully recognised and `net_revenue`/`total_units` are
+  accepted when the `recognised_*` columns are absent. Production always passes the facts.
+* **Calendars are explicit.** Daily, weekly and monthly series are filled onto complete
+  calendars bounded by the loaded order period, so rolling windows and month-over-month
+  comparisons stay correct when a period has no recognised revenue.
+* **The Python layer is verified against SQL.** `tests/test_analytics_integration.py` compares
+  category, product, monthly and 7/30-day rolling aggregates with the corresponding marts.
+
 ## Data flow (current milestone)
 
 ```
@@ -164,6 +197,16 @@ novacart-build-analytics               scripts/build_analytics_layer.py
 
 novacart-reconcile                     scripts/run_reconciliation.py
   20 raw-versus-analytics checks; exits non-zero if any fail
+
+novacart-analyze                       scripts/build_business_analysis.py
+  load_analysis_inputs()      -> fct_orders, fct_order_lines, customer/product/category marts
+  analyse()                   -> KPI snapshot, daily/weekly/monthly trends, product and
+                                 customer tables, declining products
+  write tables                -> outputs/tables/*.csv
+  render figures              -> outputs/figures/*.png  (7 deterministic filenames)
+
+notebooks/01_business_analysis.ipynb
+  same modules, presented as a findings narrative with embedded figures
 ```
 
 ## Environments and reproducibility

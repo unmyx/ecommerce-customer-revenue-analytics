@@ -25,6 +25,8 @@ dev = [
     "pytest-cov>=5.0",
     "ruff>=0.6",
     "jupyterlab>=4.0",
+    "ipykernel>=6.29",
+    "nbconvert>=7.16",
     "nbformat>=5.10",
 ]
 bi = ["xlsxwriter>=3.2"]
@@ -34,6 +36,7 @@ novacart-generate = "novacart.synthetic.cli:main"
 novacart-load = "novacart.ingestion.cli:main"
 novacart-build-analytics = "novacart.warehouse:build_main"
 novacart-reconcile = "novacart.warehouse:reconcile_main"
+novacart-analyze = "novacart.analytics.report:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -22,6 +22,8 @@
 | Validation rules | `tests/test_validation_rules.py` | injected faults (duplicate key, orphan FK, over-discount, payment mismatch, duplicate line, exposed control) are detected |
 | Raw layer (database) | `tests/test_database_integration.py` | DDL applies idempotently, COPY loads, the 15 raw SQL checks pass |
 | Analytical layer (database) | `tests/test_analytics_layer.py` | revenue reconciles order → line → customer → product → daily/monthly, keys are unique, date/recency/repeat logic is correct, rolling windows are right, campaign attribution follows the exposure and window rules, no ground truth leaks into SQL |
+| Business analytics (unit) | `tests/test_analytics_metrics.py`, `test_analytics_revenue.py`, `test_analytics_trends.py`, `test_analytics_products.py`, `test_analytics_customers.py`, `test_analytics_plots.py` | KPI/AOV/repeat-rate maths, rolling windows, month-over-month change, product and customer aggregation, ranking and declining rules, chart data and labels, empty frames and zero denominators - all on hand-built frames with known answers |
+| Business analytics (database) | `tests/test_analytics_integration.py` | the Python layer reproduces the SQL marts (category, product, monthly, 7/30-day rolling), the KPI reconciles to the customer mart, and the full run writes 15 tables and 7 figures |
 
 ## Running the tests
 
@@ -36,6 +38,10 @@ NOVACART_RUN_DB_TESTS=1 python -m pytest -q -m integration
 # the same checks outside pytest
 python scripts/build_analytics_layer.py
 python scripts/run_reconciliation.py
+
+# the analysis and the notebook
+python scripts/build_business_analysis.py
+python -m nbconvert --to notebook --execute --inplace notebooks/01_business_analysis.ipynb
 ```
 
 Database tests truncate and reload the `raw` schema of the database in `.env`, so they are
@@ -77,5 +83,6 @@ Reconciliation checks cover:
 * Statistics: the treatment/control test must recover the manifest's ground truth (detect
   genuine lifts, avoid false positives on placebo campaigns) and produce correct confidence
   intervals, effect sizes and multiple-comparison corrections.
-* Visualisation: chart builders return figures with the expected axes, labels and ordering.
+* Dashboard assets: the Power BI model must expose the same KPI definitions as
+  `analytics.kpis` and the executed notebook.
 

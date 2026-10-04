@@ -19,10 +19,10 @@ This project builds the data platform and the analysis to answer those questions
 
 | # | Question | Where it is answered |
 | --- | --- | --- |
-| 1 | How is revenue changing over time? | Revenue analysis (milestone 3) |
-| 2 | Which products and categories drive revenue? | Product analysis (milestone 3) |
-| 3 | What is average order value and how does it move? | Revenue analysis (milestone 3) |
-| 4 | Which customers contribute the most revenue? | Customer analysis (milestone 4) |
+| 1 | How is revenue changing over time? | ✅ Revenue analysis (milestone 3) |
+| 2 | Which products and categories drive revenue? | ✅ Product analysis (milestone 3) |
+| 3 | What is average order value and how does it move? | ✅ Revenue analysis (milestone 3) |
+| 4 | Which customers contribute the most revenue? | ✅ Customer value analysis (milestone 3) |
 | 5 | What is retention by acquisition cohort? | Cohort analysis (milestone 5) |
 | 6 | What RFM segments exist? | RFM segmentation (milestone 4) |
 | 7 | Which segments generate revenue and retain best? | Segmentation × cohort (milestones 4–5) |
@@ -103,13 +103,16 @@ python scripts/check_raw_data.py
 python scripts/build_analytics_layer.py
 python scripts/run_reconciliation.py
 
-# 8. tests
+# 8. business analysis: KPI tables, product/customer tables and figures
+python scripts/build_business_analysis.py
+
+# 9. tests
 python -m pytest -q
 ```
 
 Expected outcome: 15,000 customers / 84,263 orders / 207,374 order lines loaded, 59 in-memory
 validation checks, 15 SQL data-quality checks and 20 analytical reconciliation checks with
-zero failures.
+zero failures, 15 analysis tables and 7 figures written to `outputs/`.
 
 ### Command line entry points
 
@@ -119,7 +122,56 @@ novacart-generate --no-write                 # validate in memory only
 novacart-load --data-dir data/raw --keep-existing
 novacart-build-analytics                     # (re)create the analytics views
 novacart-reconcile                            # reconcile analytics against raw
+novacart-analyze                              # KPI tables, product/customer analysis, figures
 ```
+
+## Business analytics (Milestone 3)
+
+The Python analytical layer reads the published SQL facts and marts (never the raw tables),
+applies descriptive analysis, and writes business tables and figures. Reusable logic lives in
+`src/novacart/analytics/`; the notebook only presents results.
+
+```bash
+python scripts/build_business_analysis.py                 # tables + figures + console KPIs
+jupyter nbconvert --to notebook --execute --inplace notebooks/01_business_analysis.ipynb
+```
+
+Outputs: 15 CSV tables in `outputs/tables/` and 7 figures in `outputs/figures/`
+(monthly revenue, monthly orders, monthly AOV, revenue by category, top 10 products by revenue,
+customer revenue distribution, revenue by country).
+
+| Module | Responsibility |
+| --- | --- |
+| `analytics/common.py` | marts loader, recognition filter, safe division, % change, rolling sums |
+| `analytics/revenue.py` | revenue/order summary, revenue by dimension |
+| `analytics/kpis.py` | the canonical business KPI snapshot |
+| `analytics/trends.py` | daily/weekly/monthly series, rolling windows, month-over-month |
+| `analytics/products.py` | category and product performance, top-N, declining products |
+| `analytics/customers.py` | country, segments, revenue deciles, concentration, top customers |
+| `analytics/plots.py` | reusable business charts with deterministic filenames |
+| `analytics/report.py` | orchestration and the `novacart-analyze` command |
+
+### Metric definitions
+
+Every number derives from the analytical SQL layer, so these definitions are the same ones the
+dashboard will use.
+
+| Metric | Definition |
+| --- | --- |
+| Revenue | recognised net merchandise revenue: `items_subtotal - discount_amount` on `completed` orders. Refunds and cancellations excluded; shipping and VAT excluded |
+| Total orders | count of revenue-recognised orders |
+| Units | units on revenue-recognised order lines |
+| Unique customers | customers with at least one recognised order |
+| Average order value (AOV) | revenue / recognised orders |
+| Average units per order | units / recognised orders |
+| Repeat customer | a customer with **two or more** recognised orders |
+| Repeat customer rate | repeat customers / purchasing customers |
+| Revenue per customer | revenue / purchasing customers. `revenue_per_registered_customer` (all 15,000 registered customers) is reported separately rather than blended |
+| Rolling revenue | trailing sum including the current day over a complete daily calendar: `revenue_rolling_7d`, `revenue_rolling_30d` |
+| Month-over-month change | absolute difference and percentage change versus the immediately preceding calendar month, on a gap-free monthly calendar. A zero or missing base month reports `n/a` (NaN) instead of infinite growth |
+| Product ranking | recognised revenue (ties broken by product id). A separate ranking by recognised units is always shown, because the two lists differ |
+| Declining product | prior-window recognised units ≥ 10 **and** unit change ≤ −30% between two adjacent 90-day windows ending on the last order date in the data (never the wall clock) |
+| Customer revenue decile | equal-count deciles over purchasing customers, decile 1 = lowest revenue, decile 10 = highest |
 
 ## Repository layout
 
@@ -130,6 +182,11 @@ novacart-reconcile                            # reconcile analytics against raw
 │   ├── raw/                    generated CSVs (git-ignored, rebuildable)
 │   └── generation_metadata/    manifest: seed, checksums, validation, ground truth
 ├── docs/                       architecture, data model, generation, testing
+├── notebooks/
+│   └── 01_business_analysis.ipynb  executed notebook: KPIs, trends, products, customers
+├── outputs/                    generated analysis artefacts (git-ignored)
+│   ├── figures/                7 business charts
+│   └── tables/                 15 CSV result tables
 ├── scripts/                    thin CLI wrappers (generate, load, checks, build analytics)
 ├── sql/
 │   ├── 01_schemas.sql           raw / analytics / meta schemas
@@ -145,7 +202,8 @@ novacart-reconcile                            # reconcile analytics against raw
 │   ├── settings.py, db.py, logging_config.py
 │   ├── synthetic/               generator (reference, entities, order simulation, writer)
 │   ├── ingestion/               DDL application and COPY loading
-│   └── warehouse.py             builds the analytical SQL layer, reads reconciliation
+│   ├── warehouse.py             builds the analytical SQL layer, reads reconciliation
+│   └── analytics/               business analysis: revenue, KPIs, trends, products, customers, plots
 └── tests/                       unit, rule-injection and integration tests
 ```
 
@@ -164,8 +222,8 @@ novacart-reconcile                            # reconcile analytics against raw
 | --- | --- |
 | 1. Architecture, schema, project structure, synthetic data engine | ✅ complete |
 | 2. Analytical SQL layer (staging views, facts, revenue/customer/product/campaign marts, reconciliation) | ✅ complete |
-| 3. Revenue and product analysis | ⏳ next |
-| 4. Customer analytics and RFM segmentation | ⏳ |
+| 3. Business analytics in Python (revenue, trends, products, customers, KPIs, figures, notebook) | ✅ complete |
+| 4. Customer analytics and RFM segmentation | ⏳ next |
 | 5. Cohort retention analysis | ⏳ |
 | 6. Marketing evaluation with statistical testing | ⏳ |
 | 7. Business visualisation library and findings notebooks | ⏳ |
