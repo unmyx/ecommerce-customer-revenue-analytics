@@ -1,0 +1,24 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+.env
+*.egg-info/
+build/
+dist/
+
+# Generated data artefacts (rebuild with scripts/generate_data.py)
+data/raw/*
+data/generation_metadata/*
+!data/raw/.gitkeep
+!data/generation_metadata/.gitkeep
+
+# Analysis and reporting outputs
+outputs/
+logs/
+*.ipynb_checkpoints/
+
